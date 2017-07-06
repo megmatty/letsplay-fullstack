@@ -1,5 +1,5 @@
-import { connect } from "react-redux"
-import MyProfile from "../pure/MyProfile"
+import { connect } from "react-redux";
+import MyProfile from "../pure/MyProfile";
 
 const mapStateToProps = (state) => {
 	return {}
@@ -7,4 +7,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
 	mapStateToProps
-)(MyProfile)
+)(MyProfile);

@@ -1,0 +1,36 @@
+Dummy data into mongo
+Collections
+	-Users [
+		{	username,
+			password,
+			email,
+			list: [
+					{ game },
+					{ game2 },
+					{ game3 },
+			]
+			avatar,
+			aboutme,
+			friends: [
+				{ id,
+					name,
+					gamesMatched: [
+						{ game },
+						{ game2 }
+					]
+				},
+			]
+		}
+	]	
+	-Games [
+		{ id,
+			{ matchedUsers: [
+					{ user },
+					{ user }
+				]
+			}
+		},
+	]
+
+
+	-GameAPI

@@ -17,14 +17,14 @@
   },
   "betterScripts": {
     "server": {
-      "command": "node lib/server/index.js",
+      "command": "nodemon lib/server/index.js",
       "env": {
         "NODE_ENV": "production",
         "MIN_EXT": ".min"
       }
     },
     "server:dev": {
-      "command": "node devStart.js",
+      "command": "nodemon devStart.js",
       "env": {
         "NODE_ENV": "development"
       }
