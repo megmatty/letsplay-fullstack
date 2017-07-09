@@ -1,8 +1,9 @@
-import React from "react"
-import NavigationContainer from "./NavigationContainer"
+import React, { Component } from 'react';
+import NavigationContainer from "./NavigationContainer";
+import styles from '../../App.css';
 
-const App = React.createClass({
-	render: function() {
+class App extends Component {
+	render() {
 		return(
 			<div>
 				<NavigationContainer />				
@@ -11,6 +12,6 @@ const App = React.createClass({
 			</div>	
 		)	
 	}
-})
+}
 
-export default App
+export default App;

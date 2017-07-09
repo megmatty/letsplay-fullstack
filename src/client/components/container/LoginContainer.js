@@ -8,7 +8,7 @@ import Login from "../pure/Login";
 // The second argument "ownProps" contains props passed to the component
 const mapStateToProps = (state, ownProps) => {	
 
-	let nextPathname = "/"
+	let nextPathname = "/";
 
 	try {nextPathname = ownProps.location.state.nextPathname}
 	catch(err) {}

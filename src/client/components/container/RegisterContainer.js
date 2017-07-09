@@ -1,6 +1,6 @@
-import { connect } from "react-redux"
-import * as userActions from "../../actions/users"
-import Register from "../pure/Register"
+import { connect } from "react-redux";
+import * as userActions from "../../actions/users";
+import Register from "../pure/Register";
 
 function mapStateToProps(state) {
   return {}

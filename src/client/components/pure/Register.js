@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 
 // ----------------------------------------------------
 const registerMessageStyle = {
@@ -7,15 +7,17 @@ const registerMessageStyle = {
 }
 
 // ----------------------------------------------------
-const Register = React.createClass({
+class Register extends Component {
 
-	getInitialState: function() {
-		return {
+	constructor() {
+		super();
+
+		this.state = {
 			registerMessage: ""
 		}
-	},
+	}
 
-	_onRegisterSubmit: function(event) {
+	_onRegisterSubmit(event) {
 		event.preventDefault()
 		const email = ReactDOM.findDOMNode(this.refs.email).value
 		const password = ReactDOM.findDOMNode(this.refs.password).value
@@ -34,9 +36,9 @@ const Register = React.createClass({
 			}	
 		})		
 
-	},
+	}
 
-	render: function() {
+	render() {
 		return(
 			<div>
 				<h2>Register</h2>	
@@ -48,6 +50,6 @@ const Register = React.createClass({
 			</div>
 		)	
 	}
-})
+}
 
-export default Register
+export default Register;

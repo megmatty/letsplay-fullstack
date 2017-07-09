@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.brand {
+  font-size: 1.2em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .8em;
+}
+
+.nav-group {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.signup {
+  margin-right: 5px;
+}
+
+.box-art {
+  width: 100px;
+}
+
+.avatar {
+  width: 50px;
+  border-radius: 100%;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 0 25px;
+}
+
+.list-switcher {
+  display: flex;
+  font-size: .9em;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.list-title {
+  border: 1px solid black;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.contact-form {
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  min-height: 100px;
+  margin-top: 5px;
+}
+
+input {
+  margin-top: 5px;
+}
+
+.contact-form button {
+  width: 40%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.captcha {
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.results {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.game-view .delete-game {
+  display: none;
+}
+
+.game-list .add-game {
+  display: none;
+}
+
+
+

@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
-import Search from '../../components/container/Search';
+import User from './User';
+import FriendList from './FriendList';
+import { connect } from 'react-redux';
+import { deleteFriend } from '../../actions/games';
 
 class MyProfile extends Component {
 	render() {
 		return(
-			<div>
-				<Search />
-				<h2>My Profile</h2>
-				<p>You're seeing this page because you logged in successfully! Try logging out, clicking the MyProfile link and then completing the login. You wil notice that it redirects you to MyProfile page :)</p>
-			</div>
-		)
+			<div className="profile-container">      
+        <User user="janedoe"/>
+        <FriendList 
+        	friends={this.props.friends} 
+        	deleteFriend={this.props.deleteFriend}
+        />
+      </div>
+		);
 	}
 }
 
-export default MyProfile;
+//Take state and map to prop object
+const mapStateToProps = (state) => {
+  return {
+    ...state.friends
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteFriend: (id) => {
+      console.log('delete THIS', id);
+      dispatch(deleteFriend(id));
+    }
+  }
+}
+
+//Connect component to Redux while mapping props for us to use
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

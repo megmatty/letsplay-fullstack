@@ -11,7 +11,7 @@ import {
 	REGISTER_USER,
 	REGISTER_SUCCESS_USER,
 	REGISTER_ERROR_USER	
-} from "../constants"
+} from "../constants";
 
 const user = (state = {
 	isWaiting: false,
@@ -48,4 +48,4 @@ const user = (state = {
 	}
 }
 
-export default user
+export default user;
