@@ -12,7 +12,12 @@ class Game extends Component {
   handleAdd = () => {
     // this.props.addGame(this.props.id);
     // this function in progress, needs correct action/reducer
-    console.log(this)
+    console.log(this);
+  }
+
+  handleClick = () => {
+    console.log(this);
+    this.props.gameClicked(this.props.id);
   }
 
   render() {
@@ -25,6 +30,7 @@ class Game extends Component {
         <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
         <button className="delete-game" onClick={this.handleDelete}>Delete</button>
         <button className="add-game" onClick={this.handleAdd}>Add</button>
+        <button onClick={this.handleClick}>Handle Click</button>
       </div>
     );
   }

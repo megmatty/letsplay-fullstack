@@ -8,7 +8,9 @@ import secrets from "./config/secrets";
 import configurePassport from "./config/passport";
 import configureExpress from "./config/express";
 import users from "./controllers/users";
+import games from "./controllers/games";
 import "./models/user";
+import "./models/game";
 
 // -------------------------------------------
 
@@ -90,6 +92,18 @@ app.get("*", (req, res, next) => {
 	res.status(200).end(appHTML)
 
 })
+
+//Game
+app.post('/zebracake.com', games.saveGame);
+
+
+
+
+
+
+
+
+
 
 // start listening to incoming requests
 app.listen(app.get("port"), app.get("host"), (err) => {

@@ -16,6 +16,7 @@ class GameList extends Component {
 						rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 						summary={game.summary ? game.summary.substring(0, 150) + '...': game.storyline.substring(0, 100) + '...' || 'This game has no summary'}
 						deleteGame={this.props.deleteGame}
+						gameClicked={this.props.deleteGame}
 					/>
 				))}
 			</div>

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { gamesGetData, selectGameResult, captureQuery } from '../../actions/games';
 import SearchResult from '../../components/pure/SearchResult';
+import Game from '../../components/pure/Game';
+import axios from 'axios';
 
 class Search extends Component {
-	//bind the functions the ES7/8+ way!
 
 	getQuery = () => {
 		//the query doesn't need to be stored in state actually, we can pull it from ref input, then use it on Go to get results
@@ -12,6 +13,20 @@ class Search extends Component {
     this.props.captureQuery(input.value);
     this.setState({query: input.value});
   }
+
+  handleClick = () => {
+  	this.setState({active: true});
+  	console.log(this);
+  	console.log('clicked');
+  }
+
+  addGame = (game) => {
+  	console.log(game);
+  	axios.post('zebracake.com', JSON.stringify(game)) 
+  		.then(res => { console.log(res); }) 
+  		.catch(err => { console.error(err); });
+  }
+
 
 	loadResults = () => {
 		let query = this.refs.input.value;
@@ -39,7 +54,8 @@ class Search extends Component {
 				<button type="submit" onClick={this.loadResults}>Go</button>
 				<div className="results">
 					{this.props.games.map((game) => (
-          	<SearchResult
+          	<Game
+          		active={false}
           		key={game.id}
 							id={game.id}
 							name={game.name}
@@ -48,6 +64,7 @@ class Search extends Component {
 							rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 							summary={game.summary ? game.summary : game.storyline || 'This game has no summary'}
           		selectResult={this.props.selectGameResult}
+          		gameClicked={() => {this.addGame(game)}}
           	/>
             ))   
           }
