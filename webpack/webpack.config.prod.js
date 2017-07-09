@@ -23,8 +23,8 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ["", ".js", "jsx"],
-		modulesDirectories: [
+		extensions: [".js", "jsx"],
+		modules: [
 			"src",
 			"node_modules"
 		]
@@ -34,7 +34,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx?/,
-				loaders: ["babel"],
+				loaders: ["babel-loader"],
 				exclude: /node_modules/
 			}    		
 		]
@@ -44,7 +44,7 @@ module.exports = {
 	    // Order the modules and chunks by occurrence.
 	    // This saves space, because often referenced modules
 	    // and chunks get smaller ids.
-	    new webpack.optimize.OccurenceOrderPlugin(),	
+	    new webpack.optimize.OccurrenceOrderPlugin(),	
 	    new webpack.optimize.UglifyJsPlugin({
 	    	compressor: {
 	    		warnings:false

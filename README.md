@@ -1,3 +1,7 @@
+Most everything working after many many package fixes, running older version of react-router is unavoidable due to the way this boilerplate's auth is constructed.
+
+
+
 # React-Passport-Redux-Example
 
 Demonstration of PassportJS authentication in React w/ Redux.

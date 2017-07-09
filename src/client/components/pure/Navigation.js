@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router"
+import React, { Component } from 'react';
+import { Link } from "react-router";
 
 var navStyle = {
 	backgroundColor: "#EEE",
@@ -10,14 +10,14 @@ var buttonStyle = {
 	backgroundColor: "yellow"
 }
 
-const Navigation = React.createClass({
+class Navigation extends Component {
 
-	_logout: function(event) {
-		event.preventDefault()
-		this.props.manualLogout()
-	},
+	_logout = (event) => {
+		event.preventDefault();
+		this.props.manualLogout();
+	}
 
-	render: function() {
+	render() {
 		return(
 			<div style={navStyle}>				
 				{
@@ -31,12 +31,12 @@ const Navigation = React.createClass({
 					: ""
 				}				
 				&nbsp;|&nbsp;
-				<Link to="/myprofile">MyProfile</Link>
+				<Link to="/myprofile">My Profile</Link>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<Link to="/">About This Repo</Link>
+				<Link to="/mylist">My List</Link>
 			</div>
 		)	
 	}
-})
+}
 
-export default Navigation
+export default Navigation;

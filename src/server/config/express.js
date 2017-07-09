@@ -1,11 +1,11 @@
-import path from "path"
-import express from "express"
-import session from "express-session"
-import bodyParser from "body-parser"
-import connectMongo from "connect-mongo"
-import secrets from "./secrets"
+import path from "path";
+import express from "express";
+import session from "express-session";
+import bodyParser from "body-parser";
+import connectMongo from "connect-mongo";
+import secrets from "./secrets";
 
-const MongoStore = connectMongo(session)
+const MongoStore = connectMongo(session);
 
 export default function(app, passport) {
 	app.set("port", 3000)

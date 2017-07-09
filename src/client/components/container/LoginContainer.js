@@ -1,6 +1,6 @@
-import { connect } from "react-redux"
-import * as userActions from "../../actions/users"
-import Login from "../pure/Login"
+import { connect } from "react-redux";
+import * as userActions from "../../actions/users";
+import Login from "../pure/Login";
 
 
 // Function passed in to `connect` to subscribe to Redux store updates.

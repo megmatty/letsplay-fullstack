@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom"
 
-class Search extends Component {
-	//bind the functions the ES7/8+ way!
-
-	getQuery = () => {
-		//the query doesn't need to be stored in state actually, we can pull it from ref input, then use it on Go to get results
-		let input = this.refs.input;
-    		this.props.captureQuery(input.value);
-    		this.setState({query: input.value});
-  	}
-
-
-}
 // ----------------------------------------------------
 const registerMessageStyle = {
 	color: "red"

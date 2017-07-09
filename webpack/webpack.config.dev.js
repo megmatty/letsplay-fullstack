@@ -28,7 +28,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx?/,
-				loader: "babel",
+				loader: "babel-loader",
 				exclude: /node_modules/,
 		        query: {
 		          presets: ['react-hmre']
@@ -38,15 +38,15 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ["", ".js", ".jsx"],
-		modulesDirectories: [
+		extensions: [".js", ".jsx"],
+		modules: [
 			'src', 'node_modules'
 		]
 	},	
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
 		new webpack.DefinePlugin({
 			"process.env": {
 				NODE_ENV: JSON.stringify("development")

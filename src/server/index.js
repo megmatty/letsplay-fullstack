@@ -1,18 +1,18 @@
-import fs from "fs"
-import express from "express"
-import mongoose from "mongoose"
-import passport from "passport"
-import webpack from "webpack" 
-import config from "../../webpack/webpack.config.dev.js"
-import secrets from "./config/secrets" 
-import configurePassport from "./config/passport"
-import configureExpress from "./config/express"
-import users from "./controllers/users"
-import "./models/user"
+import fs from "fs";
+import express from "express";
+import mongoose from "mongoose";
+import passport from "passport";
+import webpack from "webpack";
+import config from "../../webpack/webpack.config.dev.js";
+import secrets from "./config/secrets";
+import configurePassport from "./config/passport";
+import configureExpress from "./config/express";
+import users from "./controllers/users";
+import "./models/user";
 
 // -------------------------------------------
 
-const app = express()
+const app = express();
 
 // -------------------------------------------
 
@@ -25,14 +25,14 @@ const connect = () => {
 		}
 	})
 }
-connect()
+connect();
 
-mongoose.connection.on("error", console.error)
-mongoose.connection.on("disconnected", connect)
+mongoose.connection.on("error", console.error);
+mongoose.connection.on("disconnected", connect);
 
 // -------------------------------------------
 
-const isDev = process.env.NODE_ENV === "development"
+const isDev = process.env.NODE_ENV === "development";
 
 // if in development mode set up the middleware required for hot reloading and rebundling
 if(isDev) {

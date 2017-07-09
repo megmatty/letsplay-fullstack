@@ -1,7 +1,7 @@
-import React from "react"
+import React, { Component } from 'react';
 
-const Default = React.createClass({
-	render: function() {
+class Default extends Component {
+	render() {
 		return(
 			<div>
 				<h2>React-Passport-Redux-Example</h2>				
@@ -22,6 +22,6 @@ const Default = React.createClass({
 			</div>
 		)	
 	}
-})
+}
 
 export default Default

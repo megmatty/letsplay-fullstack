@@ -1,6 +1,6 @@
-import axios from "axios"
-import { browserHistory } from "react-router"
-import * as types from "../constants"
+import axios from "axios";
+import { browserHistory } from "react-router";
+import * as types from "../constants";
 
 // "Log In" action creators
 function beginLogin() {
@@ -65,15 +65,15 @@ export function manualLogin(
 		return makeUserRequest("post", data, "/login")	
 			.then(response => {
 				if (response.data.success) {					
-					dispatch(loginSuccess(data))
+					dispatch(loginSuccess(data));
 					// use browserHistory singleton to control navigation. Will generate a 
 					// state change for time-traveling as we are using the react-router-redux package
-					browserHistory.push(successPath)
+					browserHistory.push(successPath);
 				} else {					
-					dispatch(loginError())
-					let loginMessage = response.data.message
-					return loginMessage					
-				}
+					dispatch(loginError());
+					let loginMessage = response.data.message;
+					return loginMessage;					
+				};
 			})
 			.catch(function (response) {
 			    if (response instanceof Error) {
@@ -93,12 +93,12 @@ export function manualLogout() {
 		return axios.get("/logout")
 			.then(response => {
 				if (response.data.success) {
-					dispatch(logoutSuccess())
+					dispatch(logoutSuccess());
 					// use browserHistory singleton to control navigation. Will generate a 
 					// state change for time-traveling as we are using the react-router-redux package
-					browserHistory.push("/") // logout to home page
+					browserHistory.push("/"); // logout to home page
 				} else {
-					dispatch(logoutError())
+					dispatch(logoutError());
 				}
 			})
 			.catch(response => {

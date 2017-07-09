@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { routerReducer } from "react-router-redux";
+import { routerReducer as routing } from 'react-router-redux';
 import { games, gamesHasErrored, gamesIsLoading, friends, gamesList, search } from './games';
 import user from "./user"
 
@@ -11,5 +11,5 @@ export default combineReducers({
 	friends,
 	gamesList,
 	search,
-	routing: routerReducer
+	routing
 })

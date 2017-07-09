@@ -1,6 +1,6 @@
-import React, { PropTypes } from "react"
-import ReactDOM from "react-dom"
-import axios from "axios"
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from "react-dom";
+import axios from "axios";
 
 // ----------------------------------------------------
 const loginMessageStyle = {
@@ -8,15 +8,17 @@ const loginMessageStyle = {
 }
 
 // ----------------------------------------------------
-const Login = React.createClass({
+class Login extends Component {
 
-	getInitialState: function() {
-		return {
+	constructor() {
+		super();
+
+		this.state = {
 			loginMessage: ""
 		}
-	},
+	}
 
-	_onLoginSubmit: function(event) {		
+	_onLoginSubmit = (event) => {		
 		event.preventDefault()
 		const email = ReactDOM.findDOMNode(this.refs.email).value
 		const password = ReactDOM.findDOMNode(this.refs.password).value
@@ -34,10 +36,9 @@ const Login = React.createClass({
 				})			
 			}	
 		})
+	}
 
-	},
-
-	render: function() {
+	render() {
 		return(
 			<div>
 				<h2>Log in</h2>		
@@ -49,6 +50,6 @@ const Login = React.createClass({
 			</div>	
 		)
 	}
-})
+}
 
-export default Login
+export default Login;
