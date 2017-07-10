@@ -34,7 +34,6 @@ export function gamesGetData(request) {
 				}
 
 				dispatch(gamesIsLoading(false));
-
 				return response;
 			})
 			.then( (response) => response.json() )

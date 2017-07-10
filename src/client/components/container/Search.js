@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { gamesGetData, selectGameResult, captureQuery } from '../../actions/games';
+import { gamesGetData, captureQuery } from '../../actions/games';
 import SearchResult from '../../components/pure/SearchResult';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
@@ -63,7 +63,6 @@ class Search extends Component {
 							year={game.first_release_date}
 							rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 							summary={game.summary ? game.summary : game.storyline || 'This game has no summary'}
-          		selectResult={this.props.selectGameResult}
           		gameClicked={() => {this.addGame(game)}}
           	/>
             ))   
