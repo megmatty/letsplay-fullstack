@@ -4,37 +4,51 @@ import { Link } from 'react-router';
 
 class Game extends Component {
   //bind the function to *this*
-  
-  handleDelete = () => {
-    this.props.deleteGame(this.props.id);
-  }
-
-  handleAdd = () => {
-    // this.props.addGame(this.props.id);
-    // this function in progress, needs correct action/reducer
-    console.log(this);
+  constructor() {
+    super();
+    this.state = {
+      active: false
+    };
   }
 
   handleClick = () => {
-    console.log(this);
     this.props.gameClicked(this.props.id);
   }
 
+  activeGame = () => {
+    const currentState = this.state.active;
+    this.setState({active: !currentState});
+  }
+
   render() {
+    let result = null;
+    if (this.state.active === false) {
+      result =  <div className="game-wrapper" onClick={this.activeGame}>
+                  { this.props.cover ? 
+                    <img className="box-art" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
+                    :
+                    <div>No Image Provided</div>
+                  }
+                    <p>{this.props.name}<span>{'\u2795'}</span></p>
+                </div>;
+    } else {
+      result =  <div onClick={this.activeGame}>
+                  <p>{this.props.name}<span>{'\u2796'}</span></p>
+                  { this.props.cover ? 
+                    <img className="box-art-big" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
+                    :
+                    <div>No Image Provided</div>
+                  }
+                  <p>Year: <Moment format="YYYY">{this.props.first_release_date}</Moment></p>
+                  <p>Rating: {this.props.rating}</p>
+                  <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
+                  <button className="add-delete-button" onClick={this.handleClick}>{this.props.buttonText}</button>
+                </div>;
+    }
+
     return (
-      <div className="game">
-        <p><Link to="/game">{this.props.name}</Link></p>
-        { this.props.cover ? 
-          <img className="box-art" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
-          :
-          <div>No Image Provided</div>
-        }
-        <p>Year: <Moment format="YYYY">{this.props.first_release_date}</Moment></p>
-        <p>Rating: {this.props.rating}</p>
-        <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
-        <button className="delete-game" onClick={this.handleDelete}>Delete</button>
-        <button className="add-game" onClick={this.handleAdd}>Add</button>
-        <button onClick={this.handleClick}>Handle Click</button>
+      <div className="game" >
+        {result}
       </div>
     );
   }

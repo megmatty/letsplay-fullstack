@@ -24,7 +24,7 @@
       }
     },
     "server:dev": {
-      "command": "node devStart.js",
+      "command": "nodemon devStart.js",
       "env": {
         "NODE_ENV": "development"
       }

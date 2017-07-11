@@ -14,19 +14,12 @@ class Search extends Component {
     this.setState({query: input.value});
   }
 
-  handleClick = () => {
-  	this.setState({active: true});
-  	console.log(this);
-  	console.log('clicked');
-  }
-
   addGame = (game) => {
-  	console.log(game);
+  	// console.log(game);
   	axios.post('zebracake.com', JSON.stringify(game)) 
   		.then(res => { console.log(res); }) 
   		.catch(err => { console.error(err); });
   }
-
 
 	loadResults = () => {
 		let query = this.refs.input.value;
@@ -53,9 +46,9 @@ class Search extends Component {
 				<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
 				<button type="submit" onClick={this.loadResults}>Go</button>
 				<div className="results">
+
 					{this.props.games.map((game) => (
           	<Game
-          		active={false}
           		key={game.id}
 							id={game.id}
 							name={game.name}
@@ -64,6 +57,7 @@ class Search extends Component {
 							rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 							summary={game.summary ? game.summary : game.storyline || 'This game has no summary'}
           		gameClicked={() => {this.addGame(game)}}
+          		buttonText='Add to List'
           	/>
             ))   
           }
@@ -87,7 +81,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getGameData: (request) => dispatch(gamesGetData(request)),
-		selectGameResult: (name) => dispatch(selectGameResult(name)),
 		captureQuery: (query) => dispatch(captureQuery(query))
 	};
 };
