@@ -98,9 +98,13 @@ app.get("*", (req, res, next) => {
 // app.post('/zebracake.com', games.saveGame);
 app.post('/user/:id', function(req, res) {
 	console.log(req.params);
+	games.saveGame(req, res);
 });
 
-
+// app.get('/myprofile', function(req, res) {
+// 	users.getMatches(req, res);
+// 	console.log('GET');
+// })
 
 
 

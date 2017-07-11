@@ -12,7 +12,8 @@ const GameSchema = new mongoose.Schema({
     cloudinary_id: String,
     width: Number,
     height: Number
-	}
+	},
+	matchedFriends: Array
 })
 
 

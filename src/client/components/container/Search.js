@@ -18,8 +18,9 @@ class Search extends Component {
   	// console.log(passport.session());
   	console.log(this.state);
   	console.log(player);
+  	console.log(game);
   	const id = player._id;
-  	axios.post(`/user/${id}`, JSON.stringify(game)) 
+  	axios.post(`/user/${id}`, game) 
   	//insert database
   		.then(res => { console.log(res); }) 
   		.catch(err => { console.error(err); });

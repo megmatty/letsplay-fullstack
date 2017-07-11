@@ -10,12 +10,12 @@ const UserSchema = new mongoose.Schema({
 		unique: true,
 		lowercase: true
 	},
-	password: String
-	// name: String,
-	// avatar: String,
-	// list: Array,
-	// aboutme: String,
-	// friends: Array
+	password: String,
+	name: String,
+	avatar: String,
+	list: Array,
+	aboutme: String,
+	friends: Array
 })
 
 /**
