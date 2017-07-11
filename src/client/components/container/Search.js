@@ -14,9 +14,13 @@ class Search extends Component {
     this.setState({query: input.value});
   }
 
-  addGame = (game) => {
-  	// console.log(game);
-  	axios.post('zebracake.com', JSON.stringify(game)) 
+  addGame = (game, player) => {
+  	// console.log(passport.session());
+  	console.log(this.state);
+  	console.log(player);
+  	const id = player._id;
+  	axios.post(`/user/${id}`, JSON.stringify(game)) 
+  	//insert database
   		.then(res => { console.log(res); }) 
   		.catch(err => { console.error(err); });
   }
@@ -45,8 +49,8 @@ class Search extends Component {
 			<div className="searchbar">
 				<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
 				<button type="submit" onClick={this.loadResults}>Go</button>
+				
 				<div className="results">
-
 					{this.props.games.map((game) => (
           	<Game
           		key={game.id}
@@ -56,7 +60,7 @@ class Search extends Component {
 							year={game.first_release_date}
 							rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 							summary={game.summary ? game.summary : game.storyline || 'This game has no summary'}
-          		gameClicked={() => {this.addGame(game)}}
+          		gameClicked={() => {this.addGame(game, this.props.player)}}
           		buttonText='Add to List'
           	/>
             ))   
@@ -69,10 +73,12 @@ class Search extends Component {
 
 //Take state and map to prop object
 const mapStateToProps = (state) => {
+	console.log(state);
 	return {
 		games: state.games,
 		hasErrored: state.hasErrored,
-		isLoading: state.isLoading
+		isLoading: state.isLoading,
+		player: state.user.player
 	};
 };
 

@@ -7,7 +7,7 @@ import User from "../models/user"
 exports.login = function(req, res, next) {
 	// Do email and password validation for the server
 	passport.authenticate("local", function(err, user, info) {		
-
+		console.log(user._id);
 		if(err) return next(err)
 		if(!user) {
 			return res.json({ success: false, message: info.message })			
@@ -24,7 +24,7 @@ exports.login = function(req, res, next) {
 			if(loginErr) {
 				return res.json({ success: false, message: loginErr })
 			}
-			return res.json({ success: true, message: "authentication succeeded" })
+			return res.json({ success: true, message: "authentication succeeded", player: user })
 		})
 	})(req, res, next)
 }

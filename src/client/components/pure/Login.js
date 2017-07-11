@@ -19,14 +19,15 @@ class Login extends Component {
 	}
 
 	_onLoginSubmit = (event) => {		
-		event.preventDefault()
-		const email = ReactDOM.findDOMNode(this.refs.email).value
-		const password = ReactDOM.findDOMNode(this.refs.password).value
-
+		event.preventDefault();
+		const email = ReactDOM.findDOMNode(this.refs.email).value;
+		const password = ReactDOM.findDOMNode(this.refs.password).value;
+		const avatar = 'test';
 		// Passed in via react-redux. Returns a promise.
 		this.props.manualLogin({ // this function is passed in via react-redux
 			email,
-			password			
+			password,
+			avatar
 		}, this.props.nextPathname) // holds the path to redirect to after login (if any)
 		.then((loginMessage) => {
 			if (loginMessage) {

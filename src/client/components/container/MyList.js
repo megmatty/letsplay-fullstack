@@ -28,8 +28,11 @@ class MyList extends Component {
 
 //Take state and map to prop object
 const mapStateToProps = (state) => {
+  console.log(state);
+  console.log(this);
   return {
-    ...state.gamesList
+    ...state.gamesList,
+    ...state.user
   };
 };
 

@@ -17,15 +17,16 @@ class Register extends Component {
 		}
 	}
 
-	_onRegisterSubmit(event) {
-		event.preventDefault()
-		const email = ReactDOM.findDOMNode(this.refs.email).value
-		const password = ReactDOM.findDOMNode(this.refs.password).value
-		
+	_onRegisterSubmit = (event) => {
+		event.preventDefault();
+		const email = ReactDOM.findDOMNode(this.refs.email).value;
+		const password = ReactDOM.findDOMNode(this.refs.password).value;
+		const avatar = 'testing';
 		// Passed in via react-redux. Returns a promise.
 		this.props.manualRegister({
 			email,
-			password
+			password,
+			avatar
 		})
 		.then((registerMessage) => {
 			if (registerMessage) {

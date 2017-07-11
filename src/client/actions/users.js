@@ -8,6 +8,7 @@ function beginLogin() {
 }
 
 function loginSuccess(data) {
+	console.log(data);
 	return { 
 		type: types.LOGIN_SUCCESS_USER,
 		data
@@ -64,7 +65,9 @@ export function manualLogin(
 
 		return makeUserRequest("post", data, "/login")	
 			.then(response => {
-				if (response.data.success) {					
+				if (response.data.success) {
+					console.log(response);
+					data.player = response.data.player;	
 					dispatch(loginSuccess(data));
 					// use browserHistory singleton to control navigation. Will generate a 
 					// state change for time-traveling as we are using the react-router-redux package

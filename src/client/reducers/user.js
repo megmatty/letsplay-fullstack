@@ -16,13 +16,15 @@ import {
 const user = (state = {
 	isWaiting: false,
 	authenticated: false,
-	email: ""
+	email: "",
+	player: ""
 }, action) => {
 	switch(action.type) {
 		case MANUAL_LOGIN_USER:
 			return Object.assign({}, state, { isWaiting: true })
 		case LOGIN_SUCCESS_USER:
-			return Object.assign({}, state, { isWaiting: false, authenticated: true, email: action.data.email })
+			console.log(action);
+			return Object.assign({}, state, { isWaiting: false, authenticated: true, email: action.data.email, player: action.data.player })
 		case LOGIN_ERROR_USER:
 			return Object.assign({}, state, { isWaiting: false, authenticated: false })
 		case SIGNUP_USER:

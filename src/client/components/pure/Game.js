@@ -32,18 +32,18 @@ class Game extends Component {
                     <p>{this.props.name}<span>{'\u2795'}</span></p>
                 </div>;
     } else {
-      result =  <div onClick={this.activeGame}>
-                  <p>{this.props.name}<span>{'\u2796'}</span></p>
-                  { this.props.cover ? 
-                    <img className="box-art-big" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
-                    :
-                    <div>No Image Provided</div>
-                  }
-                  <p>Year: <Moment format="YYYY">{this.props.first_release_date}</Moment></p>
-                  <p>Rating: {this.props.rating}</p>
-                  <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
-                  <button className="add-delete-button" onClick={this.handleClick}>{this.props.buttonText}</button>
-                </div>;
+        result =  <div onClick={this.activeGame}>
+                    <p>{this.props.name}<span>{'\u2796'}</span></p>
+                    { this.props.cover ? 
+                      <img className="box-art-big" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
+                      :
+                      <div>No Image Provided</div>
+                    }
+                    <p>Year: <Moment format="YYYY">{this.props.first_release_date}</Moment></p>
+                    <p>Rating: {this.props.rating}</p>
+                    <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
+                    <button className="add-delete-button" onClick={this.handleClick}>{this.props.buttonText}</button>
+                  </div>;
     }
 
     return (
