@@ -61,6 +61,19 @@ app.post("/login", users.login)
 app.get("/logout", users.logout)
 app.post("/register", users.register)
 
+console.log(users);
+//Game
+// app.post('/zebracake.com', games.saveGame);
+app.post('/user/:id', function(req, res) {
+	console.log(req.params);
+	games.saveGame(req, res);
+});
+
+app.get('/myprofile',	users.getMatches);
+
+
+
+
 app.get("*", (req, res, next) => {	
 
 	// if we are in production mode then an extension will be provided, usually ".min"
@@ -93,20 +106,6 @@ app.get("*", (req, res, next) => {
 	res.status(200).end(appHTML)
 
 })
-
-//Game
-// app.post('/zebracake.com', games.saveGame);
-app.post('/user/:id', function(req, res) {
-	console.log(req.params);
-	games.saveGame(req, res);
-});
-
-// app.get('/myprofile', function(req, res) {
-// 	users.getMatches(req, res);
-// 	console.log('GET');
-// })
-
-
 
 
 

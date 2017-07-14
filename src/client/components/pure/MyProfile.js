@@ -27,10 +27,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteFriend: (id) => {
-      console.log('delete THIS', id);
-      dispatch(deleteFriend(id));
-    }
+    deleteFriend: (id) => dispatch(deleteFriend(id))
   }
 }
 

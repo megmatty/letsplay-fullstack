@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import Friend from './Friend';
+import axios from 'axios';
 
 //Friend List - redux state container
 class FriendList extends Component {
+
+  componentDidMount() {
+   axios.get('/myprofile')
+   .then(res => {
+    console.log(res);
+    // this.props.friends = res.data.users
+   // this.setState({ data: res.data });
+   })
+ }
+
 
   render() {
     return (

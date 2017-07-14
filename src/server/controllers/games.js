@@ -49,9 +49,12 @@ exports.saveGame = function(req, res, next) {
 		            }
 		        });
 			    console.log('adding to user list');
+			    //duplicate games are saved in user list, need to fix
 					User.update(
 						{_id: req.params.id},
 						{$addToSet: {list: new Game(req.body)}},
+						//matching object key in array is probably a 2 step process
+						//https://stackoverflow.com/questions/41316056/mongodb-update-array-element-document-with-a-key-if-exists-else-push
 						{upsert: true},
 						function(err, result) {
 							if (err) {

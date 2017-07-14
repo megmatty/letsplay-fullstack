@@ -22,6 +22,17 @@ export function gamesGetDataSuccess(games) {
 	}
 }
 
+
+//Reset Search
+export function resetGames(games) {
+	console.log('action resetGames');
+	return {
+		type: 'RESET_GAMES',
+		games: []
+	}
+}
+
+
 //Handles dispatching the other 3 above
 export function gamesGetData(request) {
 	return (dispatch) => {
@@ -43,11 +54,10 @@ export function gamesGetData(request) {
 }
 
 //Add friend action
-export function addFriend(name, avatar) {
+export function addFriend(id) {
 	return {
 		type: 'ADD_FRIEND',
-		name,
-		avatar
+		id
 	}
 }
 
@@ -72,14 +82,6 @@ export function addGame(id) {
 	return {
 		type: 'ADD_GAME',
 		id
-	}
-}
-
-//Select Game Result Action
-export function selectGameResult(name) {
-	return {
-		type: 'SELECT_GAME_RESULT',
-		name
 	}
 }
 

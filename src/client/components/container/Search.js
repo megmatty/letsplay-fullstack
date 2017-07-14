@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { gamesGetData, captureQuery } from '../../actions/games';
+import { gamesGetData, captureQuery, resetGames } from '../../actions/games';
 import SearchResult from '../../components/pure/SearchResult';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
@@ -8,7 +8,6 @@ import axios from 'axios';
 class Search extends Component {
 
 	getQuery = () => {
-		//the query doesn't need to be stored in state actually, we can pull it from ref input, then use it on Go to get results
 		let input = this.refs.input;
     this.props.captureQuery(input.value);
     this.setState({query: input.value});
@@ -24,6 +23,8 @@ class Search extends Component {
   	//insert database
   		.then(res => { console.log(res); }) 
   		.catch(err => { console.error(err); });
+  	this.props.resetGames(); //resets search results array to empty
+  	this.refs.input.value = ''; //resets input to empty
   }
 
 	loadResults = () => {
@@ -35,22 +36,27 @@ class Search extends Component {
 	  });
 		this.props.getGameData(request);
 	}
+
+	componentWillUnmount() {
+		this.props.resetGames(); //resets search results array to empty when leaving page
+  	this.refs.input.value = ''; //resets input to empty when leaving page
+	}
  
 	render() {
 
-		if (this.props.hasErrored) {
-			return <p>Sorry! There was an error loading the list items.</p>;
-		}
+		// if (this.props.hasErrored === true) {
+		// 	return <p>Sorry! There was an error loading the list items.</p>;
+		// }
 
-		if (this.props.isLoading) {
-			return <p>Loading...</p>;
-		}
+		//these do not do anything!!
 
+		// if (this.props.isLoading === true) {
+		// 	return <p>Loading...</p>;
+		// }
 		return (
 			<div className="searchbar">
 				<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
 				<button type="submit" onClick={this.loadResults}>Go</button>
-				
 				<div className="results">
 					{this.props.games.map((game) => (
           	<Game
@@ -74,7 +80,7 @@ class Search extends Component {
 
 //Take state and map to prop object
 const mapStateToProps = (state) => {
-	console.log(state);
+	// console.log(state);
 	return {
 		games: state.games,
 		hasErrored: state.hasErrored,
@@ -88,7 +94,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getGameData: (request) => dispatch(gamesGetData(request)),
-		captureQuery: (query) => dispatch(captureQuery(query))
+		captureQuery: (query) => dispatch(captureQuery(query)),
+		resetGames: () => dispatch(resetGames())
 	};
 };
 

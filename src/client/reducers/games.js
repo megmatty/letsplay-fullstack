@@ -23,7 +23,8 @@ export function games(state = [], action) {
 	switch (action.type) {
 		case 'GAMES_GET_DATA_SUCCESS':
 			return action.games;
-
+		case 'RESET_GAMES':
+			return action.games;
 		default:
 			return state;
 	}
@@ -131,18 +132,12 @@ export function gamesList(state = initialGameListState, action) {
 
 
 //Search reducer 
-export const initialSearchState = {
-	query: '',
-	selectedGame: 'boo'
+export const initialQueryState = {
+	query: ''
 };
 
-export function search(state = initialSearchState, action) {
+export function search(state = initialQueryState, action) {
 	switch (action.type) {
-		case 'SELECT_GAME_RESULT':
-		console.log(action.name, 'from reducer');
-			return Object.assign({}, state, {
-				selectedGame: action.name
-				});
 		case 'CAPTURE_QUERY':
 		console.log(action.query, 'from reducer');
 		console.log(state);

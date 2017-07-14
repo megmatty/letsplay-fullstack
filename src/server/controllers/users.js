@@ -60,24 +60,15 @@ exports.register = function(req, res, next) {
 			})
 		}
 	})
-
+}
 // -------------------------------------------
 
 exports.getMatches = function(req, res, next) {
 	// the logout method is added to the request object automatically by Passport
 	User.find(
 		{}, (err, user) => {
-			console.log(err, user);
-			console.log('something');
 			return res.json({ users: user })
 		}
 	)
-	
-}
-
-// -------------------------------------------
-
-
-
-
+	// return console.log('inside getmatches');
 }
