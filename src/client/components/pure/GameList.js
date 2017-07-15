@@ -3,12 +3,22 @@ import Game from './Game';
 
 class GameList extends Component {
 
+  handleClick = () => {
+    this.props.gameClicked(this.props.id);
+    console.log(this.props.id);
+  }
+
 	render() {
+
+		// if (this.props.list == []) {
+		// 	return <div className="game-list">Search for games to add to your list!</div>;
+		// }
+		console.log(this.props.list);
 		return (
 			<div className="game-list">
-				{this.props.gamesList.map((game) => (
+				{this.props.list.map((game) => (
 					<Game
-						key={game.id}
+						key={game._id}
 						id={game.id}
 						name={game.name}
 						cover={game.cover}

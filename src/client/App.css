@@ -146,3 +146,14 @@ input {
   padding: 0 10px 0 0;
   border: 1px solid #ccc;
 }
+
+.results-error {
+  padding: 50px 25px 25px;
+  text-align: center;
+  color: red;
+}
+
+.results-loading {
+  padding: 50px 25px 25px;
+  text-align: center;
+}

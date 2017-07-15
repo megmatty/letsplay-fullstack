@@ -25,7 +25,7 @@ class Search extends Component {
   		.catch(err => { console.error(err); });
   	this.props.resetGames(); //resets search results array to empty
   	this.refs.input.value = ''; //resets input to empty
-  }
+  } //need to trigger rerender when game is added
 
 	loadResults = () => {
 		let query = this.refs.input.value;
@@ -44,15 +44,21 @@ class Search extends Component {
  
 	render() {
 
-		// if (this.props.hasErrored === true) {
-		// 	return <p>Sorry! There was an error loading the list items.</p>;
-		// }
+		if (this.props.hasErrored === true) {
+			return 	<div className="searchbar">
+								<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
+								<button type="submit" onClick={this.loadResults}>Go</button>
+								<div className="results-error">Sorry! There was an error loading the list items.</div>
+							</div>;
+		}
 
-		//these do not do anything!!
+		if (this.props.isLoading === true) {
+			return 	<div className="searchbar">
+								<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
+								<button type="submit" onClick={this.loadResults}>Go</button><div className="results-loading">Loading...</div>
+							</div>;
+		}
 
-		// if (this.props.isLoading === true) {
-		// 	return <p>Loading...</p>;
-		// }
 		return (
 			<div className="searchbar">
 				<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
@@ -83,8 +89,8 @@ const mapStateToProps = (state) => {
 	// console.log(state);
 	return {
 		games: state.games,
-		hasErrored: state.hasErrored,
-		isLoading: state.isLoading,
+		hasErrored: state.gamesHasErrored,
+		isLoading: state.gamesIsLoading,
 		player: state.user.player
 	};
 };
