@@ -70,7 +70,10 @@ app.post('/user/:id', function(req, res) {
 });
 
 app.get('/myprofile',	users.getMatches);
-
+app.put('/user/:id', function(req, res) {
+	console.log('delete');
+	games.deleteGame(req, res);
+});
 
 
 

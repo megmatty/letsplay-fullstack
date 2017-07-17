@@ -32,6 +32,12 @@ export function resetGames(games) {
 	}
 }
 
+export function loadGames() {
+	return {
+		type: 'LOAD_GAMES'
+	}
+}
+
 
 //Handles dispatching the other 3 above
 export function gamesGetData(request) {
@@ -68,6 +74,15 @@ export function deleteFriend(id) {
 		id
 	}
 }
+
+//delete friend action
+export function matchFriends(id) {
+	return {
+		type: 'MATCH_FRIENDS',
+		id
+	}
+}
+
 
 //delete Game Action
 export function deleteGame(id) {

@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import User from './User';
 import FriendList from './FriendList';
 import { connect } from 'react-redux';
-import { deleteFriend } from '../../actions/games';
+import { deleteFriend, matchFriends } from '../../actions/games';
 
 class MyProfile extends Component {
-	render() {
+	
+  // componentDidMount() {
+  //   dispatch(matchFriends());
+  // }
+
+  render() {
 		return(
 			<div className="profile-container">      
         <User user="janedoe"/>

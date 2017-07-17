@@ -9,9 +9,10 @@ class FriendList extends Component {
    axios.get('/myprofile')
    .then(res => {
     console.log(res);
-    // this.props.friends = res.data.users
+    // this.props.friends = res.data.users;
    // this.setState({ data: res.data });
-   })
+   });
+
  }
 
 

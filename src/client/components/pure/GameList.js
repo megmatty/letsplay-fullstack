@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import Game from './Game';
+import axios from 'axios';
+import { loadGames } from '../../actions/games';
 
 class GameList extends Component {
 
-  handleClick = () => {
-    this.props.gameClicked(this.props.id);
-    console.log(this.props.id);
-  }
+  deleteGame = (game, player) => {
+    console.log(this.props.player.list);
+    const id = player._id;
+    axios.put(`/user/${id}`, game) 
+    //insert database
+      .then(res => { console.log(res); }) 
+      .catch(err => { console.error(err); });
+  } //need to trigger rerender when game is added..componentwillreceiveprops?
 
 	render() {
 
 		// if (this.props.list == []) {
 		// 	return <div className="game-list">Search for games to add to your list!</div>;
 		// }
-		console.log(this.props.list);
+		// console.log(this.props.list);
 		return (
 			<div className="game-list">
 				{this.props.list.map((game) => (
@@ -25,7 +31,7 @@ class GameList extends Component {
 						year={game.first_release_date}
 						rating={game.rating ? Math.floor(game.rating) + '/100' : 'NR'}
 						summary={game.summary ? game.summary : game.storyline || 'This game has no summary'}
-						gameClicked={this.props.deleteGame}
+						gameClicked={() => {this.deleteGame(game, this.props.player)}}
 						buttonText='Remove'
 					/>
 				))}
