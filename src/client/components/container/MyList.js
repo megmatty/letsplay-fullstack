@@ -7,17 +7,11 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 //Actions
-import { deleteGame, loadGames } from '../../actions/games';
+import { deleteGame} from '../../actions/games';
 
 
 //My Lists View - Redux Parent Container
 class MyList extends Component {
-
-  // componentDidMount() {
-  //   console.log(this.props.gamesList);
-  //   loadGames();
-  // }
-
 
   render() {
     return (
@@ -25,8 +19,9 @@ class MyList extends Component {
       	<Search />
        	<h3>My List</h3>
 	      <GameList
-	      	list={this.props.gamesList}
+	      	list={this.props.player.list}
           player={this.props.player}
+          deleteGame={this.props.deleteGame}
 	      />
       </div>
     );
@@ -36,17 +31,14 @@ class MyList extends Component {
 //Take state and map to prop object
 const mapStateToProps = (state) => {
   return {
-    gamesList: state.user.player.list,
-    ...state.user,
-    ...state.player
+    ...state.user
   };
 };
 
 // Dispatch the gamesGetData action creator with a prop
 const mapDispatchToProps = (dispatch) => {
 	return {
-		deleteGame: (id) => {dispatch(deleteGame(id))}
-    // loadGames: () => {dispatch(loadGames())}
+		deleteGame: (id) =>  dispatch(deleteGame(id))
 	};
 };
 

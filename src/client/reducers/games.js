@@ -86,36 +86,6 @@ export function friends(state = initialFriendState, action) {
 }
 
 
-//GamesList reducer - this isn't doing anything currently! None of this works.
-//need to get state updated with changes, but in state.user.player.list not a separate array?
-export function gamesList(state = [], action) {
-	switch (action.type) {
-		case 'LOAD_GAMES':
-		console.log(state.user.player.list);
-			return Object.assign({}, state, {
-					gamesList: state.user.player.list
-				});
-		case 'DELETE_GAME':
-			console.log(action.id);
-			console.log('delete reducer games');
-			return {
-				gamesList: [...state.user.player.list.filter(game => game.id !== action.id)]
-			}
-				// {state.list.filter(game => game.id !== action.id)}
-				// gamesList: state.gamesList.filter(game => game.id !== action.id)
-				;
-		// case 'ADD_GAME':
-		// 	console.log(action.id);
-		// 	return Object.assign({}, state, {
-		// 		list: [...state.user.player.list, {
-		// 			id: action.id,
-		// 			name: action.name
-		// 		}]
-		// 	})
-		default:
-			return state;
-	}
-}
 
 
 //Search reducer 

@@ -92,13 +92,13 @@ export function deleteGame(id) {
 	}
 }
 
-//Add Game Action
-// export function addGame(id) {
-// 	return {
-// 		type: 'ADD_GAME',
-// 		id
-// 	}
-// }
+export function addGame(game) {
+	return {
+		type: 'ADD_GAME',
+		game
+	}
+}
+
 
 //Capture Query Action
 export function captureQuery(query) {

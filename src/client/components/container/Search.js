@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { gamesGetData, captureQuery, resetGames } from '../../actions/games';
+import { gamesGetData, captureQuery, resetGames, addGame } from '../../actions/games';
 import SearchResult from '../../components/pure/SearchResult';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
@@ -14,18 +14,15 @@ class Search extends Component {
   }
 
   addGame = (game, player) => {
-  	// console.log(passport.session());
-  	console.log(this.state);
-  	console.log(player);
-  	console.log(game);
   	const id = player._id;
+  	this.props.addGame(game);
   	axios.post(`/user/${id}`, game) 
   	//insert database
   		.then(res => { console.log(res); }) 
   		.catch(err => { console.error(err); });
   	this.props.resetGames(); //resets search results array to empty
   	this.refs.input.value = ''; //resets input to empty
-  } //need to trigger rerender when game is added
+  } 
 
 	loadResults = () => {
 		let query = this.refs.input.value;
@@ -38,8 +35,8 @@ class Search extends Component {
 	}
 
 	componentWillUnmount() {
-		this.props.resetGames(); //resets search results array to empty when leaving page
-  	this.refs.input.value = ''; //resets input to empty when leaving page
+		this.props.resetGames(); 
+  	this.refs.input.value = ''; 
 	}
  
 	render() {
@@ -101,7 +98,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getGameData: (request) => dispatch(gamesGetData(request)),
 		captureQuery: (query) => dispatch(captureQuery(query)),
-		resetGames: () => dispatch(resetGames())
+		resetGames: () => dispatch(resetGames()),
+		addGame: (game) => dispatch(addGame(game))
 	};
 };
 

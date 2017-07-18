@@ -13,6 +13,7 @@ class Game extends Component {
 
   handleClick = () => {
     this.props.gameClicked(this.props.id);
+    console.log(this.props.id);
   }
 
   activeGame = () => {
