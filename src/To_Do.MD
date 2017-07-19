@@ -1,13 +1,20 @@
 //To Do
 
-//Axios.delete for MyList delete button DONE
-//Top friend matches
-//Show updated data for MyList in real time DONE FOR NOW
+	//Top friend matches
+		//Axios GET for matches on /myprofile in MyProfile/FriendList/Friend components
+		//Mongo/Mongoose controller for getting matches out
+		//Express GET route for sending matches
+	//Email
 
-//Email
-//Design/CSS/Mobile
-//Client Tests (smoke React, Jest/Enzyme)
+	//Client Tests (smoke React, Jest/Enzyme)
+	//Server Tests (Mocha/Chai)
+	//Design/CSS/Mobile	
 
-//Server Tests (Mocha/Chai)
-//Separate repos (client & server)
-//Separation + deployment to Netlify/Heroku
+	//Separate repos (client & server)
+	//Separation + deployment to Netlify/Heroku
+
+
+//DONE
+	//Axios.delete for MyList delete button
+	//Show updated data for MyList in real time
+

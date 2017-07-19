@@ -13,7 +13,11 @@ class MyProfile extends Component {
   render() {
 		return(
 			<div className="profile-container">      
-        <User user="janedoe"/>
+        <User 
+          user={this.props.player.name}
+          aboutme={this.props.player.aboutme}
+          avatar={this.props.player.avatar}
+        />
         <FriendList 
         	friends={this.props.friends} 
         	deleteFriend={this.props.deleteFriend}
@@ -26,6 +30,7 @@ class MyProfile extends Component {
 //Take state and map to prop object
 const mapStateToProps = (state) => {
   return {
+    ...state.user,
     ...state.friends
   };
 };

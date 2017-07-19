@@ -26,7 +26,9 @@ Collections
 	-Games [
 		{ game id,
 			{ matchedUsers: [
-					{ user id },
+					{ user id,
+						email,
+						avatar },
 					{ user id}
 				]
 			}
@@ -35,3 +37,24 @@ Collections
 
 
 	-GameAPI
+
+
+matchedusers: [
+	{
+		_id,
+		name,
+		email,
+		gamesmatched: [
+			{game},
+			{game}
+		]
+	}
+
+]
+
+
+
+
+
+
+

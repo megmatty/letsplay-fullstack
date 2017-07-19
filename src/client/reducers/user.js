@@ -47,7 +47,6 @@ const user = (state = {
 			return Object.assign({}, state, { isWaiting: false });
 		case REGISTER_ERROR_USER:
 			return Object.assign({}, state, { isWaiting: false });
-
 		case DELETE_GAME:
 			console.log(action.id);
 			console.log('delete reducer fired');
@@ -63,8 +62,6 @@ const user = (state = {
 					list: state.player.list.filter(game => game.id !== action.id)
 				}
 			}
-			//this is the working solution!
-
 			case ADD_GAME:
 				console.log(action.id);
 				console.log('action reducer fired');
@@ -82,6 +79,9 @@ const user = (state = {
 					}
 				}
 				//this is the working solution!
+		
+
+
 		default:
 			return state;
 	}

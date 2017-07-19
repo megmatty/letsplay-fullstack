@@ -21,12 +21,16 @@ class Register extends Component {
 		event.preventDefault();
 		const email = ReactDOM.findDOMNode(this.refs.email).value;
 		const password = ReactDOM.findDOMNode(this.refs.password).value;
-		const avatar = 'testing';
+		const name = ReactDOM.findDOMNode(this.refs.name).value;
+		const aboutme = ReactDOM.findDOMNode(this.refs.aboutme).value;
+		const avatar = "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg";
 		// Passed in via react-redux. Returns a promise.
 		this.props.manualRegister({
 			email,
+			name,
 			password,
-			avatar
+			avatar,
+			aboutme
 		})
 		.then((registerMessage) => {
 			if (registerMessage) {
@@ -45,7 +49,10 @@ class Register extends Component {
 				<h2>Register</h2>	
 				<form onSubmit={this._onRegisterSubmit}>		
 					<input type="email" ref="email" placeholder="Email"/><br/>
-					<input type="password" ref="password" placeholder="Password"/><br/>					
+					<input type="name" ref="name" placeholder="Name"/><br/>
+					<input type="password" ref="password" placeholder="Password"/><br/>		
+					<label htmlFor="aboutme">About Me</label><br/>
+					<textarea id="aboutme" ref="aboutme"></textarea><br/>			
 					<input type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>
 				</form>	
 			</div>

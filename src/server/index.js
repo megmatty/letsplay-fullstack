@@ -70,6 +70,7 @@ app.post('/user/:id', function(req, res) {
 });
 
 app.get('/myprofile',	users.getMatches);
+//this is returning JSON on reload
 
 app.put('/user/:id', function(req, res) {
 	console.log('delete');
