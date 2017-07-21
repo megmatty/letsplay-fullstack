@@ -13,7 +13,7 @@ Collections
 			avatar,
 			aboutme,
 			friends: [
-				{ id,
+				{ _id,
 					name,
 					gamesMatched: [
 						{ game },
