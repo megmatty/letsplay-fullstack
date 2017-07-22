@@ -24,6 +24,7 @@ class Register extends Component {
 		const name = ReactDOM.findDOMNode(this.refs.name).value;
 		const aboutme = ReactDOM.findDOMNode(this.refs.aboutme).value;
 		const avatar = "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg";
+			//avatar needs an interface for selection
 		// Passed in via react-redux. Returns a promise.
 		this.props.manualRegister({
 			email,
@@ -51,6 +52,7 @@ class Register extends Component {
 					<input type="email" ref="email" placeholder="Email"/><br/>
 					<input type="name" ref="name" placeholder="Name"/><br/>
 					<input type="password" ref="password" placeholder="Password"/><br/>		
+					<div>Choose Avatar Goes Here</div>
 					<label htmlFor="aboutme">About Me</label><br/>
 					<textarea id="aboutme" ref="aboutme"></textarea><br/>			
 					<input type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>

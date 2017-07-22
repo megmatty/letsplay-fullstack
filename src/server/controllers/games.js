@@ -3,6 +3,44 @@ import Game from "../models/game";
 import User from "../models/user";
 // -------------------------------------------
 
+
+//Next steps:
+	//1 - update the rest of the users after adding a game/friends to list
+	//2 - get friend.name, friend.email, friend.avatar info inserted into friends array next to friendId: ??
+						// friends: [
+						// 	{
+						// 		friendId: 59728fa9d31d5e04aa319b18,
+						// 		name: "Max",
+						// 		email: "max@fake.com",
+						// 		avatar: "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
+						//		games: [
+									// 	"God of War",
+									// 	"The Legend of Zelda: Breath of the Wild"
+									// ],
+						//		num: 1
+						// 	}
+						// ]
+	//3 - Exclude users own id from their own friends list
+	//4 - Reverse the whole process for Delete
+
+// function friendLook(id) {
+// // let id = "59728fa9d31d5e04aa319b18";
+// 	User
+// 		.findById(
+// 			id, function(err, friend) {
+// 				const newFriend = {
+// 					name: friend.name,
+// 					email: friend.email,
+// 					avatar: friend.avatar
+// 				}
+// 				// console.log(newFriend);
+// 				return newFriend;
+// 				}
+// 		)
+// }
+
+
+
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
 
@@ -45,11 +83,11 @@ exports.saveGame = function(req, res, next) {
 							if (err) {
 								console.log(err);
 							} else {
-								console.log(req.body.id)
-								console.log('result');
-								console.log(res.friends);
-								console.log(result.matchedFriends);
-								console.log('-----------------');
+								// console.log(req.body.id)
+								// console.log('result');
+								// console.log(res.friends);
+								// console.log(result.matchedFriends);
+								// console.log('-----------------');
 		// 						var r = [{"friendId":"597182233b24610b3c4a5e3c"}];
 		// 						var f = [{"friendId":"597182233b24610b3c4a5e3c", 
   // 'num': 0,'games': []}];
@@ -57,11 +95,12 @@ exports.saveGame = function(req, res, next) {
   							var f = res.friends;
   							f.num = 0;
   							f.games = [];
-  							console.log(f);
+  							// console.log(f);
 								const friends = addFriends(JSON.parse(JSON.stringify(r)), JSON.parse(JSON.stringify(f)), result.name);
-								console.log(friends);
+								// console.log(friends);
 								res.friends = friends;
 								// res.friends = ['friends pineapple'];
+								//needs to update all other users now with updated friends info
 								res.save();
 							}
 						}
@@ -72,31 +111,37 @@ exports.saveGame = function(req, res, next) {
 
 var addFriends = (arr1, arr2, newgame)=>{
 	console.log(arr1, arr2);
-	for(var i in arr1){
+	
+	for(var i in arr1) {
+
 		var exists = false;
     
-		for(var j in arr2){
+		for(var j in arr2) {
+
 			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
-				console.log('previous match '+arr1[i].friendId)
-        arr2[j]['games'].push(newgame)
+				console.log('previous match '+ arr1[i].friendId);
+        arr2[j]['games'].push(newgame);
         arr2[j]['num']++;
 				break;
 			}
 
 		}
-		if(!exists){
-				console.log('new match '+arr1[i].friendId)
-				arr2.push({
-					'friendId': arr1[i].friendId,
-	        'num': 0,
-          'games': [newgame]
-        })
-		}   
+			if(!exists){
+					console.log('new match ' + arr1[i].friendId);
+					arr2.push({
+						'friendId': arr1[i].friendId,
+		        'num': 0,
+	          'games': [newgame],
+	          //extra info that needs to come from User.findById({_id: arr1[i].friendId})
+	          'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
+	          'name': 'Hard Coded Man',
+	          'email': 'hardcoded@fake.com'
+	        });
+			}   
     //findAndUpdate('_id':arr1[i].friendId,)     
 	}
 	console.log('arr2');
-	console.log(arr2)
 	return arr2; 
 }
 

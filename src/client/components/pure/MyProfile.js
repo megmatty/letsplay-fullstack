@@ -19,8 +19,7 @@ class MyProfile extends Component {
           avatar={this.props.player.avatar}
         />
         <FriendList 
-        	friends={this.props.friends} 
-        	deleteFriend={this.props.deleteFriend}
+        	friends={this.props.player.friends}
         />
       </div>
 		);

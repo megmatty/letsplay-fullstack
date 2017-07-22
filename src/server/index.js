@@ -62,14 +62,14 @@ app.get("/logout", users.logout)
 app.post("/register", users.register)
 
 console.log(users);
+
 //Game
-// app.post('/zebracake.com', games.saveGame);
 app.post('/user/:id', function(req, res) {
 	console.log(req.params);
 	games.saveGame(req, res);
 });
 
-app.get('/myprofile',	users.getMatches);
+// app.get('/myprofile',	users.getMatches);
 //this is returning JSON on reload
 
 app.put('/user/:id', function(req, res) {

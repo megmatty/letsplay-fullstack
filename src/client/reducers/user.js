@@ -50,11 +50,6 @@ const user = (state = {
 		case DELETE_GAME:
 			console.log(action.id);
 			console.log('delete reducer fired');
-			// var object = {};
-			// object.player = state.player;
-			// object.listChanged = Date.now();
-			// object.player.list = state.player.list.filter(game => game.id !== action.id);
-			// return Object.assign({}, state, object);
 			return {
 				...state,
 				player: {
@@ -65,12 +60,6 @@ const user = (state = {
 			case ADD_GAME:
 				console.log(action.id);
 				console.log('action reducer fired');
-				// var object = {};
-				// object.player = state.player;
-				// object.listChanged = Date.now();
-				// //not triggering mapstatetoprops on state change without Date.now()??
-				// object.player.list = state.player.list.concat(action.game);
-				// return Object.assign({}, state, object);
 				return {
 					...state,
 					player: {
@@ -78,9 +67,6 @@ const user = (state = {
 						list: state.player.list.concat(action.game)
 					}
 				}
-				//this is the working solution!
-		
-
 
 		default:
 			return state;

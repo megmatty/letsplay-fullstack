@@ -57,14 +57,6 @@ a {
   border-radius: 100%;
 }
 
-.friend {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
-  padding: 0 25px;
-}
-
 .list-switcher {
   display: flex;
   font-size: .9em;
@@ -147,6 +139,24 @@ input {
   border: 1px solid #ccc;
 }
 
+.game-name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-expanded {
+  text-align: center;
+}
+
+.game-name-wrapper .game-name {
+  text-align: right;
+}
+
+.game-toggle {
+  padding: 5px;
+}
+
 .results-error {
   padding: 50px 25px 25px;
   text-align: center;
@@ -156,4 +166,28 @@ input {
 .results-loading {
   padding: 50px 25px 25px;
   text-align: center;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 15px;
+  flex-direction: column;
+  border: 1px solid #ddd;
+}
+
+.common-games-list {
+  text-align: center;
+}
+
+
+.user-container,
+.friendLists-container {
+  text-align: center;
+}
+
+.log-button {
+  font-size: .8em;
 }

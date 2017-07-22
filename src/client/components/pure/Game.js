@@ -30,11 +30,14 @@ class Game extends Component {
                     :
                     <div>No Image Provided</div>
                   }
-                    <p>{this.props.name}<span>{'\u2795'}</span></p>
+                    <div className="game-name-wrapper">
+                      <p className="game-name">{this.props.name}</p>
+                      <p className="game-toggle">{'\u2795'}</p>
+                    </div>
                 </div>;
     } else {
-        result =  <div onClick={this.activeGame}>
-                    <p>{this.props.name}<span>{'\u2796'}</span></p>
+        result =  <div className="game-expanded" onClick={this.activeGame}>
+                    <p className="game-name">{this.props.name}<span className="game-toggle">{'\u2796'}</span></p>
                     { this.props.cover ? 
                       <img className="box-art-big" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
                       :
