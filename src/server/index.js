@@ -65,7 +65,6 @@ console.log(users);
 
 //Game
 app.post('/user/:id', function(req, res) {
-	console.log(req.params);
 	games.saveGame(req, res);
 });
 

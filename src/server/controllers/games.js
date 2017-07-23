@@ -43,7 +43,7 @@ import User from "../models/user";
 
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
-
+	console.log(req.user.email);
 	Game
 		.findOneAndUpdate(
 			{id: req.body.id},
@@ -60,48 +60,26 @@ exports.saveGame = function(req, res, next) {
 		            // result = new Model();
 		        }
 		        // Save the document
+		      const final = result;
 		      result.save();
 			    console.log('adding to user list');
-					User.findOneAndUpdate(
-						{_id: req.params.id, "list.id": {$ne: req.body.id}},
-						// {$addToSet: {list: new Game(req.body)}},
-						{$addToSet: 
-							{
-								//list: new Game(req.body),
-								list:  {  //Adds Zelda to Lisa
-										'name':req.body.name,
-										'summary':req.body.summary,
-										'id':req.body.id,
-										'cover':req.body.cover
-									}
-							}	
-								//friends: {friendId: req.params.id} //Adds Lisa to Lisa 							
-						},
-						{upsert: true},
-						function(err, res) {
-							if (err) {
-								console.log(err);
-							} else {
-								// console.log(req.body.id)
-								// console.log('result');
-								// console.log(res.friends);
-								// console.log(result.matchedFriends);
-								// console.log('-----------------');
-		// 						var r = [{"friendId":"597182233b24610b3c4a5e3c"}];
-		// 						var f = [{"friendId":"597182233b24610b3c4a5e3c", 
-  // 'num': 0,'games': []}];
-  							var r = result.matchedFriends;
-  							var f = res.friends;
-  							f.num = 0;
-  							f.games = [];
-  							// console.log(f);
-								const friends = addFriends(JSON.parse(JSON.stringify(r)), JSON.parse(JSON.stringify(f)), result.name);
-								// console.log(friends);
+					var matches = JSON.parse(JSON.stringify(final.matchedFriends)); 
+					var name = final.name; 
+					console.log(matches);
+					console.log(name);
+					matches.forEach(function(match){
+						User.findOneAndUpdate(
+							{_id: match.friendId},
+							{upsert: true},
+							(err, res) => {
+								console.log('anythign here');
+								console.log(res.email);
+								const friends = addFriends(matches, JSON.parse(JSON.stringify(res.friends)), name);
 								res.friends = friends;
-								//needs to update all other users now with updated friends info
 								res.save();
 							}
-						}
+						)
+					}					 
 					)
 		    }
 		});
@@ -142,6 +120,74 @@ var addFriends = (arr1, arr2, newgame)=>{
 	console.log('arr2');
 	return arr2; 
 }
+
+					// User.findOneAndUpdate(
+					// 	{_id: req.params.id, "list.id": {$ne: req.body.id}},
+					// 	// {$addToSet: {list: new Game(req.body)}},
+					// 	{$addToSet: 
+					// 		{
+					// 			//list: new Game(req.body),
+					// 			list:  {  //Adds Zelda to Lisa
+					// 					'name':req.body.name,
+					// 					'summary':req.body.summary,
+					// 					'id':req.body.id,
+					// 					'cover':req.body.cover
+					// 				}
+					// 		}	
+					// 			//friends: {friendId: req.params.id} //Adds Lisa to Lisa 							
+					// 	},
+					// 	{upsert: true},
+					// 	function(err, res) {
+					// 		if (err) {
+					// 			console.log(err);
+					// 		} else {
+  			// 				var r = result.matchedFriends;
+  			// 				var f = res.friends;
+  			// 				f.num = 0;
+  			// 				f.games = [];
+  			// 				// console.log(f);
+					// 			const friends = addFriends(JSON.parse(JSON.stringify(r)), JSON.parse(JSON.stringify(f)), result.name);
+					// 			// console.log(friends);
+					// 			res.friends = friends;
+					// 			//needs to update all other users now with updated friends info
+					// 			res.save();
+					// 		}
+					// 	}
+					// )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
