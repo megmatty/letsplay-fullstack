@@ -62,7 +62,6 @@ exports.saveGame = function(req, res, next) {
 		        // Save the document
 		      result.save();
 			    console.log('adding to user list');
-			    //duplicate games are saved in user list, need to fix
 					User.findOneAndUpdate(
 						{_id: req.params.id, "list.id": {$ne: req.body.id}},
 						// {$addToSet: {list: new Game(req.body)}},
@@ -99,7 +98,6 @@ exports.saveGame = function(req, res, next) {
 								const friends = addFriends(JSON.parse(JSON.stringify(r)), JSON.parse(JSON.stringify(f)), result.name);
 								// console.log(friends);
 								res.friends = friends;
-								// res.friends = ['friends pineapple'];
 								//needs to update all other users now with updated friends info
 								res.save();
 							}
@@ -132,11 +130,11 @@ var addFriends = (arr1, arr2, newgame)=>{
 					arr2.push({
 						'friendId': arr1[i].friendId,
 		        'num': 0,
-	          'games': [newgame],
+	          'games': [newgame]
 	          //extra info that needs to come from User.findById({_id: arr1[i].friendId})
-	          'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-	          'name': 'Hard Coded Man',
-	          'email': 'hardcoded@fake.com'
+	          // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
+	          // 'name': 'Hard Coded Man',
+	          // 'email': 'hardcoded@fake.com'
 	        });
 			}   
     //findAndUpdate('_id':arr1[i].friendId,)     
@@ -160,9 +158,7 @@ exports.deleteGame = function(req, res, next) {
 		    if (!error) {
 		        // If the document doesn't exist
 		        if (!result) {
-		            // Create it
-		            // result = new Game(req.body);
-		            // result = new Model();
+		            //nothing
 		        }
 		        // Save the document
 		        result.save(function(error) {

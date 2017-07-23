@@ -30,64 +30,6 @@ export function games(state = [], action) {
 	}
 }
 
-//Friends reducer initial state
-export const initialFriendState = {
-      friends: [
-        { "id": 1,
-          "name": "maxpower",
-          "avatar": "http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg"
-        },
-        { "id": 2,
-          "name": "lisasimpson",
-          "avatar": "http://www.radfaces.com/images/avatars/aeon-flux.jpg"
-        },
-        { "id": 3,
-          "name": "HansMoleman",
-          "avatar": "http://www.radfaces.com/images/avatars/artie-strongman.jpg"
-        },
-        { "id": 4,
-          "name": "hughJass",
-          "avatar": "http://www.radfaces.com/images/avatars/bradley-taylor.jpg"
-        },
-        { "id": 5,
-          "name": "carlCcarlson",
-          "avatar": "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg"
-        }
-      ]
-  };
-
-//Friends reducer
-export function friends(state = initialFriendState, action) {
-	switch (action.type) {
-		case 'ADD_FRIEND':
-			let newId = state.friends.length + 1;
-			//makes new Id for friend
-			return Object.assign({}, state, {
-				friends: [...state.friends, {
-					id: newId,
-					name: action.name,
-					avatar: action.avatar
-				}]
-			})
-		case 'DELETE_FRIEND':
-			console.log(action.id);
-			return Object.assign({}, state, {
-				friends: state.friends.filter(friend => friend.id !== action.id)
-				});
-		case 'MATCH_FRIENDS':
-			console.log(action, state);
-			console.log('matched friends');
-			return Object.assign({}, state, {
-
-				});
-		default:
-			return state;
-	}
-}
-
-
-
-
 //Search reducer 
 export const initialQueryState = {
 	query: ''
@@ -105,3 +47,57 @@ export function search(state = initialQueryState, action) {
 			return state;
 	}
 }
+
+//Friends reducer initial state
+// export const initialFriendState = {
+//       friends: [
+//         { "id": 1,
+//           "name": "maxpower",
+//           "avatar": "http://www.radfaces.com/images/avatars/little-pete-wrigley.jpg"
+//         },
+//         { "id": 2,
+//           "name": "lisasimpson",
+//           "avatar": "http://www.radfaces.com/images/avatars/aeon-flux.jpg"
+//         },
+//         { "id": 3,
+//           "name": "HansMoleman",
+//           "avatar": "http://www.radfaces.com/images/avatars/artie-strongman.jpg"
+//         },
+//         { "id": 4,
+//           "name": "hughJass",
+//           "avatar": "http://www.radfaces.com/images/avatars/bradley-taylor.jpg"
+//         },
+//         { "id": 5,
+//           "name": "carlCcarlson",
+//           "avatar": "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg"
+//         }
+//       ]
+//   };
+
+//Friends reducer
+// export function friends(state = initialFriendState, action) {
+// 	switch (action.type) {
+// 		case 'ADD_FRIEND':
+// 			let newId = state.friends.length + 1;
+// 			//makes new Id for friend
+// 			return Object.assign({}, state, {
+// 				friends: [...state.friends, {
+// 					id: newId,
+// 					name: action.name,
+// 					avatar: action.avatar
+// 				}]
+// 			})
+// 		case 'DELETE_FRIEND':
+// 			console.log(action.id);
+// 			return Object.assign({}, state, {
+// 				friends: state.friends.filter(friend => friend.id !== action.id)
+// 				});
+// 		default:
+// 			return state;
+// 	}
+// }
+
+
+
+
+

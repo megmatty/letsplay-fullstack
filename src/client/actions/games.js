@@ -32,11 +32,11 @@ export function resetGames(games) {
 	}
 }
 
-export function loadGames() {
-	return {
-		type: 'LOAD_GAMES'
-	}
-}
+// export function loadGames() {
+// 	return {
+// 		type: 'LOAD_GAMES'
+// 	}
+// }
 
 
 //Handles dispatching the other 3 above
@@ -59,29 +59,7 @@ export function gamesGetData(request) {
 	};
 }
 
-//Add friend action
-export function addFriend(id) {
-	return {
-		type: 'ADD_FRIEND',
-		id
-	}
-}
-
-//delete friend action
-export function deleteFriend(id) {
-	return {
-		type: 'DELETE_FRIEND',
-		id
-	}
-}
-
-//delete friend action
-export function matchFriends(id) {
-	return {
-		type: 'MATCH_FRIENDS',
-		id
-	}
-}
+//some kind of FetchFriendList action???
 
 
 //delete Game Action
