@@ -57,36 +57,48 @@ exports.saveGame = function(req, res, next) {
 		            // Create it
 		            req.body.matchedFriends = [{friendId: req.params.id}];
 		            result = new Game(req.body);
-		            // result = new Model();
 		        }
-		        // Save the document
-		      const final = result;
-		      result.save();
-			    console.log('adding to user list');
-					var matches = JSON.parse(JSON.stringify(final.matchedFriends)); 
-					var name = final.name; 
-					console.log(matches);
-					console.log(name);
-					matches.forEach(function(match){
-						User.findOneAndUpdate(
-							{_id: match.friendId},
-							{upsert: true},
-							(err, res) => {
-								console.log('anythign here');
-								console.log(res.email);
-								const friends = addFriends(matches, JSON.parse(JSON.stringify(res.friends)), name);
-								res.friends = friends;
-								res.save();
-							}
-						)
-					}					 
-					)
+		        const final = result; 
+		        result.save();  //Save the newFriend to the matchedFriends array
+			console.log(' '); 
+			console.log('saving '+req.user.email +' to  Match Friend list');
+			var matches = JSON.parse(JSON.stringify(final.matchedFriends)); 
+			var name = final.name; 
+			console.log(matches);
+			console.log(name);
+			matches.forEach(function(match){ //Loop through matched friends list
+				console.log('match ',match); 
+				
+				User.findOneAndUpdate(  //Find each friend by their id
+					{_id: match.friendId},
+					{upsert: true},
+					(err, res) => {
+						console.log('current user');
+						console.log(req.user)
+						let currentUser = 
+						[{	
+							"friendId": req.user._id,
+							"email": req.user.email
+						}]
+						console.log('res');
+						console.log(res)
+						
+
+						const friends = addFriends(currentUser, JSON.parse(JSON.stringify(res.friends)), name);	
+						console.log(friends)
+						res.friends = friends; //replace freinds array with new freinds array
+						//res.friends.push('niko');
+						res.save(); //Save newFriend to that friend
+
+					}
+				)
+			})
 		    }
 		});
 }
 
 var addFriends = (arr1, arr2, newgame)=>{
-	console.log(arr1, arr2);
+	//console.log(arr1, arr2);
 	
 	for(var i in arr1) {
 
@@ -96,7 +108,7 @@ var addFriends = (arr1, arr2, newgame)=>{
 
 			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
-				console.log('previous match '+ arr1[i].friendId);
+				//console.log('previous match '+ arr1[i].friendId);
         arr2[j]['games'].push(newgame);
         arr2[j]['num']++;
 				break;
@@ -104,7 +116,7 @@ var addFriends = (arr1, arr2, newgame)=>{
 
 		}
 			if(!exists){
-					console.log('new match ' + arr1[i].friendId);
+					//console.log('new match ' + arr1[i].friendId);
 					arr2.push({
 						'friendId': arr1[i].friendId,
 		        'num': 0,
@@ -117,7 +129,7 @@ var addFriends = (arr1, arr2, newgame)=>{
 			}   
     //findAndUpdate('_id':arr1[i].friendId,)     
 	}
-	console.log('arr2');
+	//console.log('arr2');
 	return arr2; 
 }
 
