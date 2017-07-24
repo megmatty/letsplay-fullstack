@@ -73,62 +73,63 @@ exports.saveGame = function(req, res, next) {
 				var promises = matches.map(function(match){ //Loop through matched friends list
 					console.log('match ',match); 
 					
-				return new Promise(	function(resolve, reject) {
-					
-					
-					User.findOneAndUpdate(  //Find each friend by their id
-						{_id: match.friendId},
-						{upsert: true},
-						(err, res) => {
+					return new Promise(function(resolve, reject) {
+						
+						
+						User.findOneAndUpdate(  //Find each friend by their id
+							{_id: match.friendId},
+							{upsert: true},
+							(err, res) => {
 
-							let r = JSON.parse(JSON.stringify(res))
-							var user = JSON.parse(JSON.stringify(req.user))
-							//console.log(r)							
-							//console.log('req below');
-							//console.log(req.user)
-							let currentUser = 
-							[{	
-								"friendId": user._id,
-								"email": user.email
-							}]
-										
-							var resUser = {
-								"friendId":r._id,
-								"email": r.email
+								let r = JSON.parse(JSON.stringify(res))
+								var user = JSON.parse(JSON.stringify(req.user))
+								//console.log(r)							
+								//console.log('req below');
+								//console.log(req.user)
+								let currentUser = 
+								[{	
+									"friendId": user._id,
+									"email": user.email
+								}]
+											
+								var resUser = {
+									"friendId":r._id,
+									"email": r.email
+								}
+
+
+								console.log(user._id, match.friendId); 
+								console.log(user._id != match.friendId); 
+								
+								if(match.friendId != user._id){ 								
+									let friends = addFriends(currentUser, r.friends, name);	
+									res.friends = friends; //replace freinds array with new freinds array
+									res.save(); //Save newFriend to that friend
+
+									previousUsers.push(resUser); 
+									console.log('prev users') 
+									console.log(previousUsers)
+
+
+								} else {
+
+								}
+	     							if (err) { return reject(err); }								
+								resolve();
+
+
 							}
-
-
-							console.log(user._id, match.friendId); 
-							console.log(user._id != match.friendId); 
-							
-							if(match.friendId != user._id){ 								
-								let friends = addFriends(currentUser, r.friends, name);	
-								res.friends = friends; //replace freinds array with new freinds array
-								res.save(); //Save newFriend to that friend
-							} else {
-								previousUsers.push(resUser); 
-								console.log('prev users') 
-								console.log(previousUsers)
-
-							}
-						        resolve();
-							
-						        x++;	
-
-						}
-					)
-				})
+						)
+					})
 				})
 				
 
-				Promise.all(promises)
-.then(function() { console.log('all dropped)'); })
-.catch(console.error)
-				console.log(matches.length,  x); 
-				if(matches.length == x) {
-					console.log('this should be last'); 
-
-
+				Promise.all(promises).then(function() { 
+					
+					console.log('all dropped)'); 
+				
+				
+				
 					User.findOneAndUpdate(  //Find this user  
 					
 						{_id:req.params.id}, 
@@ -144,7 +145,8 @@ exports.saveGame = function(req, res, next) {
 							//console.log(previousUsers);
 							let friends = addFriends(previousUsers, o.friends, name);	
 							response.friends = friends; //replace freinds array with new freinds array
-							//console.log(friends);
+							console.log('freinds')
+							console.log(friends);
 							//console.log(response);
 							
 							response.save(); //Save  previous freinds array to this user. 			
@@ -152,11 +154,11 @@ exports.saveGame = function(req, res, next) {
 
 					
 					)	
+				
+				}).catch(console.error)
 						
-				}
+			}				
 				
-				
-			    }
 		});
 }
 
@@ -172,29 +174,35 @@ var addFriends = (arr1, arr2, newgame)=>{
 			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
 				//console.log('previous match '+ arr1[i].friendId);
-        arr2[j]['games'].push(newgame);
-        arr2[j]['num']++;
+        			arr2[j]['games'].push(newgame);
+			        arr2[j]['num']++;
 				break;
 			}
 
 		}
 			if(!exists){
 					//console.log('new match ' + arr1[i].friendId);
-					arr2.push({
-						'friendId': arr1[i].friendId,
-		        'num': 0,
-	          'games': [newgame]
-	          //extra info that needs to come from User.findById({_id: arr1[i].friendId})
-	          // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-	          // 'name': 'Hard Coded Man',
-	          // 'email': 'hardcoded@fake.com'
-	        });
+			arr2.push({
+				'friendId': arr1[i].friendId,
+				'num': 0,
+				 'games': [newgame]
+	  //extra info that needs to come from User.findById({_id: arr1[i].friendId})
+	  // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
+	  // 'name': 'Hard Coded Man',
+	  // 'email': 'hardcoded@fake.com'
+			});
 			}   
     //findAndUpdate('_id':arr1[i].friendId,)     
 	}
 	//console.log('arr2');
 	return arr2; 
 }
+
+
+
+
+
+
 
 					// User.findOneAndUpdate(
 					// 	{_id: req.params.id, "list.id": {$ne: req.body.id}},
