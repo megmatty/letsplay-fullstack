@@ -27,7 +27,7 @@ class FriendList extends Component {
               id={friend.friendId}
               // name={friend.name}
               // avatar={friend.avatar}
-              // email={friend.email}
+               email={friend.email}
               // games={friend.games}
         />
           )}
