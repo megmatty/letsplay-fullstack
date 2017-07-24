@@ -185,7 +185,8 @@ var addFriends = (arr1, arr2, newgame)=>{
 			arr2.push({
 				'friendId': arr1[i].friendId,
 				'num': 0,
-				 'games': [newgame]
+				 'games': [newgame],
+				 'email': arr1[i].email
 	  //extra info that needs to come from User.findById({_id: arr1[i].friendId})
 	  // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
 	  // 'name': 'Hard Coded Man',
