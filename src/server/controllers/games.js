@@ -43,57 +43,120 @@ import User from "../models/user";
 
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
-	console.log(req.user.email);
-	Game
-		.findOneAndUpdate(
+	Game.findOneAndUpdate(
 			{id: req.body.id},
 			// {$addToSet: {matchedFriends: req.params.id}},
 			{$addToSet: {matchedFriends: {friendId: req.params.id}}}, //Adds Lisa to Zelda } },
 			{upsert: false},
 			function(error, result) {
-		    if (!error) {
-		        // If the document doesn't exist
-		        if (!result) {
-		            // Create it
-		            req.body.matchedFriends = [{friendId: req.params.id}];
-		            result = new Game(req.body);
-		        }
-		        const final = result; 
-		        result.save();  //Save the newFriend to the matchedFriends array
-			console.log(' '); 
-			console.log('saving '+req.user.email +' to  Match Friend list');
-			var matches = JSON.parse(JSON.stringify(final.matchedFriends)); 
-			var name = final.name; 
-			console.log(matches);
-			console.log(name);
-			matches.forEach(function(match){ //Loop through matched friends list
-				console.log('match ',match); 
+			    if (!error) {
+				// If the document doesn't exist
+				if (!result) {
+				    // Create it
+				    req.body.matchedFriends = [{friendId: req.params.id}];
+				    result = new Game(req.body);
+				}
+
 				
-				User.findOneAndUpdate(  //Find each friend by their id
-					{_id: match.friendId},
-					{upsert: true},
-					(err, res) => {
-						console.log('current user');
-						console.log(req.user)
-						let currentUser = 
-						[{	
-							"friendId": req.user._id,
-							"email": req.user.email
-						}]
-						console.log('res');
-						console.log(res)
+				result.save();  //Save the newFriend to the matchedFriends array
+				//const final = result;
+					
+				console.log(' '); 
+				console.log('saving '+req.user +' to  Match Friend list');
+				var matches = JSON.parse(JSON.stringify(result.matchedFriends)); 
+				var name = result.name; 
+				console.log(matches);
+				console.log(name);
+
+				var previousUsers = [] 
+				var x = 0; 
+				var promises = matches.map(function(match){ //Loop through matched friends list
+					console.log('match ',match); 
+					
+				return new Promise(	function(resolve, reject) {
+					
+					
+					User.findOneAndUpdate(  //Find each friend by their id
+						{_id: match.friendId},
+						{upsert: true},
+						(err, res) => {
+
+							let r = JSON.parse(JSON.stringify(res))
+							var user = JSON.parse(JSON.stringify(req.user))
+							//console.log(r)							
+							//console.log('req below');
+							//console.log(req.user)
+							let currentUser = 
+							[{	
+								"friendId": user._id,
+								"email": user.email
+							}]
+										
+							var resUser = {
+								"friendId":r._id,
+								"email": r.email
+							}
+
+
+							console.log(user._id, match.friendId); 
+							console.log(user._id != match.friendId); 
+							
+							if(match.friendId != user._id){ 								
+								let friends = addFriends(currentUser, r.friends, name);	
+								res.friends = friends; //replace freinds array with new freinds array
+								res.save(); //Save newFriend to that friend
+							} else {
+								previousUsers.push(resUser); 
+								console.log('prev users') 
+								console.log(previousUsers)
+
+							}
+						        resolve();
+							
+						        x++;	
+
+						}
+					)
+				})
+				})
+				
+
+				Promise.all(promises)
+.then(function() { console.log('all dropped)'); })
+.catch(console.error)
+				console.log(matches.length,  x); 
+				if(matches.length == x) {
+					console.log('this should be last'); 
+
+
+					User.findOneAndUpdate(  //Find this user  
+					
+						{_id:req.params.id}, 
+						{upsert: true},
+						(err, response) => {
+							//console.log('in this guy');
+
+							let o = JSON.parse(JSON.stringify(response))						
+							//console.log(o)
+							//console.log(response)
 						
+							//console.log('prev')
+							//console.log(previousUsers);
+							let friends = addFriends(previousUsers, o.friends, name);	
+							response.friends = friends; //replace freinds array with new freinds array
+							//console.log(friends);
+							//console.log(response);
+							
+							response.save(); //Save  previous freinds array to this user. 			
+						}
 
-						const friends = addFriends(currentUser, JSON.parse(JSON.stringify(res.friends)), name);	
-						console.log(friends)
-						res.friends = friends; //replace freinds array with new freinds array
-						//res.friends.push('niko');
-						res.save(); //Save newFriend to that friend
-
-					}
-				)
-			})
-		    }
+					
+					)	
+						
+				}
+				
+				
+			    }
 		});
 }
 
