@@ -42,7 +42,11 @@ class Login extends Component {
 	render() {
 		return(
 			<div>
-				<h2>Log in</h2>		
+				<h2>Log in/Demo</h2>
+				<div>To see demo, log in with: 
+					<p>email: janedoe@fake.com</p>
+					<p>password: test</p>
+				</div>		
 				<form onSubmit={this._onLoginSubmit}>
 					<input type="email" ref="email" placeholder="Email"/><br/>
 					<input ref="password" type="password" placeholder="Password" /><br/>

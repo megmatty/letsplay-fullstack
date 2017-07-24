@@ -30,7 +30,7 @@ class Navigation extends Component {
 					{
 						this.props.user.authenticated 
 						? <button className="log-button" onClick={this._logout}>Logout<br/>[{this.props.user.email}]</button>
-						: <Link to="/login">Log In</Link>
+						: <Link to="/login">Log In/Demo</Link>
 					}				
 					{
 						!this.props.user.authenticated 
