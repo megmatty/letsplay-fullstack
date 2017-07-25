@@ -45,6 +45,11 @@ function registerError() {
 	return { type: types.REGISTER_ERROR_USER }
 }
 
+export function fetchFriends(data) {
+	return {type: types.FETCH_FRIENDS, data}
+}
+
+
 function makeUserRequest(method, data, api="/login") {
 	// returns a Promise
 	return axios({
@@ -138,7 +143,6 @@ export function manualRegister(data) {
 	}
 
 }
-
 
 
 

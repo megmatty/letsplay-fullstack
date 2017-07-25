@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import User from './User';
 import FriendList from './FriendList';
 import { connect } from 'react-redux';
-import { deleteFriend, matchFriends } from '../../actions/games';
-
+import { fetchFriends } from '../../actions/users';
+import axios from 'axios';
 class MyProfile extends Component {
 	
-  // componentDidMount() {
-  //   dispatch(matchFriends());
-  // }
+  componentDidMount() {
+       console.log('myprofile GET');
+    axios.put('/myprofile')
+     .then(res => {
+      console.log(res);
+      // this.props.friends = res.data.users;
+     // this.setState({ data: res.data });
+     this.props.fetchFriends(res.data);
+  } )}
 
   render() {
 		return(
@@ -29,14 +35,13 @@ class MyProfile extends Component {
 //Take state and map to prop object
 const mapStateToProps = (state) => {
   return {
-    ...state.user,
-    ...state.friends
+    ...state.user
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteFriend: (id) => dispatch(deleteFriend(id))
+    fetchFriends: (data) => dispatch(fetchFriends(data))
   }
 }
 

@@ -12,7 +12,8 @@ import {
 	REGISTER_SUCCESS_USER,
 	REGISTER_ERROR_USER,
 	DELETE_GAME,
-	ADD_GAME
+	ADD_GAME,
+	FETCH_FRIENDS
 } from "../constants";
 
 const user = (state = {
@@ -67,7 +68,15 @@ const user = (state = {
 						list: state.player.list.concat(action.game)
 					}
 				}
-
+		case FETCH_FRIENDS:
+			console.log(action);
+			return {
+					...state,
+					player: {
+						...state.player,
+						friends: action.data.player.friends
+					}
+				}
 		default:
 			return state;
 	}
