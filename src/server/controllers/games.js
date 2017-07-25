@@ -69,7 +69,7 @@ exports.saveGame = function(req, res, next) {
 				console.log(name);
 
 				var previousUsers = [] 
-				var x = 0; 
+				// var x = 0; 
 				var promises = matches.map(function(match){ //Loop through matched friends list
 					console.log('match ',match); 
 					
@@ -126,14 +126,23 @@ exports.saveGame = function(req, res, next) {
 
 				Promise.all(promises).then(function() { 
 					
-					console.log('all dropped)'); 
+					// console.log('all dropped)'); 
 				
 				
 				
 					User.findOneAndUpdate(  //Find this user  
-					
-						{_id:req.params.id}, 
-						{upsert: true},
+						{_id: req.params.id, "list.id": {$ne: req.body.id}},
+						// {$addToSet: {list: new Game(req.body)}},
+						{$addToSet: 
+							{
+								//list: new Game(req.body),
+								list:  {  //Adds Zelda to Lisa
+										'name':req.body.name,
+										'summary':req.body.summary,
+										'id':req.body.id,
+										'cover':req.body.cover
+									}
+							}},
 						(err, response) => {
 							//console.log('in this guy');
 
