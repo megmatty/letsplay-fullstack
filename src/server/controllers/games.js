@@ -4,42 +4,6 @@ import User from "../models/user";
 // -------------------------------------------
 
 
-//Next steps:
-	//1 - update the rest of the users after adding a game/friends to list
-	//2 - get friend.name, friend.email, friend.avatar info inserted into friends array next to friendId: ??
-						// friends: [
-						// 	{
-						// 		friendId: 59728fa9d31d5e04aa319b18,
-						// 		name: "Max",
-						// 		email: "max@fake.com",
-						// 		avatar: "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-						//		games: [
-									// 	"God of War",
-									// 	"The Legend of Zelda: Breath of the Wild"
-									// ],
-						//		num: 1
-						// 	}
-						// ]
-	//3 - Exclude users own id from their own friends list
-	//4 - Reverse the whole process for Delete
-
-// function friendLook(id) {
-// // let id = "59728fa9d31d5e04aa319b18";
-// 	User
-// 		.findById(
-// 			id, function(err, friend) {
-// 				const newFriend = {
-// 					name: friend.name,
-// 					email: friend.email,
-// 					avatar: friend.avatar
-// 				}
-// 				// console.log(newFriend);
-// 				return newFriend;
-// 				}
-// 		)
-// }
-
-
 
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
@@ -59,7 +23,6 @@ exports.saveGame = function(req, res, next) {
 
 				
 				result.save();  //Save the newFriend to the matchedFriends array
-				//const final = result;
 					
 				console.log(' '); 
 				console.log('saving '+req.user +' to  Match Friend list');
@@ -131,9 +94,17 @@ exports.saveGame = function(req, res, next) {
 				
 				
 					User.findOneAndUpdate(  //Find this user  
-					
-						{_id:req.params.id}, 
-						{upsert: true},
+						{_id: req.params.id, "list.id": {$ne: req.body.id}},
+					 	{$addToSet: 
+							{
+					 			list:  {  //Adds Zelda to Lisa
+					 					'name':req.body.name,
+					 					'summary':req.body.summary,
+					 					'id':req.body.id,
+					 					'cover':req.body.cover
+					 				}
+					 		}	
+					 	},
 						(err, response) => {
 							//console.log('in this guy');
 
@@ -204,113 +175,43 @@ var addFriends = (arr1, arr2, newgame)=>{
 
 
 
-
-					// User.findOneAndUpdate(
-					// 	{_id: req.params.id, "list.id": {$ne: req.body.id}},
-					// 	// {$addToSet: {list: new Game(req.body)}},
-					// 	{$addToSet: 
-					// 		{
-					// 			//list: new Game(req.body),
-					// 			list:  {  //Adds Zelda to Lisa
-					// 					'name':req.body.name,
-					// 					'summary':req.body.summary,
-					// 					'id':req.body.id,
-					// 					'cover':req.body.cover
-					// 				}
-					// 		}	
-					// 			//friends: {friendId: req.params.id} //Adds Lisa to Lisa 							
-					// 	},
-					// 	{upsert: true},
-					// 	function(err, res) {
-					// 		if (err) {
-					// 			console.log(err);
-					// 		} else {
-  			// 				var r = result.matchedFriends;
-  			// 				var f = res.friends;
-  			// 				f.num = 0;
-  			// 				f.games = [];
-  			// 				// console.log(f);
-					// 			const friends = addFriends(JSON.parse(JSON.stringify(r)), JSON.parse(JSON.stringify(f)), result.name);
-					// 			// console.log(friends);
-					// 			res.friends = friends;
-					// 			//needs to update all other users now with updated friends info
-					// 			res.save();
-					// 		}
-					// 	}
-					// )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 exports.deleteGame = function(req, res, next) {
 	console.log(req.body.id, req.params.id);
-	Game
-		.findOneAndUpdate(
+	Game.findOneAndUpdate(
 			{id: req.body.id},
 			{$pull: {matchedFriends: req.params.id}},
-			function(error, result) {
-		    if (!error) {
-		        // If the document doesn't exist
-		        if (!result) {
-		            //nothing
-		        }
-		        // Save the document
-		        result.save(function(error) {
-		            if (!error) {
-		                // Do something with the document
-		            } else {
-		                throw error;
-		            }
-		        });
-			    console.log('removing from user list');
-			    //duplicate games are saved in user list, need to fix
-					User.update(
-						{_id: req.params.id},
-						{$pull: {list: {id: req.body.id}}},
-						function(err, result) {
-							if (err) {
-								console.log(err);
-							} else {
-								console.log(result);
-							}
+			(error, result) => {
+			        console.log('removing from user list');
+				console.log(result)
+
+				var matches = JSON.parse(JSON.stringify(result.matchedFriends)); 
+
+
+
+				matches = matches.filter(function(el) {
+					return el.friendId !== req.params.id;
+				});
+
+				result.matchedFriends = matches; 			
+
+
+				result.save(); 
+
+
+
+
+					
+				User.update( //Final user 
+					{_id: req.params.id},
+					{$pull: {list: {id: req.body.id}}},
+					function(err, result) {
+						if (err) {
+							console.log(err);
+						} else {
+							console.log(result);
 						}
-					)
-		    }
-		});	
+					}
+				)
+			}
+	)
 }
