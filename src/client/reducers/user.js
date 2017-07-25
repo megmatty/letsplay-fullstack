@@ -49,8 +49,6 @@ const user = (state = {
 		case REGISTER_ERROR_USER:
 			return Object.assign({}, state, { isWaiting: false });
 		case DELETE_GAME:
-			console.log(action.id);
-			console.log('delete reducer fired');
 			return {
 				...state,
 				player: {
@@ -58,18 +56,15 @@ const user = (state = {
 					list: state.player.list.filter(game => game.id !== action.id)
 				}
 			}
-			case ADD_GAME:
-				console.log(action.id);
-				console.log('action reducer fired');
-				return {
-					...state,
-					player: {
-						...state.player,
-						list: state.player.list.concat(action.game)
-					}
+		case ADD_GAME:
+			return {
+				...state,
+				player: {
+					...state.player,
+					list: state.player.list.concat(action.game)
 				}
+			}
 		case FETCH_FRIENDS:
-			console.log(action);
 			return {
 					...state,
 					player: {

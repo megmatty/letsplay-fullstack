@@ -74,23 +74,6 @@ exports.getMatches = function(req, res, next) {
 			)
 		}
 
-// [
-// 	{
-// 		_id,
-// 		name,
-// 		email,
-// 		gamesmatched: [
-// 			{game.name},
-// 			{game}
-// 		]
-// 	}
-
-// ]
-
-
-
-
-
 
 
 

@@ -50,14 +50,18 @@ exports.saveGame = function(req, res, next) {
 								//console.log('req below');
 								//console.log(req.user)
 								let currentUser = 
-								[{	
-									"friendId": user._id,
-									"email": user.email
-								}]
+									[{	
+										"friendId": user._id,
+										"email": user.email,
+										"avatar": user.avatar,
+										"name": user.name
+									}]
 											
 								var resUser = {
 									"friendId":r._id,
-									"email": r.email
+									"email": r.email,
+									"avatar": r.avatar,
+									"name": r.name
 								}
 
 
@@ -156,12 +160,10 @@ var addFriends = (arr1, arr2, newgame)=>{
 			arr2.push({
 				'friendId': arr1[i].friendId,
 				'num': 0,
-				 'games': [newgame],
-				 'email': arr1[i].email
-	  //extra info that needs to come from User.findById({_id: arr1[i].friendId})
-	  // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-	  // 'name': 'Hard Coded Man',
-	  // 'email': 'hardcoded@fake.com'
+				'games': [newgame],
+				'email': arr1[i].email,
+			  'avatar': arr1[i].avatar,
+			  'name': arr1[i].name
 			});
 			}   
     //findAndUpdate('_id':arr1[i].friendId,)     

@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import Friend from './Friend';
-import axios from 'axios';
-import { fetchFriends } from '../../actions/users';
 
-//Friend List - redux state container
+//Friend List 
 class FriendList extends Component {
-
- //  componentDidMount() {
- 
- //   });
-
- // }
-
 
   render() {
     return (
@@ -22,11 +13,11 @@ class FriendList extends Component {
             <Friend 
               key={i}
               id={friend.friendId}
-              // name={friend.name}
-              // avatar={friend.avatar}
+              name={friend.name}
+              avatar={friend.avatar}
                email={friend.email}
-              // games={friend.games}
-        />
+              games={friend.games}
+            />
           )}
         </div>
       </div>

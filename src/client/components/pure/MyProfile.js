@@ -4,17 +4,16 @@ import FriendList from './FriendList';
 import { connect } from 'react-redux';
 import { fetchFriends } from '../../actions/users';
 import axios from 'axios';
+
 class MyProfile extends Component {
 	
   componentDidMount() {
-       console.log('myprofile GET');
     axios.put('/myprofile')
      .then(res => {
-      console.log(res);
-      // this.props.friends = res.data.users;
-     // this.setState({ data: res.data });
-     this.props.fetchFriends(res.data);
-  } )}
+       this.props.fetchFriends(res.data);
+      } 
+    )
+  }
 
   render() {
 		return(
