@@ -139,7 +139,47 @@ export function manualRegister(data) {
 
 }
 
+// function fetchFriendsRequest(){
+//   return {
+//     type: "FETCH_REQUEST"
+//   }
+// }
 
+// function fetchFriendsSuccess(friends) {
+//   return {
+//     type: "FETCH_SUCCESS",
+//     friends
+//   }
+// }
+
+// function fetchFriendsError() {
+//   return {
+//     type: "FETCH_ERROR"
+//   }
+// }
+
+
+
+// //get friend matches
+
+// function fetchFriendsWithRedux() {
+//     return (dispatch) => {
+//     dispatch(fetchFriendsRequest());
+//     return fetchFriends().then(([response, json]) =>{
+//         if(response.status === 200){
+//         dispatch(fetchFriendsSuccess(json));
+//       }
+//       else{
+//         dispatch(fetchFriendsError());
+//       }
+//     })
+//   }
+// }
+
+// function fetchFriends() {
+//   return axios.get('http://localhost:3000/myprofile', { method: 'GET'})
+//      .then( response => Promise.all([response, response.json()]));
+// }
 
 
 

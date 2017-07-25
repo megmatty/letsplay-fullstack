@@ -12,7 +12,10 @@ import {
 	REGISTER_SUCCESS_USER,
 	REGISTER_ERROR_USER,
 	DELETE_GAME,
-	ADD_GAME
+	ADD_GAME,
+	FETCH_REQUEST,
+	FETCH_SUCCESS,
+	FETCH_ERROR
 } from "../constants";
 
 const user = (state = {
@@ -57,17 +60,26 @@ const user = (state = {
 					list: state.player.list.filter(game => game.id !== action.id)
 				}
 			}
-			case ADD_GAME:
-				console.log(action.id);
-				console.log('action reducer fired');
-				return {
-					...state,
-					player: {
-						...state.player,
-						list: state.player.list.concat(action.game)
-					}
+		case ADD_GAME:
+			console.log(action.id);
+			console.log('action reducer fired');
+			return {
+				...state,
+				player: {
+					...state.player,
+					list: state.player.list.concat(action.game)
 				}
-
+			}
+		// case FETCH_REQUEST:
+  //     return state;
+  //   case FETCH_SUCCESS: 
+  //     return {
+		// 		...state,
+		// 		player: {
+		// 			...state.player,
+		// 			friends: action.friends
+		// 		}
+		// 	}
 		default:
 			return state;
 	}

@@ -3,44 +3,6 @@ import Game from "../models/game";
 import User from "../models/user";
 // -------------------------------------------
 
-
-//Next steps:
-	//1 - update the rest of the users after adding a game/friends to list
-	//2 - get friend.name, friend.email, friend.avatar info inserted into friends array next to friendId: ??
-						// friends: [
-						// 	{
-						// 		friendId: 59728fa9d31d5e04aa319b18,
-						// 		name: "Max",
-						// 		email: "max@fake.com",
-						// 		avatar: "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-						//		games: [
-									// 	"God of War",
-									// 	"The Legend of Zelda: Breath of the Wild"
-									// ],
-						//		num: 1
-						// 	}
-						// ]
-	//3 - Exclude users own id from their own friends list
-	//4 - Reverse the whole process for Delete
-
-// function friendLook(id) {
-// // let id = "59728fa9d31d5e04aa319b18";
-// 	User
-// 		.findById(
-// 			id, function(err, friend) {
-// 				const newFriend = {
-// 					name: friend.name,
-// 					email: friend.email,
-// 					avatar: friend.avatar
-// 				}
-// 				// console.log(newFriend);
-// 				return newFriend;
-// 				}
-// 		)
-// }
-
-
-
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
 	Game.findOneAndUpdate(
@@ -69,7 +31,6 @@ exports.saveGame = function(req, res, next) {
 				console.log(name);
 
 				var previousUsers = [] 
-				// var x = 0; 
 				var promises = matches.map(function(match){ //Loop through matched friends list
 					console.log('match ',match); 
 					
@@ -87,14 +48,18 @@ exports.saveGame = function(req, res, next) {
 								//console.log('req below');
 								//console.log(req.user)
 								let currentUser = 
-								[{	
-									"friendId": user._id,
-									"email": user.email
-								}]
+									[{	
+										"friendId": user._id,
+										"email": user.email,
+										"avatar": user.avatar,
+										"name": user.name
+									}]
 											
 								var resUser = {
 									"friendId":r._id,
-									"email": r.email
+									"email": r.email,
+									"avatar": r.avatar,
+									"name": r.name
 								}
 
 
@@ -195,11 +160,10 @@ var addFriends = (arr1, arr2, newgame)=>{
 				'friendId': arr1[i].friendId,
 				'num': 0,
 				 'games': [newgame],
-				 'email': arr1[i].email
+				 'email': arr1[i].email,
 	  //extra info that needs to come from User.findById({_id: arr1[i].friendId})
-	  // 'avatar': "http://www.radfaces.com/images/avatars/lawrence-cohen.jpg",
-	  // 'name': 'Hard Coded Man',
-	  // 'email': 'hardcoded@fake.com'
+			  'avatar': arr1[i].avatar,
+			  'name': arr1[i].name
 			});
 			}   
     //findAndUpdate('_id':arr1[i].friendId,)     

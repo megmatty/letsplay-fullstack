@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import User from './User';
 import FriendList from './FriendList';
 import { connect } from 'react-redux';
-import { deleteFriend, matchFriends } from '../../actions/games';
+import axios from 'axios';
+// import { deleteFriend } from '../../actions/games';
 
 class MyProfile extends Component {
 	
   // componentDidMount() {
-  //   dispatch(matchFriends());
-  // }
+    //need to reload friend data from database here but IDK how
+  //    axios.get('/myprofile')
+  //    .then(res => {
+  //     console.log('MyProfile res');
+  //     console.log(res);
+  //    });
+
+  //  }
 
   render() {
 		return(
@@ -29,16 +36,15 @@ class MyProfile extends Component {
 //Take state and map to prop object
 const mapStateToProps = (state) => {
   return {
-    ...state.user,
-    ...state.friends
+    ...state.user
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteFriend: (id) => dispatch(deleteFriend(id))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     deleteFriend: (id) => dispatch(deleteFriend(id))
+//   }
+// }
 
 //Connect component to Redux while mapping props for us to use
-export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);
+export default connect(mapStateToProps)(MyProfile);

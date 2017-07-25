@@ -5,17 +5,6 @@ import axios from 'axios';
 //Friend List - redux state container
 class FriendList extends Component {
 
- //  componentDidMount() {
- //   axios.get('/myprofile')
- //   .then(res => {
- //    console.log(res);
- //    // this.props.friends = res.data.users;
- //   // this.setState({ data: res.data });
- //   });
-
- // }
-
-
   render() {
     return (
       <div className="friendLists-container">
@@ -25,10 +14,10 @@ class FriendList extends Component {
             <Friend 
               key={i}
               id={friend.friendId}
-              // name={friend.name}
-              // avatar={friend.avatar}
-               email={friend.email}
-              // games={friend.games}
+              name={friend.name}
+              avatar={friend.avatar}
+              email={friend.email}
+              games={friend.games}
         />
           )}
         </div>

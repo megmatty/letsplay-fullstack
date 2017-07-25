@@ -65,53 +65,8 @@ exports.register = function(req, res, next) {
 // -------------------------------------------
 
 // exports.getMatches = function(req, res, next) {
-// 	const matches = [];
-// 	const friends = [{}];
-// 	Game.find(
-// 		{}, {name: 1, matchedFriends: 1}, (err, games) => {
-// 			games.forEach(function(game, i) {
-// 				game.matchedFriends.forEach(function(friend, i) {
-// 					let obj = {};
-// 					obj.name = game.name;
-// 					obj.friendId = friend;
-// 					obj.number = 0;
-// 					matches.push(obj);
-// 				})
-// 			})
-// 			console.log(matches);
-// 			matches.forEach(function(match, i) {
-// 				let id = match.friendId;
-// 				console.log(id);
-// 				friends.forEach(function(friend, i) {
-// 					console.log(friend);
-// 					let F = {};
-// 					if (friend.id && friend.id == id) {
-// 						friend.num++;
-// 					} else {
-// 						friend.id = id;
-// 						friend.num = 0;
-// 					}
-// 				friends.push(F);
-// 				});	
-// 			});
-// 			console.log(friends);
-// 			return res.json({ games: games })
-// 		}
-// 	)
+
 // }
-// [
-// 	{
-// 		_id,
-// 		name,
-// 		email,
-// 		gamesmatched: [
-// 			{game.name},
-// 			{game}
-// 		]
-// 	}
-
-// ]
-
 
 
 

@@ -32,12 +32,6 @@ export function resetGames(games) {
 	}
 }
 
-// export function loadGames() {
-// 	return {
-// 		type: 'LOAD_GAMES'
-// 	}
-// }
-
 
 //Handles dispatching the other 3 above
 export function gamesGetData(request) {
@@ -59,7 +53,6 @@ export function gamesGetData(request) {
 	};
 }
 
-//some kind of FetchFriendList action???
 
 
 //delete Game Action
