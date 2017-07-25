@@ -173,6 +173,36 @@ var addFriends = (arr1, arr2, newgame)=>{
 
 
 
+var removeFriends = (arr1, arr2, newgame)=>{
+	for(var i in arr1){
+		var exists = false; 
+		for(var j in arr2){
+			if(arr2[j].friendId == arr1[i].friendId){
+				exists = true;
+
+				if(arr2[j]['num'] == 0)	{ //remove this 
+					arr2.splice(j,1)
+				} else { 
+
+					console.log('previous match '+arr1[i].friendId)
+					arr2[j]['num']--;
+					
+						
+					console.log(arr2[j]['games'])
+					var index = arr2[j]['games'].indexOf(newgame);
+					if (index > -1) {
+						arr2[j]['games'].splice(index, 1);
+				}
+				}
+				break;
+			}
+
+		}   
+	}
+	return arr2; 
+}
+
+
 
 
 exports.deleteGame = function(req, res, next) {
@@ -198,10 +228,86 @@ exports.deleteGame = function(req, res, next) {
 				result.save(); 
 
 
+				var previousUsers = [] 
+				var name = result.name; 
 
+				var promises = matches.map(function(match){ //Loop through matched friends list
+					console.log('match ',match); 
+					
+					return new Promise(function(resolve, reject) {
+						
+						
+						User.findOneAndUpdate(  //Find each friend by their id
+							{_id: match.friendId},
+							{upsert: true},
+							(err, res) => {
+
+								let r = JSON.parse(JSON.stringify(res))
+								var user = JSON.parse(JSON.stringify(req.user))
+								let currentUser = 
+								[{	
+									"friendId": user._id,
+									"email": user.email
+								}]
+											
+								var resUser = {
+									"friendId":r._id,
+									"email": r.email
+								}
+											
+								
+								if(match.friendId != user._id){ 								
+									let friends = removeFriends(currentUser, r.friends, name);	
+									res.friends = friends; //replace freinds array with new freinds array
+									res.save(); //Save newFriend to that friend
+									previousUsers.push(resUser); 
+
+								} else {
+
+								}
+	     							if (err) { return reject(err); }								
+								resolve();
+
+
+							}
+						)
+					})
+				})
+
+
+
+				Promise.all(promises).then(function() { 
+					
+					console.log('all dropped)'); 
+				
+				
+				
+					User.findOneAndUpdate(  //Find this user  
+						{_id: req.params.id},
+						{$pull: {list: {id: req.body.id}}},
+						(err, response) => {
+
+							let o = JSON.parse(JSON.stringify(response))						
+							let friends = removeFriends(previousUsers, o.friends, name);	
+							response.friends = friends; //replace freinds array with new freinds array
+							console.log('freinds')
+							console.log(friends);
+							
+							response.save(); //Save  previous freinds array to this user. 			
+						}
 
 					
-				User.update( //Final user 
+					)	
+				
+				}).catch(console.error)
+
+					
+			}
+	)
+}
+
+
+/*				User.update( //Final user 
 					{_id: req.params.id},
 					{$pull: {list: {id: req.body.id}}},
 					function(err, result) {
@@ -212,6 +318,4 @@ exports.deleteGame = function(req, res, next) {
 						}
 					}
 				)
-			}
-	)
-}
+*/
