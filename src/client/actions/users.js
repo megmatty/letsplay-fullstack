@@ -162,23 +162,24 @@ export function manualRegister(data) {
 
 // //get friend matches
 
-// function fetchFriendsWithRedux() {
-//     return (dispatch) => {
-//     dispatch(fetchFriendsRequest());
-//     return fetchFriends().then(([response, json]) =>{
-//         if(response.status === 200){
-//         dispatch(fetchFriendsSuccess(json));
-//       }
-//       else{
-//         dispatch(fetchFriendsError());
-//       }
-//     })
-//   }
-// }
+// export function fetchFriendsWithRedux() {
+// 	return (dispatch) => {
+// 		dispatch(fetchFriendsRequest());
 
-// function fetchFriends() {
-//   return axios.get('http://localhost:3000/myprofile', { method: 'GET'})
-//      .then( response => Promise.all([response, response.json()]));
+// 		fetch('/myprofile')
+// 			.then((response) => {
+// 				if (!response.ok) {
+// 					throw Error(response.statusText);
+// 				}
+
+// 				dispatch(fetchFriendsError());
+// 				console.log(response);
+// 				return response;
+// 			})
+// 			.then( (response) => response.json() )
+// 			.then( (json) => dispatch(fetchFriendsSuccess(json)))
+// 			.catch( () => dispatch(fetchFriendsError() ))
+// 	};
 // }
 
 

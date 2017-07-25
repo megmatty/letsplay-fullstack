@@ -65,7 +65,17 @@ exports.register = function(req, res, next) {
 // -------------------------------------------
 
 // exports.getMatches = function(req, res, next) {
-
+// 	console.log(req.user);
+// 	User
+// 		.findById(
+// 			{_id: req.user._id}, (err, user) => {
+// 				if (user) {
+// 					return res.json({player: user});
+// 				} else {
+// 					return res.json({success: false});
+// 				}
+// 			}
+// 		)
 // }
 
 

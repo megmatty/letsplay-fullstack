@@ -3,19 +3,13 @@ import User from './User';
 import FriendList from './FriendList';
 import { connect } from 'react-redux';
 import axios from 'axios';
-// import { deleteFriend } from '../../actions/games';
+import { fetchFriendsWithRedux } from '../../actions/users';
 
 class MyProfile extends Component {
 	
   // componentDidMount() {
-    //need to reload friend data from database here but IDK how
-  //    axios.get('/myprofile')
-  //    .then(res => {
-  //     console.log('MyProfile res');
-  //     console.log(res);
-  //    });
-
-  //  }
+  //  this.props.fetchFriendsWithRedux();
+  // }
 
   render() {
 		return(
@@ -42,7 +36,7 @@ const mapStateToProps = (state) => {
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
-//     deleteFriend: (id) => dispatch(deleteFriend(id))
+//     fetchFriendsWithRedux: () => dispatch(fetchFriendsWithRedux())
 //   }
 // }
 

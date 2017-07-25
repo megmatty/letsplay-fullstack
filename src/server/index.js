@@ -68,8 +68,9 @@ app.post('/user/:id', function(req, res) {
 	games.saveGame(req, res);
 });
 
-// app.get('/myprofile',	(req, res) => {console.log(res)});
-//this is returning JSON on reload
+// app.get('/myprofile', function(req, res) {
+// 	users.getMatches(req, res);
+// });
 
 app.put('/user/:id', function(req, res) {
 	console.log('delete');
