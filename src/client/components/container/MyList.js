@@ -17,7 +17,6 @@ class MyList extends Component {
     return (
       <div className="content-container">
       	<Search />
-       	<h3>My List</h3>
 	      <GameList
 	      	list={this.props.player.list}
           player={this.props.player}

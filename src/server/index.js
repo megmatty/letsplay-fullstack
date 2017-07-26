@@ -90,12 +90,8 @@ app.get("*", (req, res, next) => {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>React-Passport-Redux-Example</title>
-		<style>
-			body {
-				font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;			
-			}
-		</style>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+		<title>Let's Play</title>
 	</head>
 	<body>
 		<div id="app"></div>
@@ -105,7 +101,6 @@ app.get("*", (req, res, next) => {
 		
 	</body>
 	</html>`
-
 	res.status(200).end(appHTML)
 
 })

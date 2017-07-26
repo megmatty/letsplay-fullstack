@@ -41,12 +41,12 @@ class Login extends Component {
 
 	render() {
 		return(
-			<div>
+			<div className="login">
 				<h2>Log in</h2>		
 				<form onSubmit={this._onLoginSubmit}>
 					<input type="email" ref="email" placeholder="Email"/><br/>
 					<input ref="password" type="password" placeholder="Password" /><br/>
-					<input type="submit" value="Login" /> <span style={loginMessageStyle}>{ this.state.loginMessage }</span>
+					<input className="box-shadow" type="submit" value="Login" /> <span style={loginMessageStyle}>{ this.state.loginMessage }</span>
 				</form>	
 			</div>	
 		)

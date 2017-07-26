@@ -59,7 +59,7 @@ class Search extends Component {
 		return (
 			<div className="searchbar">
 				<input ref="input" type="search" placeholder="Search for games" value={this.props.query} onChange={this.getQuery} />
-				<button type="submit" onClick={this.loadResults}>Go</button>
+				<button type="submit" className="box-shadow go-button" onClick={this.loadResults}>Go</button>
 				<div className="results">
 					{this.props.games.map((game) => (
           	<Game

@@ -5,8 +5,8 @@ class Default extends Component {
 		return (
         <div className="container">
           <div className="hero">
-            <h1>Let's Play</h1>
-            <p>Hashtag irony whatever, live-edge 3 wolf moon readymade vegan. Celiac twee pitchfork readymade hashtag occupy. Flexitarian mlkshk before they sold out, pour-over celiac gochujang waistcoat pok pok.</p>
+            <p>Let's Play</p>
+            <p>Get matched with new game friends for your favorite games!</p>
           </div>
           <div className="feature">
             <h3>Search Games</h3>
@@ -20,7 +20,7 @@ class Default extends Component {
             <h3>Find Friends</h3>
             <p>Taiyaki williamsburg keffiyeh, kitsch tattooed single-origin coffee helvetica.</p>
           </div>
-          <footer>Meg Matty &copy; 2017</footer>
+          <footer><span>Meg Matty &copy; 2017</span></footer>
         </div>
     );	
 	}

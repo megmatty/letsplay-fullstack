@@ -15,6 +15,7 @@ class MyProfile extends Component {
     )
   }
 
+
   render() {
 		return(
 			<div className="profile-container">      

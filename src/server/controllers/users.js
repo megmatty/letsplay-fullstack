@@ -65,16 +65,14 @@ exports.register = function(req, res, next) {
 // -------------------------------------------
 
 exports.getMatches = function(req, res, next) {
-		console.log(req.user._id);
-		User
-			.findOne(
-				{_id: req.user._id}, (err, user) => {
-					return res.json({ player: user })
-				}
-			)
-		}
-
-
+	console.log(req.user._id);
+	User
+		.findOne(
+			{_id: req.user._id}, (err, user) => {
+				return res.json({ player: user })
+			}
+		);
+}
 
 
 

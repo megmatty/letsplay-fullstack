@@ -6,8 +6,8 @@ class FriendList extends Component {
 
   render() {
     return (
-      <div className="friendLists-container">
-        <h3>Top Friend Matches</h3>
+      <div className="friendLists-container box-shadow">
+        <h3>Your Friend Matches</h3>
         <div className="friend-list">
           {this.props.friends.map((friend,i) => 
             <Friend 

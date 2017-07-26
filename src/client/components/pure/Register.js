@@ -51,19 +51,19 @@ class Register extends Component {
 
 	render() {
 		return(
-			<div>
+			<div className="register">
 				<h2>Register</h2>	
 				<form onSubmit={this._onRegisterSubmit}>		
-					<input type="email" ref="email" placeholder="Email"/><br/>
-					<input type="name" ref="name" placeholder="Name"/><br/>
-					<input type="password" ref="password" placeholder="Password"/><br/>		
-					<div>
-						<p>Choose Avatar:</p>
-						<img className="avatar" src="http://www.radfaces.com/images/avatars/bobby-budnick.jpg" onClick={this.selectedAvatar}/>
-						<img className="avatar" src="http://www.radfaces.com/images/avatars/eddie-gelfen.jpg" onClick={this.selectedAvatar}/>
-						<img className="avatar" src="http://www.radfaces.com/images/avatars/krumm.jpg" onClick={this.selectedAvatar}/>
-						<img className="avatar" src="http://www.radfaces.com/images/avatars/lori-beth-denberg.jpg" onClick={this.selectedAvatar}/>
-						<img className="avatar" src="http://www.radfaces.com/images/avatars/aeon-flux.jpg"onClick={this.selectedAvatar}/>
+					<input type="email" ref="email" placeholder="Email"/>
+					<input type="name" ref="name" placeholder="Name"/>
+					<input type="password" ref="password" placeholder="Password"/>	
+					<p>Choose Avatar:</p>
+					<div className="avatar-selector">
+						<img className="avatar box-shadow" src="/img/avatar1.png" onClick={this.selectedAvatar}/>
+						<img className="avatar box-shadow" src="/img/avatar2.png" onClick={this.selectedAvatar}/>
+						<img className="avatar box-shadow" src="/img/avatar3.png" onClick={this.selectedAvatar}/>
+						<img className="avatar box-shadow" src="/img/avatar4.png" onClick={this.selectedAvatar}/>
+						<img className="avatar box-shadow" src="/img/avatar5.png"onClick={this.selectedAvatar}/>
 					</div>
 					<br/>
 					<label htmlFor="aboutme">About Me</label><br/>

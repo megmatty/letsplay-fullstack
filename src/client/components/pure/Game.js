@@ -24,7 +24,7 @@ class Game extends Component {
   render() {
     let result = null;
     if (this.state.active === false) {
-      result =  <div className="game-wrapper" onClick={this.activeGame}>
+      result =  <div className="game-wrapper box-shadow" onClick={this.activeGame}>
                   { this.props.cover ? 
                     <img className="box-art" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
                     :
@@ -51,7 +51,7 @@ class Game extends Component {
     }
 
     return (
-      <div className="game" >
+      <div>
         {result}
       </div>
     );

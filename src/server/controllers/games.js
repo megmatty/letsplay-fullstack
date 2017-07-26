@@ -115,12 +115,11 @@ exports.saveGame = function(req, res, next) {
 							let o = JSON.parse(JSON.stringify(response))						
 							//console.log(o)
 							//console.log(response)
-						
 							//console.log('prev')
 							//console.log(previousUsers);
 							let friends = addFriends(previousUsers, o.friends, name);	
 							response.friends = friends; //replace freinds array with new freinds array
-							console.log('freinds')
+							console.log('friends')
 							console.log(friends);
 							//console.log(response);
 							

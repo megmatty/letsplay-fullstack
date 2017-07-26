@@ -22,6 +22,7 @@ class GameList extends Component {
 		// console.log(this.props.list);
 		return (
 			<div className="game-list">
+			  <h3>My List</h3>
 				{this.props.list.map((game) => (
 					<Game
 						key={game.id}

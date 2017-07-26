@@ -29,7 +29,7 @@ class Navigation extends Component {
 				<div className="auth-group">
 					{
 						this.props.user.authenticated 
-						? <button className="log-button" onClick={this._logout}>Logout<br/>[{this.props.user.email}]</button>
+						? <button className="log-button box-shadow" onClick={this._logout}>Logout</button>
 						: <Link to="/login">Log In</Link>
 					}				
 					{

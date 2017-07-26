@@ -2,8 +2,17 @@
   box-sizing: border-box;
 }
 
+body, html {
+  margin: 0;
+  background-color: #244880;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
 .App {
   text-align: center;
+  border: 0;
+  height: 100%;
 }
 
 ul {
@@ -18,9 +27,15 @@ a {
   text-decoration: none;
 }
 
+.container {
+  color: #fff;
+}
+
 .content-container {
   margin: 0 auto;
   padding: 0 2%;
+  text-align: center;
+  color: #fff;
 }
 
 .brand {
@@ -32,12 +47,43 @@ a {
   align-items: center;
   justify-content: space-between;
   font-size: .8em;
+  background-color: #343434;
+  color: #fff;
+  height: 50px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.nav a {
+  color: #fff;
 }
 
 .nav-group {
   display: flex;
   justify-content: space-between;
   width: 20%;
+}
+
+.hero {
+  background-image: url("/img/2pgamehero.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #343434;
+  height: 150px;
+}
+
+.feature {
+  text-align: center;
+  padding: 10px;
+}
+
+.feature:nth-child(3n) {
+  background-color: #343434;
+}
+
+.footer span {
+  text-align: center;
 }
 
 .signup {
@@ -50,6 +96,25 @@ a {
 
 .box-art-big {
   width: 150px;
+}
+
+.register, .login {
+  color: #fff;
+  text-align: center;
+}
+
+.avatar-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .avatar {
@@ -79,12 +144,28 @@ a {
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 150px;
+  width: 80%;
   margin-top: 5px;
+  border-radius: 5px;
+  border: 0;
 }
 
 input {
   margin-top: 5px;
+  border-radius: 5px;
+  border: 0;
+  min-height: 30px;
+  width: 60%;
+  margin: 5px 0;
+}
+
+button {
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #244880;
+  padding: 10px;
 }
 
 .contact-form button {
@@ -121,13 +202,18 @@ input {
   color: white;
 }
 
+.game-list {
+  background-color: #363636;
+  height: 100%;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .game-list .add-delete-button:hover {
   background-color: red;
   color: white;
-}
-
-.game {
-  cursor: pointer;
 }
 
 .game-wrapper {
@@ -136,7 +222,15 @@ input {
   align-items: center;
   margin: 10px 0;
   padding: 0 10px 0 0;
-  border: 1px solid #ccc;
+  border: 0;
+  border-radius: 5px;
+  background-color: #244880;
+  cursor: pointer;
+}
+
+.game-wrapper .box-art {
+  object-fit: cover;
+  width: 60px;
 }
 
 .game-name-wrapper {
@@ -147,6 +241,10 @@ input {
 
 .game-expanded {
   text-align: center;
+  border: 0;
+  border-radius: 5px;
+  background-color: #244880;
+  padding: 5px 5px 10px;
 }
 
 .game-name-wrapper .game-name {
@@ -155,6 +253,8 @@ input {
 
 .game-toggle {
   padding: 5px;
+  color: transparent;  
+  text-shadow: 0 0 0 white;
 }
 
 .results-error {
@@ -172,22 +272,61 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 10px;
   padding: 15px;
   flex-direction: column;
-  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #244880;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+.friendLists-container {
+  background-color: #343434;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 0;
+}
+
+.friend-list {
+  height: 285px;
+  overflow: auto;
 }
 
 .common-games-list {
   text-align: center;
 }
 
-
 .user-container,
 .friendLists-container {
   text-align: center;
+  color: #fff;
+}
+
+.user-container {
+  background-color: #808080;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 0;
 }
 
 .log-button {
   font-size: .8em;
+}
+
+.go-button {
+  background-color: #343434;
+}
+
+.searchbar {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.searchbar input {
+  margin-right: 10px;
 }
