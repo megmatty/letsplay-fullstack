@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { gamesGetData, captureQuery, resetGames, addGame } from '../../actions/games';
-import SearchResult from '../../components/pure/SearchResult';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
 

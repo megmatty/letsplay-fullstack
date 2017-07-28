@@ -21,7 +21,7 @@ class GameList extends Component {
 		}
 
 		return (
-			<div className="game-list">
+			<div className="game-list box-shadow">
 			  <h3>My List</h3>
 				{this.props.list.map((game) => (
 					<Game
