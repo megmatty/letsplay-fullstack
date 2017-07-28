@@ -39,11 +39,7 @@ a {
   padding: 0 2%;
   text-align: center;
   color: #fff;
-}
-
-.brand {
-  font-size: 0.9em;
-  color: #E0801E;
+  padding-top: 50px;
 }
 
 .nav {
@@ -61,6 +57,11 @@ a {
 
 .nav a {
   color: #fff;
+}
+
+.brand {
+  font-size: 0.9em;
+  color: #E0801E !important;
 }
 
 .nav-group {
@@ -116,6 +117,7 @@ footer {
 .register, .login {
   color: #fff;
   text-align: center;
+  padding-top: 50px;
 }
 
 .avatar-selector {
@@ -301,6 +303,10 @@ h3 {
   margin: 10px 0;
 }
 
+.profile-container {
+  padding-top: 50px;
+}
+
 .friendLists-container {
   background-color: #343434;
   margin: 0 10px 10px;
@@ -381,7 +387,7 @@ h3 {
 }
 
 .searchbar input {
-  margin: 0 10px 15px 0;
+  margin: 10px 10px 15px 0;
 }
 
 .hover-text:hover {
