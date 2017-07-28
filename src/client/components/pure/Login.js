@@ -46,7 +46,7 @@ class Login extends Component {
 				<form onSubmit={this._onLoginSubmit}>
 					<input type="email" ref="email" placeholder="Email"/><br/>
 					<input ref="password" type="password" placeholder="Password" /><br/>
-					<input className="box-shadow" type="submit" value="Login" /> <span style={loginMessageStyle}>{ this.state.loginMessage }</span>
+					<input className="box-shadow login-submit" type="submit" value="Login" /> <p style={loginMessageStyle}>{ this.state.loginMessage }</p>
 				</form>	
 			</div>	
 		)

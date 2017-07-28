@@ -17,9 +17,9 @@ class GameList extends Component {
 	render() {
 
 		if (this.props.list.length === 0) {
-			return <div className="game-list">Search for games to add to your list!</div>;
+			return <div className="game-list box-shadow">Search for games to add to your list!</div>;
 		}
-		// console.log(this.props.list);
+
 		return (
 			<div className="game-list">
 			  <h3>My List</h3>

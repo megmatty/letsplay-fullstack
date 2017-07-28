@@ -68,7 +68,7 @@ class Register extends Component {
 					<br/>
 					<label htmlFor="aboutme">About Me</label><br/>
 					<textarea id="aboutme" ref="aboutme"></textarea><br/>			
-					<input type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>
+					<input className="reg-button" type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>
 				</form>	
 			</div>
 		)	

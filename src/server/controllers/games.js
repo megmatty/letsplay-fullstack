@@ -65,8 +65,8 @@ exports.saveGame = function(req, res, next) {
 								}
 
 
-								console.log(user._id, match.friendId); 
-								console.log(user._id != match.friendId); 
+								// console.log(user._id, match.friendId); 
+								// console.log(user._id != match.friendId); 
 								
 								if(match.friendId != user._id){ 								
 									let friends = addFriends(currentUser, r.friends, name);	
@@ -74,8 +74,8 @@ exports.saveGame = function(req, res, next) {
 									res.save(); //Save newFriend to that friend
 
 									previousUsers.push(resUser); 
-									console.log('prev users') 
-									console.log(previousUsers)
+									// console.log('prev users') 
+									// console.log(previousUsers)
 
 
 								} else {
@@ -112,15 +112,15 @@ exports.saveGame = function(req, res, next) {
 						(err, response) => {
 							//console.log('in this guy');
 
-							let o = JSON.parse(JSON.stringify(response))						
+							let o = JSON.parse(JSON.stringify(response));						
 							//console.log(o)
 							//console.log(response)
 							//console.log('prev')
 							//console.log(previousUsers);
 							let friends = addFriends(previousUsers, o.friends, name);	
 							response.friends = friends; //replace freinds array with new freinds array
-							console.log('friends')
-							console.log(friends);
+							// console.log('friends')
+							// console.log(friends);
 							//console.log(response);
 							
 							response.save(); //Save  previous freinds array to this user. 			
@@ -164,8 +164,7 @@ var addFriends = (arr1, arr2, newgame)=>{
 			  'avatar': arr1[i].avatar,
 			  'name': arr1[i].name
 			});
-			}   
-    //findAndUpdate('_id':arr1[i].friendId,)     
+			}    
 	}
 	//console.log('arr2');
 	return arr2; 

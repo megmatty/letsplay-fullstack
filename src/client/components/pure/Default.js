@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
 
 class Default extends Component {
 	render() {
 		return (
         <div className="container">
           <div className="hero">
-            <p>Let's Play</p>
-            <p>Get matched with new game friends for your favorite games!</p>
           </div>
           <div className="feature">
-            <h3>Search Games</h3>
-            <p>Taiyaki williamsburg keffiyeh, kitsch tattooed single-origin coffee helvetica.</p>
+            <FontAwesome
+              className="landing-icon"
+              name="search"
+              size="lg"
+            />  
+            <span className="feature-title">Search</span>
+            <p>Search for your favorite (or soon to be favorite!) video games powered by <a href="http://www.igdb.com">IGDB.com</a>, the Internet Gaming Database, which currently offers more than 50,000 games from which to choose.</p>
           </div>
           <div className="feature">
-            <h3>Add to Lists</h3>
-            <p>Taiyaki williamsburg keffiyeh, kitsch tattooed single-origin coffee helvetica.</p>
+            <FontAwesome
+                className="landing-icon"
+                name="plus-square-o"
+                size="lg"
+              />  
+            <span className="feature-title">Add Games</span>
+            <p>After registering and creating your profile, start adding the games you’re interested in playing with others to your own personal list. Read descriptions, view box art, see ratings, and more!</p>
           </div>
           <div className="feature">
-            <h3>Find Friends</h3>
-            <p>Taiyaki williamsburg keffiyeh, kitsch tattooed single-origin coffee helvetica.</p>
+            <FontAwesome
+                className="landing-icon"
+                name="refresh"
+                size="lg"
+              />  
+            <span className="feature-title">Get Matched</span>
+            <p>Visit your profile after adding some games to see other users that are looking for friends to play that game with too! Click on the message icon to shoot your new friend an email and make a play date!</p>
           </div>
           <footer><span>Meg Matty &copy; 2017</span></footer>
         </div>

@@ -20,12 +20,12 @@ class Navigation extends Component {
 
 	render() {
 		return(
-			<div className="nav">				
+			<div className="nav box-shadow">				
 				<Link to="/" className="brand">Let's Play</Link>
-				<div className="nav-group">
-					<Link to="/myprofile">My Profile</Link>
-					<Link to="/mylist">My List</Link>
-				</div>
+					{this.props.user.authenticated
+						? <div className="nav-group"><Link to="/myprofile" className="hover-text">My Profile</Link><span> | </span><Link to="/mylist" className="hover-text">My List</Link></div>
+						: <div></div>
+					}
 				<div className="auth-group">
 					{
 						this.props.user.authenticated 

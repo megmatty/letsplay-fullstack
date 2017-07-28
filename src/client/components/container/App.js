@@ -8,7 +8,6 @@ class App extends Component {
 			<div>
 				<NavigationContainer />				
 				{this.props.children}
-				<hr/>
 			</div>	
 		)	
 	}
