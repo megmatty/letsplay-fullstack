@@ -113,6 +113,9 @@ exports.saveGame = function(req, res, next) {
 						(err, response) => {
 							console.log('in this guy');
 							console.log(err, response);
+							//bug still exists after adding 3 users all with same game.
+							//3rd user gets game listed 2x under friends:games
+							//console logs null, null
 							if (!err) {
 								 let o = JSON.parse(JSON.stringify(response));						
 									console.log(o)
