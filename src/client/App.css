@@ -152,17 +152,27 @@ footer {
 }
 
 .contact-container {
-  padding-top: 50px;
+  padding-top: 60px;
   color: #fff;
   text-align: center;
 }
 
-.contact-form {
-  width: 90%;
-  margin: 0 auto;
-  text-align: left;
+.form-item {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.form-item input {
+  width: 75%;
+  margin-bottom: 10px;
+}
+
+.text-area label[for="message"] {
+  display: block;
+  padding: 10px;
 }
 
 textarea {
@@ -172,7 +182,6 @@ textarea {
 }
 
 input {
-  margin-top: 5px;
   border-radius: 5px;
   border: 0;
   min-height: 30px;
@@ -188,27 +197,17 @@ button {
   padding: 10px;
 }
 
-.contact-form button {
-  width: 40%;
-  margin: 0 auto;
-  padding: 5px;
-}
-
-.contact-form input {
-  margin: 0 auto
-}
-
-
 input[type="checkbox"] {
   width: initial;
   margin: 0;
 }
 
 .captcha {
-  margin: 0 auto 20px;
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  max-width: 150px;
+  align-items: center;
 }
 
 .results {
