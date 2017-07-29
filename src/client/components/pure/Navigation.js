@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 
-// var navStyle = {
-// 	backgroundColor: "#EEE",
-// 	padding: "10px"
-// }
-
-// var buttonStyle = {
-// 	backgroundColor: "yellow",
-// 	width: "30%"
-// }
-
 class Navigation extends Component {
 
 	_logout = (event) => {

@@ -14,7 +14,7 @@ class Contact extends Component {
           <input type="text" id="game" />
           <br />
           <label htmlFor="message">Message:</label>
-          <textarea id="message" defaultValue="Hey there, I would like to play with you.">
+          <textarea className="box-shadow rounded-border" id="message" defaultValue="Hey there, I would like to play with you.">
           </textarea>
           <br />
           <div className="captcha">

@@ -17,11 +17,11 @@ class GameList extends Component {
 	render() {
 
 		if (this.props.list.length === 0) {
-			return <div className="game-list box-shadow">Search for games to add to your list!</div>;
+			return <div className="game-list box-shadow rounded-border">Search for games to add to your list!</div>;
 		}
 
 		return (
-			<div className="game-list box-shadow">
+			<div className="game-list box-shadow rounded-border">
 			  <h3>My List</h3>
 				{this.props.list.map((game) => (
 					<Game

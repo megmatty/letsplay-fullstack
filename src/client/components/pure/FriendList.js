@@ -6,11 +6,11 @@ class FriendList extends Component {
 
   render() {
     if (this.props.friends.length === 0) {
-      return <div className="empty-friend-list box-shadow">Add games to your list to get matched to new game friends!</div>;
+      return <div className="empty-friend-list box-shadow rounded-border">Add games to your list to get matched to new game friends!</div>;
     }
 
     return (
-      <div className="friendLists-container box-shadow">
+      <div className="friendLists-container box-shadow rounded-border">
         <h3>Your Friend Matches</h3>
         <div className="friend-list">
           {this.props.friends.map((friend,i) => 

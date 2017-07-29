@@ -75,6 +75,44 @@ app.put('/user/:id', function(req, res) {
 	games.deleteGame(req, res);
 });
 
+//Mail
+// var nodemailer = require('nodemailer');
+
+// // var router = express.Router();
+// // app.use('/sayHello', router);
+
+// app.post('/', handleSayHello); // handle the route at yourdomain.com/sayHello
+
+// function handleSayHello(req, res) {
+// 	console.log(req.body);
+// 	console.log('cucumber');
+//     var transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         auth: {
+//             user: 'letsplayapp123@gmail.com', // Your email id
+//             pass: 'megmatty123' // Your password
+//         }
+//     });
+//    var text = 'Hello world from \n\n' + req.body.name;
+// 		var mailOptions = {
+//     from: 'letsplayapp123@gmail.com', // sender address
+//     to: 'niko.tzikas@gmail.com', // list of receivers
+//     subject: 'Email Example', // Subject line
+//     text: text //, // plaintext body
+//     // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+// 	};
+// 		transporter.sendMail(mailOptions, function(error, info){
+// 	    if(error){
+// 	        console.log(error);
+// 	        res.json({yo: 'error'});
+// 	    }else{
+// 	        console.log('Message sent: ' + info.response);
+// 	        res.json({yo: info.response});
+// 	    };
+// 	});
+
+// }
+
 
 
 app.get("*", (req, res, next) => {	

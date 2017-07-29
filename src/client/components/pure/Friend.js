@@ -6,7 +6,7 @@ class Friend extends Component {
 
   render() {
     return (
-      <div className="friend box-shadow">
+      <div className="friend box-shadow rounded-border">
         <img className="avatar box-shadow" src={this.props.avatar} alt="avatar"/>
         <p>{this.props.name} plays:</p>
         <div className="common-games-list">

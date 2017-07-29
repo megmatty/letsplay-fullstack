@@ -61,7 +61,6 @@ a {
 
 .brand {
   font-size: 0.9em;
-  color: #E0801E !important;
 }
 
 .nav-group {
@@ -124,7 +123,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 20px;
   cursor: pointer;
 }
 
@@ -152,6 +151,12 @@ footer {
   cursor: pointer;
 }
 
+.contact-container {
+  padding-top: 50px;
+  color: #fff;
+  text-align: center;
+}
+
 .contact-form {
   width: 90%;
   margin: 0 auto;
@@ -164,8 +169,6 @@ textarea {
   min-height: 150px;
   width: 80%;
   margin-top: 5px;
-  border-radius: 5px;
-  border: 0;
 }
 
 input {
@@ -191,20 +194,26 @@ button {
   padding: 5px;
 }
 
+.contact-form input {
+  margin: 0 auto
+}
+
+
+input[type="checkbox"] {
+  width: initial;
+  margin: 0;
+}
+
 .captcha {
-  margin: 0 auto;
-  width: 50%;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
+  width: 50%;
 }
 
 .results {
   background-color: #363636;
   cursor: pointer;
-  border-radius: 5px;
-  border: 0;
 }
 
 .results-wrapper {
@@ -215,7 +224,6 @@ button {
   background-color: #fff;
   color: black;
   border: 2px solid #555;
-  border-radius: 5px;
   transition: .8s all ease;
   cursor: pointer;
 }
@@ -228,8 +236,6 @@ button {
 .game-list {
   background-color: #363636;
   height: 100%;
-  border-radius: 5px;
-  border: 0;
   padding: 10px 0;
   cursor: pointer;
 }
@@ -240,8 +246,6 @@ button {
   align-items: center;
   padding: 0 10px 0 0;
   margin: 0 10px;
-  border: 0;
-  border-radius: 5px;
   background-color: #244880;
   cursor: pointer;
 }
@@ -249,7 +253,6 @@ button {
 .game-wrapper .box-art {
   object-fit: cover;
   width: 60px;
-  border-radius: 5px;
 }
 
 .game-name-wrapper {
@@ -260,8 +263,6 @@ button {
 
 .game-expanded {
   text-align: center;
-  border: 0;
-  border-radius: 5px;
   background-color: #244880;
   padding: 5px 5px 10px;
   margin: 0 10px;
@@ -295,7 +296,6 @@ button {
   margin: 10px 0;
   padding: 10px;
   flex-direction: column;
-  border-radius: 5px;
   background-color: #244880;
 }
 
@@ -311,8 +311,6 @@ h3 {
   background-color: #343434;
   margin: 0 10px 10px;
   padding: 5px 10px;
-  border-radius: 5px;
-  border: 0;
 }
 
 .friend-list {
@@ -324,7 +322,6 @@ h3 {
   color: #fff;
   padding: 10px;
   margin: 10px;
-  border-radius: 5px;
   background-color: #343434;
   text-align: center;
 }
@@ -343,16 +340,21 @@ h3 {
   background-color: #808080;
   padding: 10px;
   margin: 10px;
-  border-radius: 5px;
-  border: 0;
 }
 
-.login-submit {
+.send-email {
+  background-color: #fff;
+  color: initial;
+}
+
+.login-submit,
+.send-email {
   width: 30%;
   transition: .8s all ease;
 }
 
-.login-submit:hover {
+.login-submit:hover,
+.send-email:hover {
   background-color: #E0801E;
   color: white;
 }
@@ -396,4 +398,9 @@ h3 {
 
 .landing-icon {
   vertical-align: 0;
+}
+
+.rounded-border {
+  border-radius: 5px;
+  border: 0;
 }

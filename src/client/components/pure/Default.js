@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
 
 class Default extends Component {
-	render() {
+	
+  // componentDidMount() {
+  //   axios.post('/')
+  //    .then(res => {
+  //      console.log(res);
+  //     } 
+  //   )
+  // }
+
+
+  render() {
 		return (
         <div className="container">
           <div className="hero">

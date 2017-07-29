@@ -105,27 +105,29 @@ exports.saveGame = function(req, res, next) {
 					 					'name':req.body.name,
 					 					'summary':req.body.summary,
 					 					'id':req.body.id,
-					 					'cover':req.body.cover
+					 					'cover':req.body.cover,
+					 					'rating': req.body.rating
 					 				}
 					 		}	
 					 	},
 						(err, response) => {
-							//console.log('in this guy');
-
-							let o = JSON.parse(JSON.stringify(response));						
-							//console.log(o)
-							//console.log(response)
-							//console.log('prev')
-							//console.log(previousUsers);
-							let friends = addFriends(previousUsers, o.friends, name);	
-							response.friends = friends; //replace freinds array with new freinds array
-							// console.log('friends')
-							// console.log(friends);
-							//console.log(response);
-							
-							response.save(); //Save  previous freinds array to this user. 			
-						}
-
+							console.log('in this guy');
+							console.log(err, response);
+							if (!err) {
+								 let o = JSON.parse(JSON.stringify(response));						
+									console.log(o)
+									//console.log(response)
+									//console.log('prev')
+									//console.log(previousUsers);
+									let friends = addFriends(previousUsers, o.friends, name);	
+									response.friends = friends; //replace freinds array with new freinds array
+									console.log('friends')
+									console.log(friends);
+									//console.log(response);
+									
+									response.save(); //Save  previous freinds array to this user.} 	
+								}
+							}
 					
 					)	
 				
