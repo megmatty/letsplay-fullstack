@@ -23,7 +23,10 @@ chai.use(chaiHttp);
 // around for next one
 const tearDownDb = () => {
  console.warn('Deleting database');
- // return mongoose.createConnection.dropDatabase();
+ // return mongoose.connect.dropDatabase();
+ mongoose.connection.collections['users'].drop( function(err) {
+    console.log('collection dropped');
+});
 }
 
 describe('Tests', function() {
@@ -44,7 +47,6 @@ describe('Tests', function() {
 				.post('/register')
 				.send({email:'email@email.com', password: 'test'})
 				.expect(200)
-				.expect('Location', '/');
 		});
 	});
 
@@ -53,8 +55,7 @@ describe('Tests', function() {
 			return api
 				.post('/login')
 				.send({email: 'email@email.com', password: 'test'})
-				.expect(302)
-				.expect('Location', '/');
+				.expect(200)
 		});
 	});
 });

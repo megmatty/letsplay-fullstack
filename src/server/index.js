@@ -75,6 +75,8 @@ app.put('/user/:id', function(req, res) {
 	games.deleteGame(req, res);
 });
 
+app.get('/api', games.find);
+
 //Mail
 // var nodemailer = require('nodemailer');
 

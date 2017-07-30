@@ -68,7 +68,7 @@ a {
 .hero {
   background-image: url("/img/2pgamehero.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
   background-size: cover;
   color: #343434;
   height: 200px;
@@ -97,6 +97,10 @@ footer {
   font-size: .6em;
   color: #fff;
   padding-bottom: 10px;
+  height: 75px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .signup {

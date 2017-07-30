@@ -1,17 +1,19 @@
 //To Do
 
-	//fix game controller bug
+	//Email
+		//connect front end in react
+		//connect back end send
 
 	//Client Tests (smoke React, Jest/Enzyme)
-	//Server Tests (Mocha/Chai)
+	//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
+		//clean this up
 
 	//Design/CSS/Mobile	95% done
 		//get css for avatar selector working
 
+	//Deploy to Heroku (full stack)
 	//Separation + deployment to Netlify/Heroku
-	//Email
-		//connect front end in react
-		//connect back end send
+
 	//Separate repos (client & server)
 
 
@@ -26,3 +28,4 @@
 		//4 - Reverse the whole process for Delete
 			//MEG: Add avatar selector to registration form
 
+	//fix game controller bug DONE hopefully

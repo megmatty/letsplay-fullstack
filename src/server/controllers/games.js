@@ -311,6 +311,16 @@ exports.deleteGame = function(req, res, next) {
 	)
 }
 
+exports.find = function(req, res, next) {
+	Game
+		.find(
+			{},
+			(error, result) => {
+				console.log(result);
+				return res.json({ data: result });
+			})
+}
+
 
 /*				User.update( //Final user 
 					{_id: req.params.id},

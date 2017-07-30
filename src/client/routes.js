@@ -7,7 +7,7 @@ import MyProfile from "./components/pure/MyProfile";
 import Contact from "./components/pure/Contact";
 import MyList from "./components/container/MyList";
 import Default from "./components/pure/Default";
-
+import Api from "./components/pure/Api";
 
 export default (store, history) => {
 
@@ -33,6 +33,7 @@ export default (store, history) => {
 				<Route path="myprofile" component={MyProfile} onEnter={requireAuth} />
 				<Route path="mylist" component={MyList} onEnter={requireAuth} />
 				<Route path="contact" component={Contact} onEnter={requireAuth} />
+				<Route path="api" component={Api} />
 			</Route>	
 		</Router>	
 	)	
