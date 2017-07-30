@@ -4,15 +4,6 @@ import axios from 'axios';
 
 class Default extends Component {
 	
-  // componentDidMount() {
-  //   axios.post('/')
-  //    .then(res => {
-  //      console.log(res);
-  //     } 
-  //   )
-  // }
-
-
   render() {
 		return (
         <div className="container">

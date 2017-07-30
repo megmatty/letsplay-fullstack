@@ -9,11 +9,16 @@ class Navigation extends Component {
 	}
 
 	render() {
+
 		return(
 			<div className="nav box-shadow">				
 				<Link to="/" className="brand">Let's Play</Link>
 					{this.props.user.authenticated
-						? <div className="nav-group"><Link to="/myprofile" className="hover-text">My Profile</Link><span> | </span><Link to="/mylist" className="hover-text">My List</Link></div>
+						? <div className="nav-group">
+								<Link to="/myprofile">My Profile</Link>
+								<span> | </span>
+								<Link to="/mylist">My List</Link>
+							</div>
 						: <div></div>
 					}
 				<div className="auth-group">

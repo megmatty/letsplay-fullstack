@@ -39,14 +39,14 @@ class Game extends Component {
         result =  <div className="game-expanded box-shadow rounded-border" onClick={this.activeGame}>
                     <p className="game-name">{this.props.name}<span className="game-toggle">{'\u2796'}</span></p>
                     { this.props.cover ? 
-                      <img className="box-art-big" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
+                      <img className="box-art-big box-shadow" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
                       :
                       <div>No Image Provided</div>
                     }
                     <p>Year: <Moment format="YYYY">{this.props.first_release_date}</Moment></p>
                     <p>Rating: {this.props.rating}</p>
                     <p className='summary'>{this.props.summary ? this.props.summary : this.props.storyline || 'This game has no summary'}</p>
-                    <button className="add-delete-button rounded-border" onClick={this.handleClick}>{this.props.buttonText}</button>
+                    <button className="add-delete-button rounded-border box-shadow" onClick={this.handleClick}>{this.props.buttonText}</button>
                   </div>;
     }
 

@@ -7,6 +7,7 @@ body, html {
   background-color: #244880;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  min-height: 100vh;
 }
 
 .App {
@@ -53,6 +54,7 @@ a {
   width: 100%;
   padding: 0 10px;
   position: fixed;
+  cursor: pointer;
 }
 
 .nav a {
@@ -99,6 +101,8 @@ footer {
   display: flex;
   justify-content: center;
   font-size: .6em;
+  color: #fff;
+  padding-bottom: 10px;
 }
 
 .signup {
@@ -220,7 +224,7 @@ input[type="checkbox"] {
 }
 
 .add-delete-button {
-  background-color: #fff;
+  background-color: #ccc;
   color: black;
   border: 2px solid #555;
   transition: .8s all ease;
@@ -237,6 +241,7 @@ input[type="checkbox"] {
   height: 100%;
   padding: 10px 0;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .game-wrapper {
@@ -258,6 +263,10 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.game-name {
+  font-weight: 700;
 }
 
 .game-expanded {
@@ -312,11 +321,6 @@ h3 {
   padding: 5px 10px;
 }
 
-.friend-list {
-  height: 285px;
-  overflow: auto;
-}
-
 .empty-friend-list {
   color: #fff;
   padding: 10px;
@@ -350,6 +354,7 @@ h3 {
 .send-email {
   width: 30%;
   transition: .8s all ease;
+  background-color: #ccc;
 }
 
 .login-submit:hover,
@@ -371,6 +376,7 @@ h3 {
 .reg-button {
   width: 30%;
   transition: .8s all ease;
+  background-color: #ccc;
 }
 
 .reg-button:hover {
@@ -391,6 +397,10 @@ h3 {
   margin: 10px 10px 15px 0;
 }
 
+.hover-text {
+  transition: .8s all ease;
+}
+
 .hover-text:hover {
   color: #E0801E;
 }
@@ -402,4 +412,176 @@ h3 {
 .rounded-border {
   border-radius: 5px;
   border: 0;
+}
+
+.selected {
+  border: 4px solid #fff;
+}
+
+.notSelected {
+  border: 0;
+}
+
+@media only screen and (min-width: 767px) {
+  .nav {
+    padding: 0 30px;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    height: 400px;
+    flex-basis: 100%;
+  }
+
+  .feature {
+    flex-basis: 33%;
+    height: 300px;
+    line-height: 1.4;
+    padding-top: 30px;
+  }
+
+  footer {
+    padding-top: 50px;
+    flex: 1;
+    padding-bottom: 15px;
+  }
+
+  .login, .register {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .reg-button {
+    margin-top: 15px;
+  }
+
+  .profile-container {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .friend {
+    flex-direction: row;
+    margin: 15px 0;
+  }
+
+  .friendsList-container {
+    margin-top: 10px;
+  }
+
+  .game-list {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .game-expanded {
+    padding: 10px 15px 20px;
+  }
+
+  .searchbar {
+    margin: 15px auto;
+    width: 85%;
+  }
+
+  .user-container {
+    margin: 15px;
+  }
+
+}
+
+@media only screen and (min-width: 1023px) {
+
+  .hero {
+    height: 500px;
+    background-position: top;
+  }
+
+  .feature {
+    font-size: 1.1em;
+    padding: 30px;
+  }
+
+  .nav {
+    font-size: 1em;
+    height: 60px;
+  }
+
+  .nav-group {
+    width: 150px;
+  }
+
+  .avatar-selector {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .profile-container {
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: space-around;
+  }
+
+  .user-container {
+    flex-basis: 33%;
+    margin: 0;
+  }
+
+  .friendLists-container {
+    flex-basis: 60%;
+    margin: 0;
+  }
+
+  .results .game-wrapper {
+    margin: 0 20px;
+  }
+
+  .game-expanded {
+    padding: 20px 40px 30px;
+    line-height: 1.3;
+    font-size: 1.1em;
+  }
+
+  .searchbar {
+    margin: 25px auto 35px;
+  }
+
+  .searchbar input {
+    max-width: 350px;
+  }
+
+  .game-list {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+}
+
+@media only screen and (min-width: 1023px) {
+  .nav {
+    padding: 0 50px;
+  }
+
+  .profile-container,
+  .content-container {
+    max-width: 1200px;
+  }
+
+  .register {
+    width: 40%;
+    padding-top: 60px;
+  }
+
+  .login {
+    width: 30%;
+    padding-top: 60px;
+  }
+
+
+
 }

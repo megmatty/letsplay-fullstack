@@ -13,7 +13,9 @@ class Register extends Component {
 		super();
 
 		this.state = {
-			registerMessage: ""
+			registerMessage: "",
+			avatarClicked: "",
+			avatarClass: false
 		}
 	}
 
@@ -40,15 +42,26 @@ class Register extends Component {
 				})			
 			}	
 		})		
-
 	}
+
+	//having trouble getting the correct img on click and only changing that single class, need to use state to trigger rerender but idk how to toggle 
+
+	handleClick(e) {
+		this.setState({avatarClass: !this.state.avatarClass});
+		console.log(e.target);
+		let avatarActive = this.state.avatarClass ? "selected avatar box-shadow" : "notSelected avatar box-shadow";
+		e.target.className = avatarActive;
+	}
+
 
 	selectedAvatar = (e) => {
 		this.setState({avatarClicked: e.target.src});
+		this.handleClick(e);
+		console.log(e.target.id);
 	}
 
-
 	render() {
+
 		return(
 			<div className="register">
 				<h2>Register</h2>	
@@ -58,16 +71,16 @@ class Register extends Component {
 					<input type="password" ref="password" placeholder="Password"/>	
 					<p>Choose Avatar:</p>
 					<div className="avatar-selector">
-						<img className="avatar box-shadow" src="/img/avatar1.png" onClick={this.selectedAvatar}/>
-						<img className="avatar box-shadow" src="/img/avatar2.png" onClick={this.selectedAvatar}/>
-						<img className="avatar box-shadow" src="/img/avatar3.png" onClick={this.selectedAvatar}/>
-						<img className="avatar box-shadow" src="/img/avatar4.png" onClick={this.selectedAvatar}/>
-						<img className="avatar box-shadow" src="/img/avatar5.png"onClick={this.selectedAvatar}/>
+						<img id="1" className="notSelected avatar box-shadow" src="/img/avatar1.png" onClick={this.selectedAvatar}/>
+						<img id="2" className="notSelected avatar box-shadow" src="/img/avatar2.png" onClick={this.selectedAvatar}/>
+						<img className="notSelected avatar box-shadow" src="/img/avatar3.png" onClick={this.selectedAvatar}/>
+						<img  className="notSelected avatar box-shadow" src="/img/avatar4.png" onClick={this.selectedAvatar}/>
+						<img className="notSelected avatar box-shadow" src="/img/avatar5.png"onClick={this.selectedAvatar}/>
 					</div>
 					<br/>
 					<label htmlFor="aboutme">About Me</label><br/>
 					<textarea className="rounded-border" id="aboutme" ref="aboutme"></textarea><br/>			
-					<input className="reg-button" type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>
+					<input className="reg-button box-shadow" type="submit" value="Register" /> <span style={registerMessageStyle}>{ this.state.registerMessage }</span>
 				</form>	
 			</div>
 		)	
