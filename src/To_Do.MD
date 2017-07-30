@@ -1,13 +1,18 @@
 //To Do
 
+	//fix game controller bug
+
 	//Client Tests (smoke React, Jest/Enzyme)
 	//Server Tests (Mocha/Chai)
-	//Design/CSS/Mobile	
+
+	//Design/CSS/Mobile	95% done
+		//get css for avatar selector working
 
 	//Separation + deployment to Netlify/Heroku
 	//Email
+		//connect front end in react
+		//connect back end send
 	//Separate repos (client & server)
-	//populate email form with props on click
 
 
 //DONE

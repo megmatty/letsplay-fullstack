@@ -7,12 +7,6 @@ body, html {
   background-color: #244880;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  min-height: 100vh;
-}
-
-.App {
-  text-align: center;
-  border: 0;
   height: 100%;
 }
 
