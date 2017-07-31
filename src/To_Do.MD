@@ -1,15 +1,13 @@
 //To Do
 
 	//Email
-		//connect front end in react
-		//connect back end send
+		//polish
 
 	//Client Tests (smoke React, Jest/Enzyme)
 	//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
 		//clean this up
 
 	//Design/CSS/Mobile	95% done
-		//get css for avatar selector working
 
 	//Deploy to Heroku (full stack)
 	//Separation + deployment to Netlify/Heroku
@@ -29,3 +27,7 @@
 			//MEG: Add avatar selector to registration form
 
 	//fix game controller bug DONE hopefully
+	//Email
+		//connect front end in react
+		//connect back end send
+	//get css for avatar selector working
