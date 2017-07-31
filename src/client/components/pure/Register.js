@@ -46,18 +46,11 @@ class Register extends Component {
 
 	//having trouble getting the correct img on click and only changing that single class, need to use state to trigger rerender but idk how to toggle 
 
-	handleClick(e) {
-		this.setState({avatarClass: !this.state.avatarClass});
-		console.log(e.target);
-		let avatarActive = this.state.avatarClass ? "selected avatar box-shadow" : "notSelected avatar box-shadow";
-		e.target.className = avatarActive;
-	}
-
-
 	selectedAvatar = (e) => {
 		this.setState({avatarClicked: e.target.src});
-		this.handleClick(e);
-		console.log(e.target.id);
+		console.log(e.target.src);
+		$('.selected').removeClass('selected');
+		e.target.className = "selected avatar box-shadow";
 	}
 
 	render() {
@@ -70,7 +63,7 @@ class Register extends Component {
 					<input type="name" ref="name" placeholder="Name"/>
 					<input type="password" ref="password" placeholder="Password"/>	
 					<p>Choose Avatar:</p>
-					<div className="avatar-selector">
+					<div id="avatarSelect" className="avatar-selector">
 						<img id="1" className="notSelected avatar box-shadow" src="/img/avatar1.png" onClick={this.selectedAvatar}/>
 						<img id="2" className="notSelected avatar box-shadow" src="/img/avatar2.png" onClick={this.selectedAvatar}/>
 						<img className="notSelected avatar box-shadow" src="/img/avatar3.png" onClick={this.selectedAvatar}/>

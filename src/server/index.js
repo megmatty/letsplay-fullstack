@@ -78,42 +78,43 @@ app.put('/user/:id', function(req, res) {
 app.get('/api', games.find);
 
 //Mail
-// var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
-// // var router = express.Router();
-// // app.use('/sayHello', router);
+// var router = express.Router();
+// app.use('/contact', router);
 
-// app.post('/', handleSayHello); // handle the route at yourdomain.com/sayHello
+app.post('/contact', handleSayHello); // handle the route at yourdomain.com/sayHello
 
-// function handleSayHello(req, res) {
-// 	console.log(req.body);
-// 	console.log('cucumber');
-//     var transporter = nodemailer.createTransport({
-//         service: 'Gmail',
-//         auth: {
-//             user: 'letsplayapp123@gmail.com', // Your email id
-//             pass: 'megmatty123' // Your password
-//         }
-//     });
-//    var text = 'Hello world from \n\n' + req.body.name;
-// 		var mailOptions = {
-//     from: 'letsplayapp123@gmail.com', // sender address
-//     to: 'niko.tzikas@gmail.com', // list of receivers
-//     subject: 'Email Example', // Subject line
-//     text: text //, // plaintext body
-//     // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-// 	};
-// 		transporter.sendMail(mailOptions, function(error, info){
-// 	    if(error){
-// 	        console.log(error);
-// 	        res.json({yo: 'error'});
-// 	    }else{
-// 	        console.log('Message sent: ' + info.response);
-// 	        res.json({yo: info.response});
-// 	    };
-// 	});
+function handleSayHello(req, res) {
+	console.log(req.body.to);
+	console.log(req.user);
+	console.log('cucumber');
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'letsplayapp123@gmail.com', // Your email id
+            pass: 'megmatty123' // Your password
+        }
+    });
+   var text = 'Hello world from \n\n' + req.user.name + '\r\n' + req.body.message;
+		var mailOptions = {
+    from: req.user.email, // sender address
+    to: 'niko.tzikas@gmail.com', // list of receivers req.body.email
+    subject: req.body.game, // Subject line
+    text: text, //, // plaintext body
+    html: `<b>Hello world ✔<a href="/contact">Reply to this guy @ ${req.user.email}</a></b>` // You can choose to send an HTML body instead
+	};
+		transporter.sendMail(mailOptions, function(error, info){
+	    if(error){
+	        console.log(error);
+	        res.json({yo: 'error'});
+	    }else{
+	        console.log('Message sent: ' + info.response);
+	        res.redirect('/');
+	    };
+	});
 
-// }
+}
 
 console.log('our index.js file');
 
@@ -139,7 +140,7 @@ app.get("*", (req, res, next) => {
 		<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
 		
 		<script src="/assets/app${minified}.js"></script>
-		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</body>
 	</html>`
 	res.status(200).end(appHTML)

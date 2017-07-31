@@ -3,8 +3,6 @@ import Game from "../models/game";
 import User from "../models/user";
 // -------------------------------------------
 
-
-
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
 	Game.findOneAndUpdate(
@@ -279,14 +277,10 @@ exports.deleteGame = function(req, res, next) {
 					})
 				})
 
-
-
 				Promise.all(promises).then(function() { 
 					
 					console.log('all dropped)'); 
-				
-				
-				
+							
 					User.findOneAndUpdate(  //Find this user  
 						{_id: req.params.id},
 						{$pull: {list: {id: req.body.id}}},
@@ -320,17 +314,3 @@ exports.find = function(req, res, next) {
 				return res.json({ data: result });
 			})
 }
-
-
-/*				User.update( //Final user 
-					{_id: req.params.id},
-					{$pull: {list: {id: req.body.id}}},
-					function(err, result) {
-						if (err) {
-							console.log(err);
-						} else {
-							console.log(result);
-						}
-					}
-				)
-*/
