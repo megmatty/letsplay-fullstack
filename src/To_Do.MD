@@ -10,9 +10,9 @@
 	//Design/CSS/Mobile	95% done
 
 	//Deploy to Heroku (full stack)
+			//Mlab for mongodb
+			//Travis CI
 	//Separation + deployment to Netlify/Heroku
-
-	//Separate repos (client & server)
 
 
 //DONE

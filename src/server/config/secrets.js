@@ -3,7 +3,7 @@
 /** Repeat: DO! NOT! COMMIT! THIS! FILE! TO! YOUR! REPO! **/
 
 const secrets = {
-	db: "mongodb://localhost/ReactPassportReduxExample",
+	db: "mongodb://mmatty:Warcraft00>@ds127783.mlab.com:27783/letsplay",
 	sessionSecret: "letthisbeyoursecret"
 }
 

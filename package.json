@@ -1,7 +1,7 @@
 {
-  "name": "react-passport-redux-example",
+  "name": "letsplay",
   "version": "1.0.0",
-  "description": "Demonstration of PassportJS authentication in React w/ Redux.",
+  "description": "let's play app",
   "main": "devStart.js",
   "scripts": {
     "build:lib": "babel src/server --out-dir lib/server",
@@ -33,10 +33,6 @@
       }
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kilkelly/react-passport-redux-example.git"
-  },
   "keywords": [
     "react",
     "js",
@@ -49,6 +45,9 @@
     "mongoose",
     "express"
   ],
+  "engines": {
+    "node": "7.7.1"
+  },
   "dependencies": {
     "axios": "0.16.2",
     "bcrypt-nodejs": "0.0.3",
