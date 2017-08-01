@@ -150,7 +150,8 @@ app.get("*", (req, res, next) => {
 
 // this function connects to our database, then starts the server
 let server;
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // this function connects to our database, then starts the server
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
