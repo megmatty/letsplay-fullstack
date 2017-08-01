@@ -157,6 +157,7 @@ const PORT = process.env.PORT || 3000;
 function runServer(databaseUrl=secrets.db, port=PORT) {
   return new Promise((resolve, reject) => {
     mongoose.createConnection(databaseUrl, err => {
+      console.log(port);
       if (err) {
       	console.log(err);
         return reject(err);
