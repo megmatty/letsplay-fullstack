@@ -153,12 +153,13 @@ let server;
 // const PORT = 3000;
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
-
+console.log('bananas');
+console.log(DATABASE_URL, PORT);
 
 // this function connects to our database, then starts the server
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.createConnection(databaseUrl, err => {
+    mongoose.connect(databaseUrl, err => {
       console.log(port);
       console.log('peanuts');
       if (err) {
