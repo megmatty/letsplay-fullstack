@@ -201,7 +201,7 @@ if (require.main === module) {
 
 // start listening to incoming requests
 //app.listen(app.get("port"), app.get("host"), (err) => {
-app.listen(PORT), (err) => {
+app.listen(PORT, (err) => {
 	if (err) {
 		console.err(err.stack);
 		console('does this go through');
