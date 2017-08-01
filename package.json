@@ -14,7 +14,6 @@
     "server:dev": "better-npm-run server:dev",
     "start": "npm run server",
     "start:dev": "npm run server:dev",
-
     "test": "mocha",
     "begin": "nodemon lib/server/index.js"
   },
@@ -99,6 +98,7 @@
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.4.0",
     "redux-logger": "3.0.6",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "supertest": "^3.0.0",
     "webpack": "^3.1.0",
