@@ -152,9 +152,11 @@ app.get("*", (req, res, next) => {
 let server;
 // const PORT = 3000;
 const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
+
 
 // this function connects to our database, then starts the server
-function runServer(databaseUrl=secrets.db, port=PORT) {
+function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   return new Promise((resolve, reject) => {
     mongoose.createConnection(databaseUrl, err => {
       console.log(port);
