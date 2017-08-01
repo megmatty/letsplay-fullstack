@@ -159,7 +159,7 @@ console.log(DATABASE_URL, PORT);
 // this function connects to our database, then starts the server
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, err => {
+    mongoose.createConnection(databaseUrl, err => {
       console.log(port);
       console.log('peanuts');
       if (err) {
