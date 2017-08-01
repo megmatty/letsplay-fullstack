@@ -199,13 +199,13 @@ if (require.main === module) {
 
 
 // start listening to incoming requests
-app.listen(app.get("port"), app.get("host"), (err) => {
-	if (err) {
-		console.err(err.stack);
-		console('does this go through');
-	} else {
-		console.log(`Index file:App listening on port ${app.get("port")} [${process.env.NODE_ENV} mode]`)
-	}
-});
+// app.listen(app.get("port"), app.get("host"), (err) => {
+// 	if (err) {
+// 		console.err(err.stack);
+// 		console('does this go through');
+// 	} else {
+// 		console.log(`Index file:App listening on port ${app.get("port")} [${process.env.NODE_ENV} mode]`)
+// 	}
+// });
 
 module.exports = {app, runServer, closeServer};
