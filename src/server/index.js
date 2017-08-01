@@ -146,7 +146,7 @@ app.get("*", (req, res, next) => {
 	res.status(200).end(appHTML)
 
 })
-
+  
 
 // this function connects to our database, then starts the server
 let server;
