@@ -47,6 +47,8 @@ exports.saveGame = function(req, res, next) {
 								//console.log(r)							
 								//console.log('req below');
 								//console.log(req.user)
+								console.log('pineapple');
+
 								let currentUser = 
 									[{	
 										"friendId": user._id,
@@ -54,7 +56,7 @@ exports.saveGame = function(req, res, next) {
 										"avatar": user.avatar,
 										"name": user.name
 									}]
-											
+								
 								var resUser = {
 									"friendId":r._id,
 									"email": r.email,
