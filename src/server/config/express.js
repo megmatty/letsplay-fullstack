@@ -30,10 +30,10 @@ export default function(app, passport) {
 		secret: secrets.sessionSecret,
 		proxy: false,
 		name: "sessionId",
-		cookie: {
-			httpOnly: true,
-			secure: false
-		},
+		// cookie: {
+		// 	httpOnly: true,
+		// 	secure: false
+		// },
 		store: new MongoStore({
 			url: secrets.db,
 			autoReconnect: true
