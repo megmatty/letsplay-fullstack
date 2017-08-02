@@ -80,9 +80,6 @@ app.get('/api', games.find);
 //Mail
 var nodemailer = require('nodemailer');
 
-// var router = express.Router();
-// app.use('/contact', router);
-
 app.post('/contact', handleSayHello); // handle the route at yourdomain.com/sayHello
 
 function handleSayHello(req, res) {
