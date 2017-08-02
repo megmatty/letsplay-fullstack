@@ -19,7 +19,7 @@ exports.saveGame = function(req, res, next) {
 				    result = new Game(req.body);
 				}
 
-				
+				console.log(req);
 				result.save();  //Save the newFriend to the matchedFriends array
 					
 				console.log(' '); 
@@ -41,7 +41,7 @@ exports.saveGame = function(req, res, next) {
 							{_id: match.friendId},
 							{upsert: true},
 							(err, res) => {
-
+								console.log('mango');
 								let r = JSON.parse(JSON.stringify(res))
 								var user = JSON.parse(JSON.stringify(req.user))
 								//console.log(r)							

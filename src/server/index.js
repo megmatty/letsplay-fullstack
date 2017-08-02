@@ -65,6 +65,7 @@ console.log(users);
 
 //Game
 app.post('/user/:id', function(req, res) {
+	console.log('POST savegame tangerine');
 	games.saveGame(req, res);
 });
 

@@ -15,10 +15,10 @@ class Search extends Component {
   addGame = (game, player) => {
   	const id = player._id;
   	this.props.addGame(game);
-  	axios.post(`/user/${id}`, game) 
+  	axios.post(`${window.location.host}/user/${id}`, game) 
   	//insert database
   		.then(res => { console.log(res); }) 
-  		.catch(err => { console.error(err); });
+  		.catch(err => { console.error(err, 'kiwi'); });
   	this.props.resetGames(); //resets search results array to empty
   	this.refs.input.value = ''; //resets input to empty
   } 
