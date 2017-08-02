@@ -42,8 +42,9 @@ exports.saveGame = function(req, res, next) {
 							{upsert: true},
 							(err, res) => {
 								console.log('mango');
-								let r = JSON.parse(JSON.stringify(res))
-								var user = JSON.parse(JSON.stringify(req.user))
+								let r = JSON.parse(JSON.stringify(res));
+								console.log('between cupcakes');
+								var user = JSON.parse(JSON.stringify(req.user));
 								//console.log(r)							
 								//console.log('req below');
 								//console.log(req.user)

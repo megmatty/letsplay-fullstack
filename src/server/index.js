@@ -199,20 +199,19 @@ function closeServer() {
 // if server.js is called directly (aka, with `node server.js`), this block
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
-  runServer().catch(err => console.error(err));
+  // runServer().catch(err => console.error(err));
 };
 
 
 
 // start listening to incoming requests
-//app.listen(app.get("port"), app.get("host"), (err) => {
-// app.listen(PORT, (err) => {
-// 	if (err) {
-// 		console.err(err.stack);
-// 		console('does this go through');
-// 	} else {
-// 		console.log(`App listening on port ${PORT} [${process.env.NODE_ENV} mode]`)
-// 	}
-// });
+app.listen(app.get("port"), app.get("host"), (err) => {
+	if (err) {
+		console.err(err.stack);
+		console('does this go through');
+	} else {
+		console.log(`App listening on port ${PORT} [${process.env.NODE_ENV} mode]`)
+	}
+});
 
 module.exports = {app, runServer, closeServer};

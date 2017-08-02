@@ -8,8 +8,12 @@ import secrets from "./secrets";
 const MongoStore = connectMongo(session);
 
 export default function(app, passport) {
-	app.set("port", 3000)
-	app.set("host", "localhost")
+	const PORT = process.env.PORT || 3000;
+	const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
+	var os = require("os");
+	var hostname = os.hostname();
+	app.set("port", PORT);
+	app.set("host", hostname);
 
 	// X-Powered-By header has no functional value.
 	// Keeping it makes it easier for an attacker to build the site's profile
