@@ -127,23 +127,23 @@ app.get("*", (req, res, next) => {
 	// this is the HTML we will send to the client when they request any page. React and React Router
 	// will take over once the scripts are loaded client-side
 	const appHTML = 
-	`<!doctype html>
-	<html lang="">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<title>Let's Play</title>
-	</head>
-	<body>
-		<div id="app"></div>
-		<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
-		
-		<script src="/assets/app${minified}.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	</body>
-	</html>`
+		`<!doctype html>
+		<html lang="">
+		<head>
+			<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+			<title>Let's Play</title>
+		</head>
+		<body>
+			<div id="app"></div>
+			<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+			
+			<script src="/assets/app${minified}.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		</body>
+		</html>`
 	res.status(200).end(appHTML)
 
 })
