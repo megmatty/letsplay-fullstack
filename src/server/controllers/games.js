@@ -5,6 +5,7 @@ import User from "../models/user";
 
 exports.saveGame = function(req, res, next) {
 	req.body.matchedFriends = req.params.id;
+	if (!req.user) {console.log('no user'); return; };
 	Game.findOneAndUpdate(
 			{id: req.body.id},
 			// {$addToSet: {matchedFriends: req.params.id}},
