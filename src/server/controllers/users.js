@@ -34,7 +34,9 @@ exports.login = function(req, res, next) {
 
 exports.logout = function(req, res, next) {
 	// the logout method is added to the request object automatically by Passport
-	req.logout()
+	req.logout();
+	console.log('logged out');
+	res.redirect('/login');
 	return res.json({ success: true })
 }
 
