@@ -76,8 +76,13 @@ app.put('/user/:id', function(req, res) {
 	games.deleteGame(req, res);
 });
 
-app.get('*', games.find);
+var cors = require('cors'); 
+app.use(cors());
 
+app.get('*', games.find);
+app.get('/products', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
 
 
 // app.use((req, res, next) => {
@@ -85,8 +90,6 @@ app.get('*', games.find);
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
-var cors = require('cors'); 
-app.use(cors());
 
 //Mail
 var nodemailer = require('nodemailer');
