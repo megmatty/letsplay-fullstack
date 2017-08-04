@@ -1,9 +1,5 @@
 //To Do
 
-	//Bugs
-		//Repeating post of user:friends:games array
-		//random crash H13 connection closed on register/login
-
 	//Email
 		//polish - wire to form
 
@@ -14,7 +10,7 @@
 	//Design/CSS/Mobile	95% done
 
 	//Deploy to Heroku (full stack)
-			//Mlab for mongodb
+			//Mlab for mongodb DONE
 			//Travis CI
 	//Separation + deployment to Netlify/Heroku
 
@@ -35,3 +31,7 @@
 		//connect front end in react
 		//connect back end send
 	//get css for avatar selector working
+
+		//Bugs
+		//Repeating post of user:friends:games array
+		//random crash H13 connection closed on register/login
