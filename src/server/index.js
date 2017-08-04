@@ -78,12 +78,13 @@ app.put('/user/:id', function(req, res) {
 
 app.get('/api', games.find);
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+var cors = require('cors'); 
+app.use(cors());
 
 //Mail
 var nodemailer = require('nodemailer');
