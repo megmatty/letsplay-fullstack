@@ -107,21 +107,25 @@ exports.saveGame = function(req, res, next) {
 					 					'rating': req.body.rating
 					 				}
 					 		}	
-					 	},
+					 	},  
 						(err, response) => {
 							console.log('in this guy');
 							console.log(err, response);
 							//bug still exists after adding 3 users all with same game.
 							//3rd user gets game listed 2x under friends:games
 							//console logs null, null
-							if (!err || response) {
+							if (!err && response) {
 								 let o = JSON.parse(JSON.stringify(response));						
-									console.log(o)
+									console.log(o);
 									//console.log(response)
 									//console.log('prev')
 									//console.log(previousUsers);
 									let friends = addFriends(previousUsers, o.friends, name);	
-									response.friends = friends; //replace freinds array with new freinds array
+										console.log('this is o.friends');
+										console.log(o.friends);
+										//getting pushed into the games array inside o.friends multiple times
+										response.friends = friends; 
+									//replace freinds array with new freinds array
 									console.log('friends')
 									console.log(friends);
 									//console.log(response);
@@ -147,12 +151,12 @@ var addFriends = (arr1, arr2, newgame)=>{
 		var exists = false;
     
 		for(var j in arr2) {
-
+			//i think this isn't checking for game duplicates
 			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
 				//console.log('previous match '+ arr1[i].friendId);
-        			arr2[j]['games'].push(newgame);
-			        arr2[j]['num']++;
+    			arr2[j]['games'].push(newgame);
+	        arr2[j]['num']++;
 				break;
 			}
 

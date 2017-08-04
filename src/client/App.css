@@ -7,7 +7,8 @@ body, html {
   background-color: #244880;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
 ul {
@@ -27,6 +28,8 @@ a {
 .container {
   color: #fff;
   padding-top: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content-container {
@@ -39,8 +42,6 @@ a {
 
 .nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-size: .8em;
   background-color: #343434;
   color: #fff;
@@ -57,6 +58,16 @@ a {
 
 .brand {
   font-size: 0.9em;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1150px;
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
 .nav-group {
@@ -78,6 +89,7 @@ a {
   text-align: center;
   padding: 15px;
   font-size: .9em;
+  min-height: 150px;
 }
 
 .feature:nth-child(3n) {
@@ -91,16 +103,25 @@ a {
   line-height: 1.2;
 }
 
+.push {
+  padding: 15px;
+}
+
 footer {
-  display: flex;
-  justify-content: center;
   font-size: .6em;
   color: #fff;
-  padding-bottom: 10px;
-  height: 75px;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  background-color: #E0801E;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+}
+
+footer span {
+ margin-top: 10px;
+ display: block;
 }
 
 .signup {
@@ -154,9 +175,11 @@ footer {
 }
 
 .contact-container {
-  padding-top: 60px;
+  padding-top: 80px;
   color: #fff;
   text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .form-item {
@@ -321,7 +344,7 @@ h3 {
 
 .empty-friend-list {
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
   background-color: #343434;
   text-align: center;
@@ -339,7 +362,7 @@ h3 {
 
 .user-container {
   background-color: #808080;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
 }
 
@@ -421,13 +444,10 @@ h3 {
 }
 
 @media only screen and (min-width: 767px) {
-  .nav {
-    padding: 0 30px;
-  }
 
   .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .hero {
@@ -436,16 +456,8 @@ h3 {
   }
 
   .feature {
-    flex-basis: 33%;
-    height: 300px;
     line-height: 1.4;
     padding-top: 30px;
-  }
-
-  footer {
-    padding-top: 50px;
-    flex: 1;
-    padding-bottom: 15px;
   }
 
   .login, .register {
@@ -460,6 +472,10 @@ h3 {
   .profile-container {
     width: 85%;
     margin: 0 auto;
+  }
+
+  .user-container .avatar {
+    width: 75px;
   }
 
   .friend {
@@ -494,13 +510,14 @@ h3 {
 @media only screen and (min-width: 1023px) {
 
   .hero {
-    height: 500px;
+    min-height: 450px;
     background-position: top;
   }
 
   .feature {
-    font-size: 1.1em;
+    font-size: 1em;
     padding: 30px;
+    height: auto;
   }
 
   .nav {
@@ -561,9 +578,6 @@ h3 {
 }
 
 @media only screen and (min-width: 1023px) {
-  .nav {
-    padding: 0 50px;
-  }
 
   .profile-container,
   .content-container {
