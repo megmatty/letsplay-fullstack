@@ -1,7 +1,11 @@
 //To Do
 
+	//Bugs
+		//Repeating post of user:friends:games array
+		//random crash H13 connection closed on register/login
+
 	//Email
-		//polish
+		//polish - wire to form
 
 	//Client Tests (smoke React, Jest/Enzyme)
 	//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
