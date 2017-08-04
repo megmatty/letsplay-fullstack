@@ -78,13 +78,13 @@ app.put('/user/:id', function(req, res) {
 
 app.get('*', games.find);
 
-app.all('/', function(req, res, next) { res.header("Access-Control-Allow-Origin", ""); res.header("Access-Control-Allow-Headers", "X-Requested-With"); next(); });
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // var cors = require('cors'); 
 // app.use(cors());
 
