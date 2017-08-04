@@ -147,11 +147,13 @@ var addFriends = (arr1, arr2, newgame)=>{
     
 		for(var j in arr2) {
 
-			if(arr2[j].friendId === arr1[i].friendId && arr2[j]['games'].indexOf(newgame) < 0){
+			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
+				if (arr2[j]['games'].indexOf(newgame) < 0) {
 				//console.log('previous match '+ arr1[i].friendId);
         			arr2[j]['games'].push(newgame);
 			        arr2[j]['num']++;
+			    }
 				break;
 			}
 
