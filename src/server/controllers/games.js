@@ -20,7 +20,7 @@ exports.saveGame = function(req, res, next) {
 				    result = new Game(req.body);
 				}
 
-				console.log(req);
+				// console.log(req);
 				result.save();  //Save the newFriend to the matchedFriends array
 					
 				console.log(' '); 
