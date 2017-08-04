@@ -79,7 +79,7 @@ app.put('/user/:id', function(req, res) {
 var cors = require('cors'); 
 app.use(cors());
 
-app.get('*', games.find);
+app.get('/api', games.find);
 app.get('/products', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
