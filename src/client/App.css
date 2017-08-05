@@ -443,6 +443,23 @@ h3 {
   border: 0;
 }
 
+@keyframes emailFade {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.email {
+  animation: emailFade 3s forwards;
+}
+
+
+
+
+
 @media only screen and (min-width: 767px) {
 
   .container {

@@ -32,7 +32,6 @@ export default (store, history) => {
 				<Route path="register" component={RegisterContainer} />
 				<Route path="myprofile" component={MyProfile} onEnter={requireAuth} />
 				<Route path="mylist" component={MyList} onEnter={requireAuth} />
-				<Route path="contact" component={Contact} onEnter={requireAuth} />
 				<Route path="api" component={Api} />
 			</Route>	
 		</Router>	

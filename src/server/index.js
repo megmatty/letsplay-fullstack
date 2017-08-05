@@ -94,8 +94,7 @@ var nodemailer = require('nodemailer');
 app.post('/contact', handleSayHello); // handle the route at yourdomain.com/sayHello
 
 function handleSayHello(req, res) {
-	console.log(req.body.to);
-	console.log(req.user);
+	console.log(req.body);
 	console.log('cucumber');
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -107,10 +106,10 @@ function handleSayHello(req, res) {
    var text = 'Hello world from \n\n' + req.user.name + '\r\n' + req.body.message;
 		var mailOptions = {
     from: req.user.email, // sender address
-    to: 'niko.tzikas@gmail.com', // list of receivers req.body.email
+    to: 'niko.tzikas@gmail.com', // change this to req.body.to
     subject: req.body.game, // Subject line
-    text: text, //, // plaintext body
-    html: `<b>Hello world ✔<a href="/contact">Reply to this guy @ ${req.user.email}</a></b>` // You can choose to send an HTML body instead
+    text: req.body.message, //, // plaintext body
+    // html: `<b>Hello world ✔<a href="/contact">Reply to this guy @ ${req.user.email}</a></b>` // You can choose to send an HTML body instead
 	};
 		transporter.sendMail(mailOptions, function(error, info){
 	    if(error){
@@ -211,6 +210,7 @@ function closeServer() {
 //   runServer().catch(err => console.error(err));
 // };
 
+//this needs to be changed to run tests
 runServer();
 
 // start listening to incoming requests
