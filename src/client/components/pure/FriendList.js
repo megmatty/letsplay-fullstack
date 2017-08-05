@@ -12,6 +12,7 @@ class FriendList extends Component {
     return (
       <div className="friendLists-container box-shadow rounded-border">
         <h3>Your Friend Matches</h3>
+        <div className="sent-modal rounded-border">Mail Sent!</div>
         <div className="friend-list">
           {this.props.friends.map((friend,i) => 
             <Friend 

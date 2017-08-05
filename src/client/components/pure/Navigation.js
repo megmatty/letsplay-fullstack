@@ -16,9 +16,9 @@ class Navigation extends Component {
 					<Link to="/" className="brand">Let's Play</Link>
 						{this.props.user.authenticated
 							? <div className="nav-group">
-									<Link to="/myprofile">My Profile</Link>
+									<Link className="myprofile-menu" to="/myprofile">My Profile</Link>
 									<span> | </span>
-									<Link to="/mylist">My List</Link>
+									<Link className="mylist-menu" to="/mylist">My List</Link>
 								</div>
 							: <div></div>
 						}

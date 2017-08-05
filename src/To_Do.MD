@@ -1,14 +1,13 @@
 //To Do
 
-	//Email
-		//polish - wire to form
+	//Clean up - hide all passwords and other items/files
 
 	//Client Tests (smoke React, Jest/Enzyme)
 
 	//Design/CSS/Mobile	95% done
 
 	//Deploy to Heroku (full stack)
-			//Mlab for mongodb DONE
+
 			//Travis CI
 			
 	//Separation + deployment to Netlify/Heroku
@@ -35,6 +34,5 @@
 		//Repeating post of user:friends:games array
 		//random crash H13 connection closed on register/login
 			//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
-		//clean this up
-
-			//Fix Dev Server
+		//Mlab for mongodb DONE
+		//Fix Dev Server

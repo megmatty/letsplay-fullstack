@@ -13,6 +13,14 @@ import { deleteGame} from '../../actions/games';
 //My Lists View - Redux Parent Container
 class MyList extends Component {
 
+  componentDidMount() {
+    $('.mylist-menu').addClass('active');
+  }
+
+  componentWillUnmount() {
+    $('.mylist-menu').removeClass('active');
+  }
+
   render() {
     return (
       <div className="content-container">
@@ -26,6 +34,8 @@ class MyList extends Component {
     );
   }
 }
+
+  
 
 //Take state and map to prop object
 const mapStateToProps = (state) => {

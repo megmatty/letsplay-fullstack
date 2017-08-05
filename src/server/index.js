@@ -106,10 +106,10 @@ function handleSayHello(req, res) {
    var text = 'Hello world from \n\n' + req.user.name + '\r\n' + req.body.message;
 		var mailOptions = {
     from: req.user.email, // sender address
-    to: 'niko.tzikas@gmail.com', // change this to req.body.to
-    subject: req.body.game, // Subject line
-    text: req.body.message, //, // plaintext body
-    // html: `<b>Hello world ✔<a href="/contact">Reply to this guy @ ${req.user.email}</a></b>` // You can choose to send an HTML body instead
+    to: req.body.to, // change this to req.body.to
+    subject: "Let's Play - Friend Match Request", // Subject line
+    // text: req.body.message, //, // plaintext body
+    html: `Hello ${req.body.name}! <br /> <p>Let's Play user ${req.user.name} plays <b>${req.body.game}</b> and would like to play with you!</p> <p>${req.user.name} says: "${req.body.message}".</p> <p><a href="mailto:${req.user.email}">Click here to email them and get playing!</a></p> <br />-Let's Play` // You can choose to send an HTML body instead
 	};
 		transporter.sendMail(mailOptions, function(error, info){
 	    if(error){

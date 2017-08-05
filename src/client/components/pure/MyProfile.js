@@ -13,8 +13,13 @@ class MyProfile extends Component {
        this.props.fetchFriends(res.data);
       } 
     )
+
+    $('.myprofile-menu').addClass('active');
   }
 
+  componentWillUnmount() {
+    $('.myprofile-menu').removeClass('active');
+  }
 
   render() {
 		return(

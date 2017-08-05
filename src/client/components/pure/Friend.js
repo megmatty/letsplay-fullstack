@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Contact from './Contact';
 
-
 class Friend extends Component {
   constructor() {
     super();
@@ -17,6 +16,12 @@ class Friend extends Component {
     });
   }
 
+  closeContact = () => {
+    this.setState({
+      contactOpen: false
+    });
+  }
+
   render() {
     return (
       <div className="friend box-shadow rounded-border">
@@ -28,8 +33,8 @@ class Friend extends Component {
           )
 	       }
         </div>
-        <img className="avatar box-shadow" src="/img/email.png" alt="contact icon" onClick={this.clickContact}/>
-        {this.state.contactOpen ? <Contact email={this.props.email} name={this.props.name} games={this.props.games}/> : null }
+        <img className="avatar box-shadow email-icon" src="/img/email.png" alt="contact icon" onClick={this.clickContact}/>
+        {this.state.contactOpen ? <Contact email={this.props.email} name={this.props.name} games={this.props.games} close={this.closeContact}/> : null }
       </div>
     );
   }

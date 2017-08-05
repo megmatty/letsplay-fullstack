@@ -7,11 +7,10 @@ class Contact extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
-    // const to = ReactDOM.findDOMNode(this.refs.to).value;
-    // const game = ReactDOM.findDOMNode(this.refs.game).value;
     const message = ReactDOM.findDOMNode(this.refs.message).value;
     const email = {
       "to": this.props.email,
+      "name": this.props.name,
       "game": this.props.games.join(' '),
       "message": message
     }
@@ -19,15 +18,25 @@ class Contact extends Component {
     axios.post('/contact', email)
      .then(res => { console.log('success', res); }) 
       .catch(err => { console.error(err); });
+
+    this.props.close();
+
+    $('.sent-modal').addClass('sent-modal-active');
+    setTimeout(function(){ 
+      $('.sent-modal').removeClass('sent-modal-active');
+    }, 2500);
   }
 
   render() {
     return (
-      <div className="contact-container">
+      <div className="contact-container email">
         <form className="contact-form" onSubmit={this.submitForm}>
           <div className="text-area">
             <label htmlFor="message">Message:</label>
-            <textarea ref="message" className="box-shadow rounded-border" id="message" defaultValue="Hey there, I would like to play with you."></textarea>
+            <textarea ref="message" className="box-shadow rounded-border" id="message" defaultValue={
+                this.props.games.length <= 2 ? `Hey there, I would like to play ${this.props.games.join(' or ')} with you.` : `Hey there, we have a lot of games in common, and I would like to play with you.`
+              }>
+            </textarea>
             </div>
           <div className="captcha">
             <input type="checkbox" required id="captcha"/>
