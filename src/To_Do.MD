@@ -1,6 +1,5 @@
 //To Do
 
-	//Fix Dev Server
 	//Email
 		//polish - wire to form
 
@@ -37,3 +36,5 @@
 		//random crash H13 connection closed on register/login
 			//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
 		//clean this up
+
+			//Fix Dev Server
