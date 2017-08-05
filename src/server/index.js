@@ -82,14 +82,8 @@ app.use(cors());
 app.get('/api', games.find);
 app.get('/products', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
-})
+});
 
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
 //Mail
 var nodemailer = require('nodemailer');
@@ -163,68 +157,68 @@ app.get("*", (req, res, next) => {
   
 
 // this function connects to our database, then starts the server
-let server;
-// const PORT = 3000;
-const PORT = process.env.PORT || 3000;
-const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
-console.log('bananas');
-console.log(DATABASE_URL, PORT);
+// let server;
+// // const PORT = 3000;
+// const PORT = process.env.PORT || 3000;
+// const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
+// console.log('bananas');
+// console.log(DATABASE_URL, PORT);
 
-// this function connects to our database, then starts the server
-function runServer(databaseUrl=DATABASE_URL, port=PORT) {
-  return new Promise((resolve, reject) => {
-    mongoose.createConnection(databaseUrl, err => {
-      console.log(port);
-      console.log('peanuts');
-      if (err) {
-      	console.log(err);
-        return reject(err);
-      }
-      server = app.listen(port, () => {
-        console.log(`Your app is listening on port ${port}`);
-        resolve();
-      })
-      .on('error', err => {
-      	console.log(err);
-        mongoose.disconnect();
-        reject(err);
-      });
-    });
-  });
-}
+// // this function connects to our database, then starts the server
+// function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+//   return new Promise((resolve, reject) => {
+//     mongoose.createConnection(databaseUrl, err => {
+//       console.log(port);
+//       console.log('peanuts');
+//       if (err) {
+//       	console.log(err);
+//         return reject(err);
+//       }
+//       server = app.listen(port, () => {
+//         console.log(`Your app is listening on port ${port}`);
+//         resolve();
+//       })
+//       .on('error', err => {
+//       	console.log(err);
+//         mongoose.disconnect();
+//         reject(err);
+//       });
+//     });
+//   });
+// }
 
-// this function closes the server, and returns a promise. we'll
-// use it in our integration tests later.
-function closeServer() {
-  return mongoose.disconnect().then(() => {
-     return new Promise((resolve, reject) => {
-       console.log('Closing server');
-       server.close(err => {
-           if (err) {
-               return reject(err);
-           }
-           resolve();
-       });
-     });
-  });
-}
+// // this function closes the server, and returns a promise. we'll
+// // use it in our integration tests later.
+// function closeServer() {
+//   return mongoose.disconnect().then(() => {
+//      return new Promise((resolve, reject) => {
+//        console.log('Closing server');
+//        server.close(err => {
+//            if (err) {
+//                return reject(err);
+//            }
+//            resolve();
+//        });
+//      });
+//   });
+// }
 
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
-if (require.main === module) {
-  // runServer().catch(err => console.error(err));
-};
+// // if server.js is called directly (aka, with `node server.js`), this block
+// // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+// if (require.main === module) {
+//   // runServer().catch(err => console.error(err));
+// };
 
 
 
 // start listening to incoming requests
-app.listen(app.get("port"), app.get("host"), (err) => {
+app.listen(app.get("port"), (err) => {
 	if (err) {
 		console.err(err.stack);
 		console('does this go through');
 	} else {
-		console.log(`App listening on port ${PORT} [${process.env.NODE_ENV} mode]`)
+		console.log(`App listening on port ${app.get("port")} [${process.env.NODE_ENV} mode]`)
 	}
 });
 
-module.exports = {app, runServer, closeServer};
+// module.exports = {app, runServer, closeServer};

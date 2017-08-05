@@ -1,17 +1,17 @@
 //To Do
 
+	//Fix Dev Server
 	//Email
 		//polish - wire to form
 
 	//Client Tests (smoke React, Jest/Enzyme)
-	//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
-		//clean this up
 
 	//Design/CSS/Mobile	95% done
 
 	//Deploy to Heroku (full stack)
 			//Mlab for mongodb DONE
 			//Travis CI
+			
 	//Separation + deployment to Netlify/Heroku
 
 
@@ -35,3 +35,5 @@
 		//Bugs
 		//Repeating post of user:friends:games array
 		//random crash H13 connection closed on register/login
+			//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
+		//clean this up
