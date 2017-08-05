@@ -12,7 +12,7 @@ export default function(app, passport) {
 	const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
 	var os = require("os");
 	var hostname = os.hostname();
-	app.set("port", 3000);
+	app.set("port", PORT);
 	app.set("host", 'localhost');
 	console.log('strawberry');
 	console.log(PORT, hostname);
