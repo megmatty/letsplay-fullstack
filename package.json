@@ -7,7 +7,7 @@
     "build:lib": "babel src/server --out-dir lib/server",
     "build:umd": "webpack --config webpack/webpack.config.dev.js",
     "build:umd:min": "webpack --config webpack/webpack.config.prod.js",
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build": "NODE_ENV=production npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "postinstall": "npm run build",
     "clean": "rimraf lib public/assets",
     "server": "better-npm-run server",

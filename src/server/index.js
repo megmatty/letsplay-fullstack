@@ -123,8 +123,6 @@ function handleSayHello(req, res) {
 
 }
 
-console.log('our index.js file');
-
 app.get("*", (req, res, next) => {	
 
 	// if we are in production mode then an extension will be provided, usually ".min"
