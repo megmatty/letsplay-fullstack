@@ -4,16 +4,16 @@
 ### Live Version: https://letsplayapp.herokuapp.com
 
 ### DEMO: To try without registering, login with
-	* email: letsplayapp123+janedoe@gmail.com 
-	* password: test
+* email: letsplayapp123+janedoe@gmail.com 
+* password: test
 
 ### Screenshots
-Home: (http://i.imgur.com/5s9aJPn.png?1)
-Register: (http://i.imgur.com/Lv5U0aW.png?1)
-User List: (http://i.imgur.com/4k4Uk3F.png?1)
-Game View: (http://i.imgur.com/1FwGKYM.png?1)
-User Profile: (http://i.imgur.com/nD8ysHr.png?1)
-Email Feature: (http://i.imgur.com/NXPVVvR.png?1)
+![Home](http://i.imgur.com/5s9aJPn.png?1)
+![Register](http://i.imgur.com/Lv5U0aW.png?1)
+![User List](http://i.imgur.com/4k4Uk3F.png?1)
+![Game View](http://i.imgur.com/1FwGKYM.png?1)
+![User Profile](http://i.imgur.com/nD8ysHr.png?1)
+![Email Feature](http://i.imgur.com/NXPVVvR.png?1)
 
 ### Technologies
 * MERN (MongoDB, Express, React, Node)
