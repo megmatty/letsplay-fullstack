@@ -315,3 +315,17 @@ exports.find = function(req, res, next) {
 				return res.json({ data: result });
 			})
 }
+
+exports.userFind = function(req, res, next) {
+	User
+		.find(
+			{},
+			(error, result) => {
+				console.log(result);
+				return res.json({ data: result });
+			})
+}
+
+
+
+

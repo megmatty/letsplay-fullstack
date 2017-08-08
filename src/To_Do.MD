@@ -1,16 +1,14 @@
 //To Do
 
-	//Go button on mobile = debug
-
 	//Clean up - hide all passwords and other items/files
+
+	//Add demo credentials to login page
 
 	//Client Tests (smoke React, Jest/Enzyme)
 
 	//Design/CSS/Mobile	95% done
 
-	//Deploy to Heroku (full stack)
-
-			//Travis CI
+	
 			
 	//Separation + deployment to Netlify/Heroku
 
@@ -38,3 +36,5 @@
 			//Server Tests (Mocha/Chai) - GOOD ENOUGH FOR NOW
 		//Mlab for mongodb DONE
 		//Fix Dev Server
+		//Deploy to Heroku (full stack)
+			//Travis CI
