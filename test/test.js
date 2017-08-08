@@ -18,7 +18,6 @@ console.log('logging runserver here');
 // const {TEST_DATABASE_URL} = require('../config');
 const request = require('supertest');
 const api = request(app);
-console.log(request);
 const authUser = request.agent(app);
 
 chai.use(chaiHttp);
