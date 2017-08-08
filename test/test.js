@@ -34,10 +34,9 @@ const tearDownDb = () => {
     console.log('collection dropped');
 });
 }
-
+  
 describe('Tests', function() {
   	this.timeout(15000);
-  	console.log(app);
 	before(function() {
 		return runServer(TEST_DATABASE_URL); 
 	});
