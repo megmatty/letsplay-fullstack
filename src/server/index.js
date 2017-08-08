@@ -126,7 +126,7 @@ function handleSayHello(req, res) {
 app.get("*", (req, res, next) => {	
 
 	// if we are in production mode then an extension will be provided, usually ".min"
-	const minified = process.env.MIN_EXT || ""
+	const minified = process.env.MIN_EXT || "";
 
 	// this is the HTML we will send to the client when they request any page. React and React Router
 	// will take over once the scripts are loaded client-side
