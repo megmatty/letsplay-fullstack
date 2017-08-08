@@ -93,7 +93,6 @@ export function manualLogin(
 }
 
 // Example of an Async Action Creator
-// http://redux.js.org/docs/advanced/AsyncActions.html
 export function manualLogout() {
 	return dispatch => {
 		dispatch(beginLogout())

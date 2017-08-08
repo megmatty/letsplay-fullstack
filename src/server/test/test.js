@@ -6,10 +6,8 @@ const mongoose = require('mongoose');
 const should = chai.should();
 
 const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://localhost/letsplay';
-// const {Account} = require('../models/account');
 const {app, runServer, closeServer} = require('../lib/server/index.js');
 console.log('logging runserver here');
-// const {TEST_DATABASE_URL} = require('../config');
 const request = require('supertest');
 const api = request(app);
 const authUser = request.agent(app);
@@ -21,8 +19,7 @@ chai.use(chaiHttp);
 // to ensure  ata from one test does not stick
 // around for next one
 const tearDownDb = () => {
- console.warn('Deleting database');
- // return mongoose.connect.dropDatabase();
+ console.warn('Deleting collection');
  mongoose.connection.collections['users'].drop( function(err) {
     console.log('collection dropped');
 });

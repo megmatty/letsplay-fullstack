@@ -5,17 +5,12 @@ const mongoose = require('mongoose');
 // // this module
 const should = chai.should();
 
-//use enzyme with mocha instead of jest?
-// import React from 'react';
-// import { expect } from 'chai';
-// import { mount, shallow } from 'enzyme';
-
 const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://localhost/letsplay';
-// const {Account} = require('../models/account');
+
 const {app, runServer, closeServer} = require('../lib/server/index.js');
 console.log(runServer);
 console.log('logging runserver here');
-// const {TEST_DATABASE_URL} = require('../config');
+
 const request = require('supertest');
 const api = request(app);
 const authUser = request.agent(app);
@@ -28,12 +23,11 @@ chai.use(chaiHttp);
 // around for next one
 const tearDownDb = () => {
  console.warn('Deleting database');
- // return mongoose.connect.dropDatabase();
  mongoose.connection.collections['users'].drop( function(err) {
     console.log('collection dropped');
 });
 }
-  
+
 describe('Tests', function() {
   	this.timeout(15000);
 	before(function() {
@@ -62,14 +56,6 @@ describe('Tests', function() {
 				.expect(200)
 		});
 	});
-
-
-	// describe('<App />', () => {
-	//   it('calls componentDidMount', () => {
-	//     const wrapper = mount(<App />);
-	//     expect(App.prototype.componentDidMount.calledOnce).to.equal(true);
-	//   });
-	// });
 
 
 });

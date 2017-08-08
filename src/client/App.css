@@ -601,7 +601,7 @@ h3 {
   .user-container {
     flex-basis: 33%;
     margin: 0;
-    max-height: 400px;
+    height: 400px;
   }
 
   .friendLists-container {

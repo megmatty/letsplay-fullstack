@@ -8,8 +8,7 @@ exports.saveGame = function(req, res, next) {
 	if (!req.user) {console.log('no user'); return; };
 	Game.findOneAndUpdate(
 			{id: req.body.id},
-			// {$addToSet: {matchedFriends: req.params.id}},
-			{$addToSet: {matchedFriends: {friendId: req.params.id}}}, //Adds Lisa to Zelda } },
+			{$addToSet: {matchedFriends: {friendId: req.params.id}}},
 			{upsert: false},
 			function(error, result) {
 			    if (!error) {
@@ -20,15 +19,10 @@ exports.saveGame = function(req, res, next) {
 				    result = new Game(req.body);
 				}
 
-				// console.log(req);
 				result.save();  //Save the newFriend to the matchedFriends array
 					
-				console.log(' '); 
-				console.log('saving '+req.user +' to  Match Friend list');
 				var matches = JSON.parse(JSON.stringify(result.matchedFriends)); 
 				var name = result.name; 
-				console.log(matches);
-				console.log(name);
 
 				var previousUsers = [] 
 				var x = 0; 
@@ -42,14 +36,8 @@ exports.saveGame = function(req, res, next) {
 							{_id: match.friendId},
 							{upsert: true},
 							(err, res) => {
-								console.log('mango');
 								let r = JSON.parse(JSON.stringify(res));
-								console.log('between cupcakes');
 								var user = JSON.parse(JSON.stringify(req.user));
-								//console.log(r)							
-								//console.log('req below');
-								//console.log(req.user)
-								console.log('pineapple');
 
 								let currentUser = 
 									[{	
@@ -65,10 +53,6 @@ exports.saveGame = function(req, res, next) {
 									"avatar": r.avatar,
 									"name": r.name
 								}
-
-
-								// console.log(user._id, match.friendId); 
-								// console.log(user._id != match.friendId); 
 								
 								if(match.friendId != user._id){ 								
 									let friends = addFriends(currentUser, r.friends, name);	
@@ -76,9 +60,6 @@ exports.saveGame = function(req, res, next) {
 									res.save(); //Save newFriend to that friend
 
 									previousUsers.push(resUser); 
-									// console.log('prev users') 
-									// console.log(previousUsers)
-
 
 								} else {
 
@@ -100,7 +81,7 @@ exports.saveGame = function(req, res, next) {
 						{_id: req.params.id, "list.id": {$ne: req.body.id}},
 					 	{$addToSet: 
 							{
-					 			list:  {  //Adds Zelda to Lisa
+					 			list:  {  
 					 					'name':req.body.name,
 					 					'summary':req.body.summary,
 					 					'id':req.body.id,
@@ -110,22 +91,14 @@ exports.saveGame = function(req, res, next) {
 					 		}	
 					 	},
 						(err, response) => {
-							console.log('in this guy');
-							console.log(err, response);
 
 							if (!err && response) {
 								 let o = JSON.parse(JSON.stringify(response));						
 									console.log(o)
-									//console.log(response)
-									//console.log('prev')
-									//console.log(previousUsers);
 									let friends = addFriends(previousUsers, o.friends, name);	
-									response.friends = friends; //replace freinds array with new freinds array
-									console.log('friends')
-									console.log(friends);
-									//console.log(response);
+									response.friends = friends; //replace friends array with new freinds array
 									
-									response.save(); //Save  previous freinds array to this user.} 	
+									response.save(); //Save  previous friends array to this user.} 	
 								}
 							}
 					
@@ -139,8 +112,7 @@ exports.saveGame = function(req, res, next) {
 }
 
 var addFriends = (arr1, arr2, newgame)=>{
-	//console.log(arr1, arr2);
-	
+
 	for(var i in arr1) {
 
 		var exists = false;
@@ -150,7 +122,6 @@ var addFriends = (arr1, arr2, newgame)=>{
 			if(arr2[j].friendId === arr1[i].friendId){
 				exists = true;
 				if (arr2[j]['games'].indexOf(newgame) < 0) {
-				//console.log('previous match '+ arr1[i].friendId);
         			arr2[j]['games'].push(newgame);
 			        arr2[j]['num']++;
 			    }
@@ -159,7 +130,6 @@ var addFriends = (arr1, arr2, newgame)=>{
 
 		}
 			if(!exists){
-					//console.log('new match ' + arr1[i].friendId);
 			arr2.push({
 				'friendId': arr1[i].friendId,
 				'num': 0,
@@ -170,11 +140,8 @@ var addFriends = (arr1, arr2, newgame)=>{
 			});
 			}    
 	}
-	//console.log('arr2');
 	return arr2; 
 }
-
-
 
 
 var removeFriends = (arr1, arr2, newgame)=>{
@@ -207,8 +174,6 @@ var removeFriends = (arr1, arr2, newgame)=>{
 }
 
 
-
-
 exports.deleteGame = function(req, res, next) {
 	console.log(req.body.id, req.params.id);
 	Game.findOneAndUpdate(
@@ -220,17 +185,13 @@ exports.deleteGame = function(req, res, next) {
 
 				var matches = JSON.parse(JSON.stringify(result.matchedFriends)); 
 
-
-
 				matches = matches.filter(function(el) {
 					return el.friendId !== req.params.id;
 				});
 
 				result.matchedFriends = matches; 			
 
-
 				result.save(); 
-
 
 				var previousUsers = [] 
 				var name = result.name; 
@@ -239,7 +200,6 @@ exports.deleteGame = function(req, res, next) {
 					console.log('match ',match); 
 					
 					return new Promise(function(resolve, reject) {
-						
 						
 						User.findOneAndUpdate(  //Find each friend by their id
 							{_id: match.friendId},
@@ -257,12 +217,11 @@ exports.deleteGame = function(req, res, next) {
 								var resUser = {
 									"friendId":r._id,
 									"email": r.email
-								}
-											
+								}	
 								
 								if(match.friendId != user._id){ 								
 									let friends = removeFriends(currentUser, r.friends, name);	
-									res.friends = friends; //replace freinds array with new freinds array
+									res.friends = friends; //replace friends array with new friends array
 									res.save(); //Save newFriend to that friend
 									previousUsers.push(resUser); 
 
@@ -289,11 +248,9 @@ exports.deleteGame = function(req, res, next) {
 
 							let o = JSON.parse(JSON.stringify(response))						
 							let friends = removeFriends(previousUsers, o.friends, name);	
-							response.friends = friends; //replace freinds array with new freinds array
-							console.log('freinds')
-							console.log(friends);
+							response.friends = friends; //replace friends array with new freinds array
 							
-							response.save(); //Save  previous freinds array to this user. 			
+							response.save(); //Save  previous friends array to this user. 			
 						}
 
 					
@@ -306,6 +263,7 @@ exports.deleteGame = function(req, res, next) {
 	)
 }
 
+//API endpoints
 exports.find = function(req, res, next) {
 	Game
 		.find(

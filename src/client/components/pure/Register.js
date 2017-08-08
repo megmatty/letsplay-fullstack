@@ -44,8 +44,6 @@ class Register extends Component {
 		})		
 	}
 
-	//having trouble getting the correct img on click and only changing that single class, need to use state to trigger rerender but idk how to toggle 
-
 	selectedAvatar = (e) => {
 		this.setState({avatarClicked: e.target.src});
 		console.log(e.target.src);

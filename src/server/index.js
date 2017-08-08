@@ -15,24 +15,6 @@ import "./models/game";
 // -------------------------------------------
 
 const app = express();
-
-// -------------------------------------------
-
-// const connect = () => {
-// 	mongoose.connect(secrets.db, (err, res) => {
-// 		if (err) {
-// 			console.log(`Error connecting to ${secrets.db}. ${err}`)
-// 		} else {
-// 			console.log(`Successfully connected to ${secrets.db}.`)
-// 		}
-// 	})
-// }
-// connect();
-
-// mongoose.connection.on("error", console.error);
-// mongoose.connection.on("disconnected", connect);
-
-// -------------------------------------------
  
 const isDev = process.env.NODE_ENV === "development";
 
@@ -52,14 +34,15 @@ if(isDev) {
 
 // -------------------------------------------
 
-configurePassport(app, passport)
-configureExpress(app, passport)
+configurePassport(app, passport);
+configureExpress(app, passport);
 
 // -------------------------------------------
 
-app.post("/login", users.login)
-app.get("/logout", users.logout)
-app.post("/register", users.register)
+//Reg/login
+app.post("/login", users.login);
+app.get("/logout", users.logout);
+app.post("/register", users.register);
 
 //Game
 app.post('/user/:id', function(req, res) {
@@ -92,17 +75,15 @@ function handleSayHello(req, res) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'letsplayapp123@gmail.com', // Your email id
-            pass: 'megmatty123' // Your password
+            user: 'letsplayapp123@gmail.com', 
+            pass: 'megmatty123' 
         }
     });
-   var text = 'Hello world from \n\n' + req.user.name + '\r\n' + req.body.message;
 		var mailOptions = {
     from: req.user.email, // sender address
-    to: req.body.to, // change this to req.body.to
-    subject: "Let's Play - Friend Match Request", // Subject line
-    // text: req.body.message, //, // plaintext body
-    html: `Hello ${req.body.name}! <br /> <p>Let's Play user ${req.user.name} plays <b>${req.body.game}</b> and would like to play with you!</p> <p>${req.user.name} says: "${req.body.message}".</p> <p><a href="mailto:${req.user.email}">Click here to email them and get playing!</a></p> <br />-Let's Play` // You can choose to send an HTML body instead
+    to: req.body.to, 
+    subject: "Let's Play - Friend Match", // Subject line
+    html: `Hello ${req.body.name}! <br /> <p>Let's Play user ${req.user.name} plays <b>${req.body.game}</b> and would like to play with you!</p> <p>${req.user.name} says: "${req.body.message}".</p> <p><a href="mailto:${req.user.email}">Click here to email them and get playing!</a></p> <br />-Let's Play` 
 	};
 		transporter.sendMail(mailOptions, function(error, info){
 	    if(error){
@@ -148,11 +129,6 @@ app.get("*", (req, res, next) => {
 
 // this function connects to our database, then starts the server
 let server;
-// // const PORT = 3000;
-// const PORT = process.env.PORT || 3000;
-// const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
-// console.log('bananas');
-// console.log(DATABASE_URL, PORT);
 
 // // this function connects to our database, then starts the server
 const PORT = process.env.PORT || 3000;
@@ -204,19 +180,5 @@ if (require.main === module) {
 } else if (isDev) {
 	runServer();
 };
-
-//this needs to be changed to run tests
-// runServer();
-
-// start listening to incoming requests
-
-// app.listen(app.get("port"), (err) => {
-// 	if (err) {
-// 		console.err(err.stack);
-// 		console('does this go through');
-// 	} else {
-// 		console.log(`App listening on port ${app.get("port")} [${process.env.NODE_ENV} mode]`)
-// 	}
-// });
 
 module.exports = {app, runServer, closeServer};

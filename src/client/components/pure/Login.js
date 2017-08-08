@@ -42,7 +42,11 @@ class Login extends Component {
 	render() {
 		return(
 			<div className="login">
-				<h2>Log in</h2>		
+				<h2>Log in</h2>
+				<p>DEMO: To use without registering: <br />
+					<b>email:</b> letsplayapp123+janedoe@gmail.com <br />
+					<b>password:</b> test
+				</p>
 				<form onSubmit={this._onLoginSubmit}>
 					<input type="email" ref="email" placeholder="Email"/><br/>
 					<input ref="password" type="password" placeholder="Password" /><br/>
