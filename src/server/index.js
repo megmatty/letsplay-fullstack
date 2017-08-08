@@ -18,19 +18,19 @@ const app = express();
 
 // -------------------------------------------
 
-const connect = () => {
-	mongoose.connect(secrets.db, (err, res) => {
-		if (err) {
-			console.log(`Error connecting to ${secrets.db}. ${err}`)
-		} else {
-			console.log(`Successfully connected to ${secrets.db}.`)
-		}
-	})
-}
-connect();
+// const connect = () => {
+// 	mongoose.connect(secrets.db, (err, res) => {
+// 		if (err) {
+// 			console.log(`Error connecting to ${secrets.db}. ${err}`)
+// 		} else {
+// 			console.log(`Successfully connected to ${secrets.db}.`)
+// 		}
+// 	})
+// }
+// connect();
 
-mongoose.connection.on("error", console.error);
-mongoose.connection.on("disconnected", connect);
+// mongoose.connection.on("error", console.error);
+// mongoose.connection.on("disconnected", connect);
 
 // -------------------------------------------
  
@@ -165,8 +165,10 @@ let server;
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+	console.log(databaseUrl);
+	console.log('pajamas');
   return new Promise((resolve, reject) => {
-    mongoose.createConnection(databaseUrl, err => {
+    mongoose.connect(databaseUrl, err => {
       console.log(port);
       console.log('peanuts');
       if (err) {
@@ -204,12 +206,14 @@ function closeServer() {
 
 // // if server.js is called directly (aka, with `node server.js`), this block
 // // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
-// if (require.main === module) {
-//   runServer().catch(err => console.error(err));
-// };
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+} else if (isDev) {
+	runServer();
+};
 
 //this needs to be changed to run tests
-runServer();
+// runServer();
 
 // start listening to incoming requests
 
