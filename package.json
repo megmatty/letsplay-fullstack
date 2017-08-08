@@ -107,12 +107,8 @@
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"
   },
-  "author": "Frank Kilkelly",
+  "author": "Meg Matty",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kilkelly/react-passport-redux-example/issues"
-  },
-  "homepage": "https://github.com/kilkelly/react-passport-redux-example#readme",
   "babel": {
     "presets": [
       "react",
