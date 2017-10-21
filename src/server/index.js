@@ -11,11 +11,12 @@ import users from "./controllers/users";
 import games from "./controllers/games";
 import "./models/user";
 import "./models/game";
+require('dotenv').load();
 
 // -------------------------------------------
 
 const app = express();
- 
+
 const isDev = process.env.NODE_ENV === "development";
 
 // if in development mode set up the middleware required for hot reloading and rebundling
