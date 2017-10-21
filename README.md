@@ -1,34 +1,34 @@
 # Let's Play
-### Let's Play is a MERN stack app that matches users to one another based on shared lists of video games for the purposes of meeting new gaming friends. The site allows a user to search the Internet Gaming Database (IGDB.com) for video games they like to play and add them to a list. They can view the game title, rating, year released, box art, and description. When other users add the same game to their list, the two users will be matched as potential gaming friends and can send an email initiating contact to arrange a meeting to play.
+#### Let's Play is a MERN stack app that matches users to one another based on shared lists of video games for the purposes of meeting new gaming friends. The site allows a user to search the Internet Gaming Database (IGDB.com) for video games they like to play and add them to a list. They can view the game title, rating, year released, box art, and description. When other users add the same game to their list, the two users will be matched as potential gaming friends and can send an email initiating contact to arrange a meeting to play.
 
 ### Live Version: https://letsplayapp.herokuapp.com
 
 ### DEMO: To try without registering, login with
-	* email: letsplayapp123+janedoe@gmail.com 
-	* password: test
+* email: letsplayapp123+janedoe@gmail.com 
+* password: test
 
 ### Screenshots
-Home: http://i.imgur.com/5s9aJPn.png?1
-Register: http://i.imgur.com/Lv5U0aW.png?1
-User List: http://i.imgur.com/4k4Uk3F.png?1
-Game View: http://i.imgur.com/1FwGKYM.png?1
-User Profile: http://i.imgur.com/nD8ysHr.png?1
-Email Feature: http://i.imgur.com/NXPVVvR.png?1
+![Home](http://i.imgur.com/5s9aJPn.png?1)
+![Register](http://i.imgur.com/Lv5U0aW.png?1)
+![User List](http://i.imgur.com/4k4Uk3F.png?1)
+![Game View](http://i.imgur.com/1FwGKYM.png?1)
+![User Profile](http://i.imgur.com/nD8ysHr.png?1)
+![Email Feature](http://i.imgur.com/NXPVVvR.png?1)
 
 ### Technologies
-	* MERN (MongoDB, Express, React, Node)
-	* Redux & Thunk
-	* Mocha/Chai
-	* Webpack
-	* Passport
-	* Services: mlab, Travis CI, Heroku
+* MERN (MongoDB, Express, React, Node)
+* Redux & Thunk
+* Mocha/Chai
+* Webpack
+* Passport
+* Services: mlab, Travis CI, Heroku
 
 ### Future iteration points
-	* Replace email/nodemailer feature with internal messaging
-	* Convert as many React class components as possible to stateless functional components
-	* Create separate client/server repos/deployments
-	* Develop more tests
-	* Rebase deployed branch (devserver) to master
+* Replace email/nodemailer feature with internal messaging
+* Convert as many React class components as possible to stateless functional components
+* Create separate client/server repos/deployments
+* Develop more tests
+* Rebase deployed branch (devserver) to master
 
 ### Repo instructions
 
