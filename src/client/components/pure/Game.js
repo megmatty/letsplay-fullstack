@@ -26,7 +26,7 @@ class Game extends Component {
     if (this.state.active === false) {
       result =  <div className="game-wrapper box-shadow rounded-border" onClick={this.activeGame}>
                   { this.props.cover ? 
-                    <img className="box-art rounded-border" src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
+                    <img className="box-art rounded-border" src={`https://images.igdb.com/igdb/image/upload/t_thumb/${this.props.cover.cloudinary_id}.jpg`} alt='gamebox art' />
                     :
                     <div>No Image Provided</div>
                   }

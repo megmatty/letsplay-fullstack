@@ -9,4 +9,4 @@ deploy:
   app: letsplayapp
   on:
     repo: megmatty/letsplay-fullstack
-    branch: devserver
+    branch: apiupdate
