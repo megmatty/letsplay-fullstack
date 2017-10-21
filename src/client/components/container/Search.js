@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { gamesGetData, captureQuery, resetGames, addGame } from '../../actions/games';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
-import API_KEY from '../../../../config';
+// import API_KEY from '../../../../config';
 
 class Search extends Component {
 
