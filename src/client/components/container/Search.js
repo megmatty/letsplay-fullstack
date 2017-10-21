@@ -25,9 +25,13 @@ class Search extends Component {
 
 	loadResults = () => {
 		let query = this.refs.input.value;
-		const request = new Request(`https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name%2Crating%2Cfirst_release_date%2Csummary%2Cstoryline%2Ccover&limit=10&offset=0&search=${query}`, {
+		//new API requires proxy to get around CORS
+		const proxyurl = "https://cors-anywhere.herokuapp.com/";
+		const igdburl = "https://api-2445582011268.apicast.io";
+		const request = new Request(`${proxyurl + igdburl}/games/?fields=name%2Crating%2Cfirst_release_date%2Csummary%2Cstoryline%2Ccover&limit=10&offset=0&search=${query}`, {
 	      headers: new Headers({
-	        'X-Mashape-Key': 'EUQMsXMjGmmshSjK8dQ9W31H8UOtp1wKG3bjsnwgRTlndgTXjR'
+	        'user-key': 'af8793cbf746f98ee1d235eff0e433da',
+	        'Accept': 'application/json'
 	      })
 	  });
 		this.props.getGameData(request);

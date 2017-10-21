@@ -39,6 +39,8 @@ configureExpress(app, passport);
 
 // -------------------------------------------
 
+
+
 //Reg/login
 app.post("/login", users.login);
 app.get("/logout", users.logout);
@@ -57,7 +59,7 @@ app.put('/user/:id', function(req, res) {
 	games.deleteGame(req, res);
 });
 
-var cors = require('cors'); 
+var cors = require('cors');
 app.use(cors());
 
 app.get('/games', games.find);
