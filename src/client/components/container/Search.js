@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { gamesGetData, captureQuery, resetGames, addGame } from '../../actions/games';
 import Game from '../../components/pure/Game';
 import axios from 'axios';
-// import API_KEY from '../../../../config';
+import { API_KEY } from '../../../../config';
 
 class Search extends Component {
 
@@ -31,8 +31,7 @@ class Search extends Component {
 		const igdburl = "https://api-2445582011268.apicast.io";
 		const request = new Request(`${proxyurl + igdburl}/games/?fields=name%2Crating%2Cfirst_release_date%2Csummary%2Cstoryline%2Ccover&limit=10&offset=0&search=${query}`, {
 	      headers: new Headers({
-	      	//trying to work out how to keep this secret w/o breaking heroku deploy
-	        'user-key': 'af8793cbf746f98ee1d235eff0e433da',
+	        'user-key': API_KEY,
 	        'Accept': 'application/json'
 	      })
 	  });
@@ -88,7 +87,6 @@ class Search extends Component {
 
 //Take state and map to prop object
 const mapStateToProps = (state) => {
-	// console.log(state);
 	return {
 		games: state.games,
 		hasErrored: state.gamesHasErrored,

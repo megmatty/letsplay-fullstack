@@ -73,8 +73,6 @@ var nodemailer = require('nodemailer');
 app.post('/contact', handleSayHello); // handle the route at yourdomain.com/sayHello
 
 function handleSayHello(req, res) {
-	console.log(req.body);
-	console.log('cucumber');
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -138,11 +136,8 @@ const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/letsplay';
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
 	console.log(databaseUrl);
-	console.log('pajamas');
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
-      console.log(port);
-      console.log('peanuts');
       if (err) {
       	console.log(err);
         return reject(err);
