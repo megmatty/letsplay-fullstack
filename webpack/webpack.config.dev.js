@@ -55,6 +55,11 @@ module.exports = {
 			"process.env": {
 				NODE_ENV: JSON.stringify("development")
 			}			
+		}),
+		new webpack.DefinePlugin({
+			"apikey": {
+				API_KEY: JSON.stringify(process.env.API_KEY)
+			}			
 		})
 	]
 }

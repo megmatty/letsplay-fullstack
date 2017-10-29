@@ -11,7 +11,6 @@ import users from "./controllers/users";
 import games from "./controllers/games";
 import "./models/user";
 import "./models/game";
-// require('dotenv').load();
 
 // -------------------------------------------
 
@@ -49,7 +48,6 @@ app.post("/register", users.register);
 
 //Game
 app.post('/user/:id', function(req, res) {
-	console.log('POST savegame tangerine');
 	games.saveGame(req, res);
 });
 
