@@ -11,7 +11,7 @@ import users from "./controllers/users";
 import games from "./controllers/games";
 import "./models/user";
 import "./models/game";
-require('dotenv').load();
+// require('dotenv').load();
 
 // -------------------------------------------
 
