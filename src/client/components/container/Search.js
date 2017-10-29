@@ -31,7 +31,7 @@ class Search extends Component {
 		const igdburl = "https://api-2445582011268.apicast.io";
 		const request = new Request(`${proxyurl + igdburl}/games/?fields=name%2Crating%2Cfirst_release_date%2Csummary%2Cstoryline%2Ccover&limit=10&offset=0&search=${query}`, {
 	      headers: new Headers({
-	        'user-key': API_KEY,
+	        'user-key': 'af8793cbf746f98ee1d235eff0e433da',
 	        'Accept': 'application/json'
 	      })
 	  });
